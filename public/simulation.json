@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "capital": 4835.703278458517,
+  "capital": 9444.732965739291,
   "holdings": [
     {
       "symbol": "UNI/USDT",
@@ -264,39 +264,6 @@
       "target_price": 659.065,
       "stoploss_price": 532.983,
       "buy_date": "2026-08-02 14:38",
-      "signal": "강력매수"
-    },
-    {
-      "symbol": "UNI/USD",
-      "market": "crypto",
-      "buy_price": 4.189,
-      "quantity": 450.930196502234,
-      "invest_amount": 1889,
-      "target_price": 4.8173,
-      "stoploss_price": 3.8958,
-      "buy_date": "2026-08-02 09:29",
-      "signal": "강력매수"
-    },
-    {
-      "symbol": "ADA/USD",
-      "market": "crypto",
-      "buy_price": 0.1866,
-      "quantity": 8098.377676946874,
-      "invest_amount": 1511,
-      "target_price": 0.2053,
-      "stoploss_price": 0.1773,
-      "buy_date": "2026-08-02 09:29",
-      "signal": "매수"
-    },
-    {
-      "symbol": "MA",
-      "market": "us",
-      "buy_price": 573.1,
-      "quantity": 2.1094500429499723,
-      "invest_amount": 1209,
-      "target_price": 659.065,
-      "stoploss_price": 532.983,
-      "buy_date": "2026-08-02 09:29",
       "signal": "강력매수"
     }
   ],
