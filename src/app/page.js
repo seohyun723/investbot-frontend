@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "../components/Dashboard";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/latest.json";
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -13,35 +13,36 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/latest`);
+      const res = await fetch(`${DATA_URL}?t=${Date.now()}`);
+      if (!res.ok) throw new Error("데이터 로드 실패");
       const json = await res.json();
       setData(json);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
     setLoading(false);
   };
 
-  const refresh = async () => {
+  const triggerReanalysis = async () => {
     setRefreshing(true);
-    setProgress("서버 요청 중...");
+    setProgress("재분석 요청 중...");
     try {
-      await fetch(`${API_URL}/api/refresh`, { method: "POST" });
-      // 상태 폴링
-      const checkStatus = async () => {
-        const res = await fetch(`${API_URL}/api/status`);
-        const status = await res.json();
-        if (status.status === "running") {
-          setProgress(status.message || "분석 중...");
-          setTimeout(checkStatus, 3000);
-        } else if (status.status === "done") {
-          setProgress("완료!");
+      const res = await fetch("/api/reanalyze", { method: "POST" });
+      if (res.ok) {
+        setProgress("분석 중... (5-7분 소요)");
+        // 5분 후 자동 새로고침
+        setTimeout(async () => {
+          setProgress("완료! 최신 데이터 로드 중...");
           await loadData();
-          setTimeout(() => { setRefreshing(false); setProgress(""); }, 1000);
-        } else if (status.status === "error") {
-          setProgress("오류: " + status.message);
-          setTimeout(() => { setRefreshing(false); setProgress(""); }, 3000);
-        }
-      };
-      setTimeout(checkStatus, 2000);
+          setTimeout(() => {
+            setRefreshing(false);
+            setProgress("");
+          }, 1000);
+        }, 300000);
+      } else {
+        setProgress("재분석 요청 실패");
+        setTimeout(() => { setRefreshing(false); setProgress(""); }, 3000);
+      }
     } catch (e) {
       setProgress("서버 연결 실패");
       setTimeout(() => { setRefreshing(false); setProgress(""); }, 3000);
@@ -51,30 +52,44 @@ export default function Home() {
   useEffect(() => { loadData(); }, []);
 
   if (loading) return <div className="p-6 text-center text-muted">로딩 중...</div>;
-  if (!data || data.error) return (
+  if (!data) return (
     <div className="p-6 text-center max-w-md mx-auto">
       <div className="text-danger mb-4">데이터를 불러올 수 없습니다</div>
-      <button onClick={refresh} className="px-6 py-3 bg-accent text-white rounded-lg font-semibold">
-        분석 시작하기
+      <button onClick={loadData} className="px-6 py-3 bg-accent text-white rounded-lg font-semibold">
+        다시 시도
       </button>
-      {refreshing && <div className="mt-4 text-muted text-sm">{progress}</div>}
     </div>
   );
 
+  const lastUpdate = data.generated_at ? new Date(data.generated_at).toLocaleString("ko-KR", { 
+    month: "long", day: "numeric", hour: "numeric", minute: "numeric" 
+  }) : "";
+
   return (
     <main className="max-w-2xl mx-auto p-4 pb-20">
-      <header className="flex justify-between items-center mb-5">
+      <header className="flex justify-between items-center mb-3">
         <div>
           <div className="text-xs text-muted tracking-wider">INVESTBOT</div>
           <div className="text-lg font-semibold">{data.date}</div>
+          {lastUpdate && (
+            <div className="text-xs text-muted mt-0.5">마지막 분석: {lastUpdate}</div>
+          )}
         </div>
         <div className="flex gap-2 items-center">
           <button
-            onClick={refresh}
-            disabled={refreshing}
-            className="w-9 h-9 bg-card border border-border rounded-lg flex items-center justify-center disabled:opacity-50"
+            onClick={loadData}
+            className="w-9 h-9 bg-card border border-border rounded-lg flex items-center justify-center"
+            title="새로고침"
           >
-            <span className={refreshing ? "animate-spin" : ""}>🔄</span>
+            🔄
+          </button>
+          <button
+            onClick={triggerReanalysis}
+            disabled={refreshing}
+            className="w-9 h-9 bg-accent border border-accent rounded-lg flex items-center justify-center disabled:opacity-50"
+            title="재분석 (5-7분)"
+          >
+            <span className={refreshing ? "animate-spin" : ""}>⚙️</span>
           </button>
           <div className="bg-card px-3 py-2 rounded-full text-xs text-muted">
             🌡 {data.fear_greed?.index ?? 50} · {data.fear_greed?.label ?? ""}
@@ -84,7 +99,7 @@ export default function Home() {
 
       {refreshing && (
         <div className="bg-accent/20 border border-accent rounded-lg p-3 mb-4 text-sm text-center">
-          {progress || "분석 중... (최대 5분 소요)"}
+          {progress}
         </div>
       )}
 
