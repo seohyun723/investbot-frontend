@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generated_at": "2026-08-02T11:47:13.099332",
+  "generated_at": "2026-08-02T11:51:03.439223",
   "usd_krw": 1436.5999755859375,
   "fear_greed": {
     "index": 56,
@@ -8,7 +8,7 @@
     "vix": 16.0,
     "detail": "VIX: 16.0 | S&P500 vs MA50: 1.00"
   },
-  "trump_summary": "이슈 60건 (호재 19건, 악재 33건)",
+  "trump_summary": "이슈 58건 (호재 19건, 악재 32건)",
   "market_indicators": [
     {
       "ticker": "KRW=X",
@@ -69,26 +69,26 @@
   },
   "top3": [
     {
-      "total_score": 69.7,
+      "total_score": 69.8,
       "tech_score": 75.0,
-      "mom_score": 60.1,
+      "mom_score": 60.7,
       "vol_score": 44.3,
       "signal": "강력매수",
-      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(6.7%) | 트럼프 코인 호재 | 스토캐스틱 하락 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(7.1%) | 트럼프 코인 호재 | 스토캐스틱 하락 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-UNI",
-      "price": 6010.0,
-      "change_24h": 2.03735144,
+      "price": 6030.0,
+      "change_24h": 2.37691002,
       "atr": 361.7857142857,
-      "target_price": 7095.3571,
-      "stoploss_price": 5467.3214,
+      "target_price": 7115.3571,
+      "stoploss_price": 5487.3214,
       "grade": "A (매수)",
-      "weight": 0.1295057599,
-      "suggested_amount": 25901
+      "weight": 0.1295231026,
+      "suggested_amount": 25904
     },
     {
-      "total_score": 53.1,
+      "total_score": 55.6,
       "tech_score": 75.0,
-      "fund_score": 40,
+      "fund_score": 50,
       "analyst_score": 60,
       "news_score": 15.0,
       "signal": "강력매수",
@@ -99,33 +99,33 @@
       "atr": 12.5278538295,
       "target_price": 610.6836,
       "stoploss_price": 554.3082,
-      "grade": "B (중립)",
-      "weight": 0.0966684872,
-      "suggested_amount": 19333
+      "grade": "B+ (관심)",
+      "weight": 0.1007611453,
+      "suggested_amount": 20152
     },
     {
-      "total_score": 68.6,
+      "total_score": 69.1,
       "tech_score": 60.0,
-      "mom_score": 71.7,
-      "vol_score": 54.0,
+      "mom_score": 73.0,
+      "vol_score": 54.5,
       "signal": "매수",
-      "reasons": "단기>중기 | RSI 고점(64) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(14.5%) | 트럼프 코인 호재 | 중립 (도미넌스 56.26%) | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "단기>중기 | RSI 고점(65) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(15.3%) | 트럼프 코인 호재 | 중립 (도미넌스 56.28%) | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-ADA",
-      "price": 269.0,
-      "change_24h": 7.17131474,
-      "atr": 12.9285714286,
-      "target_price": 294.8571,
-      "stoploss_price": 256.0714,
+      "price": 272.0,
+      "change_24h": 8.36653386,
+      "atr": 13.0,
+      "target_price": 298.0,
+      "stoploss_price": 259.0,
       "grade": "A (매수)",
-      "weight": 0.1274619101,
-      "suggested_amount": 25492
+      "weight": 0.1282241603,
+      "suggested_amount": 25644
     }
   ],
   "us_signals": [
     {
-      "total_score": 53.1,
+      "total_score": 55.6,
       "tech_score": 75.0,
-      "fund_score": 40,
+      "fund_score": 50,
       "analyst_score": 60,
       "news_score": 15.0,
       "signal": "강력매수",
@@ -136,9 +136,9 @@
       "atr": 12.5278538295,
       "target_price": 610.6836,
       "stoploss_price": 554.3082,
-      "grade": "B (중립)",
-      "weight": 0.0966684872,
-      "suggested_amount": 19333
+      "grade": "B+ (관심)",
+      "weight": 0.1007611453,
+      "suggested_amount": 20152
     },
     {
       "total_score": 57.0,
@@ -155,8 +155,8 @@
       "target_price": 136.97,
       "stoploss_price": 126.815,
       "grade": "B+ (관심)",
-      "weight": 0.1037684326,
-      "suggested_amount": 20753
+      "weight": 0.1032982965,
+      "suggested_amount": 20659
     },
     {
       "total_score": 56.9,
@@ -173,8 +173,8 @@
       "target_price": 25.9481,
       "stoploss_price": 24.541,
       "grade": "B+ (관심)",
-      "weight": 0.1035863827,
-      "suggested_amount": 20717
+      "weight": 0.1031170714,
+      "suggested_amount": 20623
     },
     {
       "total_score": 56.8,
@@ -191,8 +191,8 @@
       "target_price": 126.7886,
       "stoploss_price": 117.3257,
       "grade": "B+ (관심)",
-      "weight": 0.1034043328,
-      "suggested_amount": 20680
+      "weight": 0.1029358463,
+      "suggested_amount": 20587
     },
     {
       "total_score": 52.5,
@@ -209,8 +209,8 @@
       "target_price": 162.7157,
       "stoploss_price": 151.8021,
       "grade": "B (중립)",
-      "weight": 0.0955761879,
-      "suggested_amount": 19115
+      "weight": 0.0951431678,
+      "suggested_amount": 19028
     },
     {
       "total_score": 60.2,
@@ -227,8 +227,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1095940288,
-      "suggested_amount": 21918
+      "weight": 0.1090974991,
+      "suggested_amount": 21819
     },
     {
       "total_score": 56.3,
@@ -245,8 +245,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1024940834,
-      "suggested_amount": 20498
+      "weight": 0.1020297209,
+      "suggested_amount": 20405
     },
     {
       "total_score": 54.1,
@@ -263,8 +263,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.098488986,
-      "suggested_amount": 19697
+      "weight": 0.0980427691,
+      "suggested_amount": 19608
     },
     {
       "total_score": 51.3,
@@ -281,8 +281,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0933915893,
-      "suggested_amount": 18678
+      "weight": 0.0929684668,
+      "suggested_amount": 18593
     },
     {
       "total_score": 51.1,
@@ -299,44 +299,44 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0930274895,
-      "suggested_amount": 18605
+      "weight": 0.0926060167,
+      "suggested_amount": 18521
     }
   ],
   "crypto_signals": [
     {
-      "total_score": 69.7,
+      "total_score": 69.8,
       "tech_score": 75.0,
-      "mom_score": 60.1,
+      "mom_score": 60.7,
       "vol_score": 44.3,
       "signal": "강력매수",
-      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(6.7%) | 트럼프 코인 호재 | 스토캐스틱 하락 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(7.1%) | 트럼프 코인 호재 | 스토캐스틱 하락 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-UNI",
-      "price": 6010.0,
-      "change_24h": 2.03735144,
+      "price": 6030.0,
+      "change_24h": 2.37691002,
       "atr": 361.7857142857,
-      "target_price": 7095.3571,
-      "stoploss_price": 5467.3214,
+      "target_price": 7115.3571,
+      "stoploss_price": 5487.3214,
       "grade": "A (매수)",
-      "weight": 0.1295057599,
-      "suggested_amount": 25901
+      "weight": 0.1295231026,
+      "suggested_amount": 25904
     },
     {
-      "total_score": 68.6,
+      "total_score": 69.1,
       "tech_score": 60.0,
-      "mom_score": 71.7,
-      "vol_score": 54.0,
+      "mom_score": 73.0,
+      "vol_score": 54.5,
       "signal": "매수",
-      "reasons": "단기>중기 | RSI 고점(64) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(14.5%) | 트럼프 코인 호재 | 중립 (도미넌스 56.26%) | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "단기>중기 | RSI 고점(65) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(15.3%) | 트럼프 코인 호재 | 중립 (도미넌스 56.28%) | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-ADA",
-      "price": 269.0,
-      "change_24h": 7.17131474,
-      "atr": 12.9285714286,
-      "target_price": 294.8571,
-      "stoploss_price": 256.0714,
+      "price": 272.0,
+      "change_24h": 8.36653386,
+      "atr": 13.0,
+      "target_price": 298.0,
+      "stoploss_price": 259.0,
       "grade": "A (매수)",
-      "weight": 0.1274619101,
-      "suggested_amount": 25492
+      "weight": 0.1282241603,
+      "suggested_amount": 25644
     },
     {
       "total_score": 51.7,
@@ -352,8 +352,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0960609439,
-      "suggested_amount": 19212
+      "weight": 0.0959361663,
+      "suggested_amount": 19187
     },
     {
       "total_score": 51.4,
@@ -369,25 +369,25 @@
       "target_price": 2195.2857,
       "stoploss_price": 2569.8571,
       "grade": "B (중립)",
-      "weight": 0.0955035303,
-      "suggested_amount": 19100
+      "weight": 0.0953794767,
+      "suggested_amount": 19075
     },
     {
       "total_score": 50.7,
       "tech_score": 40.0,
-      "mom_score": 46.9,
-      "vol_score": 37.4,
+      "mom_score": 46.8,
+      "vol_score": 37.5,
       "signal": "매도",
-      "reasons": "단기<중기 | RSI 저점(32) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.26%) | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "단기<중기 | RSI 저점(31) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.28%) | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-SOL",
-      "price": 104900.0,
-      "change_24h": 1.05973025,
+      "price": 104800.0,
+      "change_24h": 0.96339114,
       "atr": 3021.4285714286,
-      "target_price": 98857.1429,
-      "stoploss_price": 107921.4286,
+      "target_price": 98757.1429,
+      "stoploss_price": 107821.4286,
       "grade": "B (중립)",
-      "weight": 0.0942028986,
-      "suggested_amount": 18840
+      "weight": 0.0940805344,
+      "suggested_amount": 18816
     },
     {
       "total_score": 49.6,
@@ -403,42 +403,42 @@
       "target_price": 1055.0,
       "stoploss_price": 1179.5,
       "grade": "B (중립)",
-      "weight": 0.0921590487,
-      "suggested_amount": 18431
+      "weight": 0.0920393394,
+      "suggested_amount": 18407
     },
     {
       "total_score": 49.4,
       "tech_score": 40.0,
       "mom_score": 43.6,
-      "vol_score": 35.6,
+      "vol_score": 35.7,
       "signal": "매도",
-      "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 과매도(15/13) | 중립 (도미넌스 56.26%) | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 과매도(15/12) | 중립 (도미넌스 56.28%) | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-ETH",
-      "price": 2667000.0,
-      "change_24h": 0.26315789,
+      "price": 2666000.0,
+      "change_24h": 0.22556391,
       "atr": 80071.4285714286,
-      "target_price": 2506857.1429,
-      "stoploss_price": 2747071.4286,
+      "target_price": 2505857.1429,
+      "stoploss_price": 2746071.4286,
       "grade": "B (중립)",
-      "weight": 0.0917874396,
-      "suggested_amount": 18357
+      "weight": 0.091668213,
+      "suggested_amount": 18333
     },
     {
-      "total_score": 48.9,
+      "total_score": 49.0,
       "tech_score": 32.5,
-      "mom_score": 50.0,
-      "vol_score": 39.5,
+      "mom_score": 50.1,
+      "vol_score": 39.6,
       "signal": "매도",
-      "reasons": "역배열 | RSI 저점(38) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 과매도(20/11) | 중립 (도미넌스 56.26%) | 공포탐욕 27 | 뉴스 부정(3)",
+      "reasons": "역배열 | RSI 저점(38) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.28%) | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-XRP",
-      "price": 1549.0,
-      "change_24h": 1.37434555,
+      "price": 1550.0,
+      "change_24h": 1.43979058,
       "atr": 40.0,
-      "target_price": 1469.0,
-      "stoploss_price": 1589.0,
+      "target_price": 1470.0,
+      "stoploss_price": 1590.0,
       "grade": "B (중립)",
-      "weight": 0.0908584169,
-      "suggested_amount": 18171
+      "weight": 0.0909259603,
+      "suggested_amount": 18185
     },
     {
       "total_score": 48.8,
@@ -454,25 +454,25 @@
       "target_price": 11014.2857,
       "stoploss_price": 12342.8571,
       "grade": "B (중립)",
-      "weight": 0.0906726124,
-      "suggested_amount": 18134
+      "weight": 0.0905548339,
+      "suggested_amount": 18110
     },
     {
       "total_score": 49.4,
       "tech_score": 22.5,
-      "mom_score": 49.5,
-      "vol_score": 70.5,
+      "mom_score": 49.3,
+      "vol_score": 70.6,
       "signal": "강력매도",
       "reasons": "역배열 | MACD 약세 | 거래량 급증(하락) | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(3)",
       "symbol": "KRW-AVAX",
-      "price": 9495.0,
-      "change_24h": 6.32698768,
+      "price": 9480.0,
+      "change_24h": 6.15901456,
       "atr": 417.5,
-      "target_price": 8242.5,
-      "stoploss_price": 10121.25,
+      "target_price": 8227.5,
+      "stoploss_price": 10106.25,
       "grade": "B (중립)",
-      "weight": 0.0917874396,
-      "suggested_amount": 18357
+      "weight": 0.091668213,
+      "suggested_amount": 18333
     }
   ],
   "kr_signals": [],
@@ -494,13 +494,13 @@
       {
         "symbol": "KRW-UNI",
         "market": "crypto",
-        "buy_price": 6010.0,
-        "buy_price_original": 6010.0,
-        "quantity": 16.638935108153078,
+        "buy_price": 6030.0,
+        "buy_price_original": 6030.0,
+        "quantity": 16.58374792703151,
         "buy_amount": 100000,
-        "target_price": 6911.5,
-        "stoploss_price": 5589.3,
-        "buy_date": "2026-08-02T11:48:13.967421",
+        "target_price": 6934.5,
+        "stoploss_price": 5607.9,
+        "buy_date": "2026-08-02T11:52:11.228936",
         "score": 70,
         "signal": "강력매수",
         "status": "active",
@@ -511,13 +511,13 @@
       {
         "symbol": "KRW-ADA",
         "market": "crypto",
-        "buy_price": 269.0,
-        "buy_price_original": 269.0,
-        "quantity": 371.74721189591077,
+        "buy_price": 272.0,
+        "buy_price_original": 272.0,
+        "quantity": 367.6470588235294,
         "buy_amount": 100000,
-        "target_price": 309.35,
-        "stoploss_price": 250.17,
-        "buy_date": "2026-08-02T11:48:13.967772",
+        "target_price": 312.8,
+        "stoploss_price": 252.96,
+        "buy_date": "2026-08-02T11:52:11.229379",
         "score": 70,
         "signal": "매수",
         "status": "active",
@@ -534,7 +534,7 @@
         "buy_amount": 100000,
         "target_price": 946812.76,
         "stoploss_price": 765683.36,
-        "buy_date": "2026-08-02T11:48:14.211836",
+        "buy_date": "2026-08-02T11:52:11.384037",
         "score": 70,
         "signal": "강력매수",
         "status": "active",
@@ -547,20 +547,20 @@
       {
         "type": "buy",
         "symbol": "KRW-UNI",
-        "price": 6010.0,
+        "price": 6030.0,
         "amount": 100000,
-        "quantity": 16.638935108153078,
-        "date": "2026-08-02T11:48:13.967430",
+        "quantity": 16.58374792703151,
+        "date": "2026-08-02T11:52:11.228948",
         "reason": "점수 70 · 시그널 강력매수",
         "signal": "강력매수"
       },
       {
         "type": "buy",
         "symbol": "KRW-ADA",
-        "price": 269.0,
+        "price": 272.0,
         "amount": 100000,
-        "quantity": 371.74721189591077,
-        "date": "2026-08-02T11:48:13.967777",
+        "quantity": 367.6470588235294,
+        "date": "2026-08-02T11:52:11.229384",
         "reason": "점수 70 · 시그널 매수",
         "signal": "매수"
       },
@@ -570,7 +570,7 @@
         "price": 823315.4460083008,
         "amount": 100000,
         "quantity": 0.12146012866008078,
-        "date": "2026-08-02T11:48:14.211843",
+        "date": "2026-08-02T11:52:11.384045",
         "reason": "점수 70 · 시그널 강력매수",
         "signal": "강력매수"
       }
