@@ -3,19 +3,29 @@ import { useState, useEffect } from "react";
 
 const SIM_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/simulation.json";
 
+// USD/KRW 환율 (해외주식 현재가 원화 환산용)
+const FALLBACK_RATE = 1350;
+
+function isKRW(symbol) {
+  return symbol.startsWith("KRW-") || /^\d{6}$/.test(symbol);
+}
+
 export default function SimulationTab({ data }) {
   const [sim, setSim] = useState(null);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState("summary");
+  const [rate, setRate] = useState(FALLBACK_RATE);
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await fetch(`${SIM_URL}?t=${Date.now()}`);
-        if (res.ok) {
-          const json = await res.json();
-          setSim(json);
-        }
+        if (res.ok) setSim(await res.json());
+      } catch (e) {}
+      // 환율 조회
+      try {
+        const r = await fetch("https://api.upbit.com/v1/ticker?markets=KRW-BTC");
+        // 환율은 별도 API로 (간단히 fallback 사용)
       } catch (e) {}
       setLoading(false);
     };
@@ -35,11 +45,11 @@ export default function SimulationTab({ data }) {
   const holdings = sim.holdings || [];
   const history = sim.history || [];
 
-  // 현재 자산 계산
+  // 현재가 (원화 환산)
   const currentPrices = {};
-  (data.us_signals || []).forEach(s => { currentPrices[s.ticker] = s.price; });
-  (data.crypto_signals || []).forEach(s => { currentPrices[s.symbol] = s.price; });
-  (data.kr_signals || []).forEach(s => { currentPrices[s.code || s.ticker] = s.price; });
+  (data.us_signals || []).forEach(s => { currentPrices[s.ticker] = s.price * rate; }); // 달러 → 원화
+  (data.crypto_signals || []).forEach(s => { currentPrices[s.symbol] = s.price; }); // 이미 원화
+  (data.kr_signals || []).forEach(s => { currentPrices[s.code || s.ticker] = s.price; }); // 이미 원화
 
   let totalAsset = cash;
   let unrealizedPnl = 0;
@@ -50,12 +60,14 @@ export default function SimulationTab({ data }) {
     if (current) {
       totalAsset += current * h.quantity;
       unrealizedPnl += (current - h.buy_price) * h.quantity;
+    } else {
+      // 현재가 없으면 매수가로 계산
+      totalAsset += h.buy_price * h.quantity;
     }
   });
 
   const totalReturn = ((totalAsset - initialCapital) / initialCapital) * 100;
 
-  // 거래 이력 통계
   const sells = history.filter(h => h.type === "sell");
   const buys = history.filter(h => h.type === "buy");
   const wins = sells.filter(s => (s.pnl || 0) > 0);
@@ -63,24 +75,22 @@ export default function SimulationTab({ data }) {
   const winRate = sells.length > 0 ? (wins.length / sells.length) * 100 : 0;
   const realizedPnl = sells.reduce((sum, s) => sum + (s.pnl || 0), 0);
 
+  const fmtWon = (v) => `${Math.round(v).toLocaleString()}원`;
+
   return (
     <div>
-      {/* 요약 카드 */}
       <div className="bg-card border border-border rounded-xl p-4 mb-3">
         <div className="text-xs text-muted mb-1">총 자산 (초기 자본 {initialCapital.toLocaleString()}원)</div>
-        <div className="text-2xl font-bold">
-          {Math.round(totalAsset).toLocaleString()}원
-        </div>
+        <div className="text-2xl font-bold">{fmtWon(totalAsset)}</div>
         <div className={`text-sm font-semibold mt-1 ${totalReturn >= 0 ? "text-danger" : "text-blue-400"}`}>
           {totalReturn >= 0 ? "▲" : "▼"} {Math.abs(totalReturn).toFixed(2)}%
         </div>
       </div>
 
-      {/* 통계 그리드 */}
       <div className="grid grid-cols-2 gap-2 mb-3">
         <div className="bg-card border border-border rounded-lg p-3">
           <div className="text-xs text-muted">현금</div>
-          <div className="text-sm font-semibold">{Math.round(cash).toLocaleString()}원</div>
+          <div className="text-sm font-semibold">{fmtWon(cash)}</div>
         </div>
         <div className="bg-card border border-border rounded-lg p-3">
           <div className="text-xs text-muted">보유 종목</div>
@@ -89,13 +99,13 @@ export default function SimulationTab({ data }) {
         <div className="bg-card border border-border rounded-lg p-3">
           <div className="text-xs text-muted">실현 손익</div>
           <div className={`text-sm font-semibold ${realizedPnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-            {realizedPnl >= 0 ? "+" : ""}{Math.round(realizedPnl).toLocaleString()}원
+            {realizedPnl >= 0 ? "+" : ""}{fmtWon(realizedPnl)}
           </div>
         </div>
         <div className="bg-card border border-border rounded-lg p-3">
           <div className="text-xs text-muted">평가 손익</div>
           <div className={`text-sm font-semibold ${unrealizedPnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-            {unrealizedPnl >= 0 ? "+" : ""}{Math.round(unrealizedPnl).toLocaleString()}원
+            {unrealizedPnl >= 0 ? "+" : ""}{fmtWon(unrealizedPnl)}
           </div>
         </div>
         <div className="bg-card border border-border rounded-lg p-3">
@@ -108,7 +118,6 @@ export default function SimulationTab({ data }) {
         </div>
       </div>
 
-      {/* 뷰 전환 */}
       <div className="flex gap-2 mb-3">
         <button onClick={() => setView("summary")} className={`px-3 py-1.5 text-xs rounded-full border ${view === "summary" ? "bg-white text-black border-white" : "bg-card border-border text-muted"}`}>
           보유 종목
@@ -139,7 +148,7 @@ export default function SimulationTab({ data }) {
                     )}
                   </div>
                   <div className="text-xs text-muted">
-                    매수 ${h.buy_price?.toFixed(2)} → 현재 {current ? `$${current.toFixed(2)}` : "-"} · {h.quantity?.toFixed(4)}개
+                    매수 {fmtWon(h.buy_price)} → 현재 {current ? fmtWon(current) : "-"} · {h.quantity?.toFixed(4)}개
                   </div>
                   <div className="text-xs text-muted mt-1">
                     {new Date(h.buy_date).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" })} · {h.signal || ""}
@@ -168,17 +177,17 @@ export default function SimulationTab({ data }) {
                     <span>{h.symbol}</span>
                   </div>
                   <div className="text-muted">
-                    {new Date(h.date).toLocaleString("ko-KR", { 
+                    {new Date(h.date).toLocaleString("ko-KR", {
                       month: "numeric", day: "numeric", hour: "numeric", minute: "numeric",
-                      timeZone: "Asia/Seoul" 
+                      timeZone: "Asia/Seoul"
                     })}
                   </div>
                 </div>
                 <div className="flex justify-between text-muted">
-                  <div>${h.price?.toFixed(2)} × {h.quantity?.toFixed(4)}</div>
+                  <div>{fmtWon(h.price)} × {h.quantity?.toFixed(4)}</div>
                   {h.pnl !== undefined && (
                     <div className={h.pnl >= 0 ? "text-danger" : "text-blue-400"}>
-                      {h.pnl >= 0 ? "+" : ""}{Math.round(h.pnl).toLocaleString()}원
+                      {h.pnl >= 0 ? "+" : ""}{fmtWon(h.pnl)}
                     </div>
                   )}
                 </div>
