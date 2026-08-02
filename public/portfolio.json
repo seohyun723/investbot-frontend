@@ -1,0 +1,16 @@
+{
+  "holdings": [
+    {
+      "id": "1785660199497",
+      "symbol": "UNI/USD",
+      "name": "UNI/USD",
+      "buy_price": 4.226,
+      "quantity": 10,
+      "buy_date": "2026-08-02T08:43:18.758Z",
+      "target_price": 4.8599,
+      "stoploss_price": 3.93018,
+      "status": "active",
+      "user_added": true
+    }
+  ]
+}
