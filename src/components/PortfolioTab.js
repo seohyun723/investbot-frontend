@@ -1,10 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const PORTFOLIO_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/portfolio.json";
+const REFRESH_INTERVAL = 5 * 60 * 1000; // 5분
 
 export default function PortfolioTab({ data }) {
   const [portfolio, setPortfolio] = useState([]);
+  const [realtimePrices, setRealtimePrices] = useState({});
   const [showAdd, setShowAdd] = useState(false);
   const [mode, setMode] = useState("dropdown");
   const [symbol, setSymbol] = useState("");
@@ -13,6 +15,8 @@ export default function PortfolioTab({ data }) {
   const [quantity, setQuantity] = useState("");
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
+  const [lastUpdate, setLastUpdate] = useState(null);
+  const timerRef = useRef(null);
 
   const allSignals = [
     ...(data.us_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
@@ -32,7 +36,33 @@ export default function PortfolioTab({ data }) {
     }
   };
 
-  useEffect(() => { loadPortfolio(); }, []);
+  const fetchRealtimePrices = async (symbols) => {
+    if (symbols.length === 0) return;
+    try {
+      const res = await fetch("/api/prices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ symbols }),
+      });
+      if (res.ok) {
+        const json = await res.json();
+        setRealtimePrices(json.prices || {});
+        setLastUpdate(new Date());
+      }
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    loadPortfolio();
+  }, []);
+
+  useEffect(() => {
+    if (portfolio.length === 0) return;
+    const symbols = [...new Set(portfolio.map(h => h.symbol))];
+    fetchRealtimePrices(symbols);
+    timerRef.current = setInterval(() => fetchRealtimePrices(symbols), REFRESH_INTERVAL);
+    return () => clearInterval(timerRef.current);
+  }, [portfolio.length]);
 
   const handleSymbolChange = (val) => {
     setSymbol(val.toUpperCase());
@@ -42,15 +72,12 @@ export default function PortfolioTab({ data }) {
 
   const handleAdd = async () => {
     const targetSymbol = mode === "dropdown" ? symbol : customSymbol.trim().toUpperCase();
-
     if (!targetSymbol || !buyPrice || !quantity) {
       setMsg("모든 항목을 입력하세요");
       return;
     }
-
     setLoading(true);
     setMsg(mode === "custom" ? "티커 검증 중..." : "추가 중...");
-
     try {
       const res = await fetch("/api/portfolio/add", {
         method: "POST",
@@ -63,14 +90,13 @@ export default function PortfolioTab({ data }) {
           verify: mode === "custom",
         }),
       });
-
-      const data = await res.json();
+      const dataResp = await res.json();
       if (res.ok) {
-        setMsg(`✅ ${data.name || targetSymbol} 등록 완료!`);
+        setMsg(`✅ ${dataResp.name || targetSymbol} 등록 완료!`);
         setSymbol(""); setCustomSymbol(""); setBuyPrice(""); setQuantity("");
         setTimeout(() => { setShowAdd(false); setMsg(""); loadPortfolio(); }, 3000);
       } else {
-        setMsg(`❌ ${data.error || "등록 실패"}`);
+        setMsg(`❌ ${dataResp.error || "등록 실패"}`);
         setLoading(false);
       }
     } catch (e) {
@@ -92,42 +118,56 @@ export default function PortfolioTab({ data }) {
   };
 
   const getCurrentPrice = (sym) => {
+    if (realtimePrices[sym]?.price) return realtimePrices[sym].price;
     const found = allSignals.find(s => s.symbol === sym);
     return found ? found.price : null;
+  };
+
+  const handleManualRefresh = () => {
+    if (portfolio.length === 0) return;
+    const symbols = [...new Set(portfolio.map(h => h.symbol))];
+    fetchRealtimePrices(symbols);
   };
 
   return (
     <div>
       <div className="flex justify-between items-center mb-3">
-        <div className="text-sm font-semibold">실전 포트폴리오</div>
-        <button onClick={() => setShowAdd(!showAdd)} className="px-3 py-1.5 text-xs bg-accent text-white rounded-lg">
-          {showAdd ? "취소" : "+ 매수 등록"}
-        </button>
+        <div>
+          <div className="text-sm font-semibold">실전 포트폴리오</div>
+          {lastUpdate && (
+            <div className="text-xs text-muted mt-0.5">
+              실시간 갱신: {lastUpdate.toLocaleTimeString("ko-KR", { hour: "numeric", minute: "numeric", timeZone: "Asia/Seoul" })}
+            </div>
+          )}
+        </div>
+        <div className="flex gap-2">
+          {portfolio.length > 0 && (
+            <button onClick={handleManualRefresh} className="w-8 h-8 bg-card border border-border rounded-lg flex items-center justify-center text-xs">
+              🔄
+            </button>
+          )}
+          <button onClick={() => setShowAdd(!showAdd)} className="px-3 py-1.5 text-xs bg-accent text-white rounded-lg">
+            {showAdd ? "취소" : "+ 매수 등록"}
+          </button>
+        </div>
       </div>
 
       {showAdd && (
         <div className="bg-card border border-border rounded-xl p-4 mb-4">
           <div className="flex gap-2 mb-3">
-            <button
-              onClick={() => setMode("dropdown")}
-              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "dropdown" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}
-            >
+            <button onClick={() => setMode("dropdown")} className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "dropdown" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}>
               워치리스트 검색
             </button>
-            <button
-              onClick={() => setMode("custom")}
-              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "custom" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}
-            >
+            <button onClick={() => setMode("custom")} className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "custom" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}>
               직접 입력
             </button>
           </div>
 
           {mode === "dropdown" ? (
             <div className="mb-3">
-              <label className="text-xs text-muted block mb-1">종목 검색 (U 입력 → UNI, UNH 등)</label>
+              <label className="text-xs text-muted block mb-1">종목 검색 (U 입력 → UNI 등)</label>
               <input
-                type="text"
-                list="watchlist-symbols"
+                type="text" list="watchlist-symbols"
                 value={symbol}
                 onChange={(e) => handleSymbolChange(e.target.value)}
                 placeholder="타이핑하면 자동완성..."
@@ -139,9 +179,7 @@ export default function PortfolioTab({ data }) {
                   <option key={i} value={s.symbol}>{s.name}</option>
                 ))}
               </datalist>
-              <div className="text-xs text-muted mt-1">
-                {allSignals.length}개 종목 중 검색
-              </div>
+              <div className="text-xs text-muted mt-1">{allSignals.length}개 종목 중 검색</div>
             </div>
           ) : (
             <div className="mb-3">
@@ -154,47 +192,25 @@ export default function PortfolioTab({ data }) {
                 className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white uppercase"
               />
               <div className="text-xs text-muted mt-1">
-                해외주식: 티커 (HOOD) / 코인: 심볼/USD / 국내: 6자리 코드
+                해외주식: 티커 / 코인: 심볼/USD / 국내: 6자리 코드
               </div>
             </div>
           )}
 
           <div className="mb-3">
             <label className="text-xs text-muted block mb-1">매수가</label>
-            <input
-              type="number" step="0.01"
-              value={buyPrice}
-              onChange={(e) => setBuyPrice(e.target.value)}
-              placeholder="0.00"
-              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
-            />
+            <input type="number" step="0.01" value={buyPrice} onChange={(e) => setBuyPrice(e.target.value)} placeholder="0.00" className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
           </div>
-
           <div className="mb-3">
             <label className="text-xs text-muted block mb-1">수량</label>
-            <input
-              type="number" step="0.0001"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              placeholder="0"
-              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
-            />
+            <input type="number" step="0.0001" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0" className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
           </div>
-
           {buyPrice && quantity && (
-            <div className="text-xs text-muted mb-3">
-              총 매수 금액: ${(parseFloat(buyPrice) * parseFloat(quantity)).toFixed(2)}
-            </div>
+            <div className="text-xs text-muted mb-3">총 매수 금액: ${(parseFloat(buyPrice) * parseFloat(quantity)).toFixed(2)}</div>
           )}
-
-          <button
-            onClick={handleAdd}
-            disabled={loading}
-            className="w-full py-2 bg-accent text-white rounded-lg text-sm disabled:opacity-50"
-          >
+          <button onClick={handleAdd} disabled={loading} className="w-full py-2 bg-accent text-white rounded-lg text-sm disabled:opacity-50">
             {loading ? "처리 중..." : "등록하기"}
           </button>
-
           {msg && <div className="mt-2 text-xs text-center">{msg}</div>}
         </div>
       )}
@@ -208,12 +224,16 @@ export default function PortfolioTab({ data }) {
           {portfolio.map((h) => {
             const current = getCurrentPrice(h.symbol);
             const pnl = current ? ((current - h.buy_price) / h.buy_price) * 100 : 0;
+            const isRealtime = realtimePrices[h.symbol]?.price;
 
             return (
               <div key={h.id} className="bg-card border border-border rounded-xl p-4">
                 <div className="flex justify-between items-start mb-2">
                   <div>
-                    <div className="font-semibold">{h.symbol}</div>
+                    <div className="font-semibold flex items-center gap-2">
+                      {h.symbol}
+                      {isRealtime && <span className="text-xs text-danger">● 실시간</span>}
+                    </div>
                     {h.name && <div className="text-xs text-muted">{h.name}</div>}
                     <div className="text-xs text-muted mt-1">
                       {new Date(h.buy_date).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" })}
