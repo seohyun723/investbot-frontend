@@ -2,6 +2,27 @@
 import { useState } from "react";
 import SignalCard from "./SignalCard";
 
+// 시그널 우선순위 (강력매수 > 매수 > 중립 > 매도 > 강력매도)
+function sigPriority(sig) {
+  const s = String(sig || "");
+  if (s.includes("강력매수")) return 0;
+  if (s.includes("매수") && !s.includes("강력")) return 1;
+  if (s.includes("중립")) return 2;
+  if (s.includes("강력매도")) return 4;
+  if (s.includes("매도")) return 3;
+  return 5;
+}
+
+function sortByStrength(items) {
+  return [...items].sort((a, b) => {
+    const pa = sigPriority(a.signal);
+    const pb = sigPriority(b.signal);
+    if (pa !== pb) return pa - pb;
+    // 같은 시그널이면 점수 높은 순
+    return (b.total_score || 0) - (a.total_score || 0);
+  });
+}
+
 export default function TodayTab({ data }) {
   const [market, setMarket] = useState("all");
   const top3 = data.top3 || [];
@@ -10,7 +31,7 @@ export default function TodayTab({ data }) {
   const kr = data.kr_signals || [];
 
   const filtered = market === "all"
-    ? [...us, ...crypto, ...kr]
+    ? sortByStrength([...us, ...crypto, ...kr])
     : market === "us" ? us
     : market === "crypto" ? crypto
     : kr;
