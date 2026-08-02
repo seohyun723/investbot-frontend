@@ -18,7 +18,6 @@ function sortByStrength(items) {
     const pa = sigPriority(a.signal);
     const pb = sigPriority(b.signal);
     if (pa !== pb) return pa - pb;
-    // 같은 시그널이면 점수 높은 순
     return (b.total_score || 0) - (a.total_score || 0);
   });
 }
@@ -29,6 +28,7 @@ export default function TodayTab({ data }) {
   const us = data.us_signals || [];
   const crypto = data.crypto_signals || [];
   const kr = data.kr_signals || [];
+  const rate = data.usd_krw || 1436;
 
   const filtered = market === "all"
     ? sortByStrength([...us, ...crypto, ...kr])
@@ -45,7 +45,7 @@ export default function TodayTab({ data }) {
             오늘의 TOP 3
           </div>
           {top3.map((item, i) => (
-            <SignalCard key={i} item={item} rank={i + 1} highlight />
+            <SignalCard key={i} item={item} rank={i + 1} highlight rate={rate} />
           ))}
         </>
       )}
@@ -71,7 +71,7 @@ export default function TodayTab({ data }) {
           강력한 시그널이 없습니다
         </div>
       ) : (
-        filtered.map((item, i) => <SignalCard key={i} item={item} />)
+        filtered.map((item, i) => <SignalCard key={i} item={item} rate={rate} />)
       )}
     </>
   );
