@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const SIM_URL = "https://raw.githubusercontent.com/seohyun723/investbot-analysis/main/data/simulation.json";
+const SIM_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/simulation.json";
 
 export default function SimulationTab({ data }) {
   const [sim, setSim] = useState(null);
