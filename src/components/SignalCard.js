@@ -1,26 +1,27 @@
 "use client";
 
-// 통화 판단
+// 환율 (해외주식 원화 환산용)
+const USD_KRW = 1436;
+
 function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
 }
 
-// 가격 포맷 (원화/달러 구분)
-function fmtPrice(symbol, price) {
-  if (price == null) return "-";
+// 가격 포맷 (해외주식: 달러 + 원화 병기, 코인/국내: 원화)
+function PriceDisplay({ symbol, price }) {
+  if (price == null) return <span>-</span>;
   if (isKRW(symbol)) {
-    return `₩${Math.round(price).toLocaleString()}`;
+    return <span>₩{Math.round(price).toLocaleString()}</span>;
   }
-  return `$${price.toFixed(2)}`;
-}
-
-function sigColor(sig) {
-  const s = String(sig || "");
-  if (s.includes("강력매수")) return "text-danger";
-  if (s.includes("매수")) return "text-red-400";
-  if (s.includes("강력매도")) return "text-blue-500";
-  if (s.includes("매도")) return "text-blue-400";
-  return "text-muted";
+  // 해외주식: 달러 + 원화 환산
+  return (
+    <span>
+      ${price.toFixed(2)}
+      <span className="block text-[10px] text-muted font-normal">
+        ≈₩{Math.round(price * USD_KRW).toLocaleString()}
+      </span>
+    </span>
+  );
 }
 
 function sigBadge(sig) {
@@ -71,15 +72,15 @@ export default function SignalCard({ item, rank, highlight }) {
       <div className="grid grid-cols-3 gap-2 text-center">
         <div className="bg-bg/50 rounded-lg p-2">
           <div className="text-xs text-muted">현재가</div>
-          <div className="text-sm font-semibold">{fmtPrice(symbol, price)}</div>
+          <div className="text-sm font-semibold"><PriceDisplay symbol={symbol} price={price} /></div>
         </div>
         <div className="bg-bg/50 rounded-lg p-2">
           <div className="text-xs text-muted">목표</div>
-          <div className="text-sm font-semibold text-danger">{fmtPrice(symbol, target)}</div>
+          <div className="text-sm font-semibold text-danger"><PriceDisplay symbol={symbol} price={target} /></div>
         </div>
         <div className="bg-bg/50 rounded-lg p-2">
           <div className="text-xs text-muted">손절</div>
-          <div className="text-sm font-semibold text-blue-400">{fmtPrice(symbol, stop)}</div>
+          <div className="text-sm font-semibold text-blue-400"><PriceDisplay symbol={symbol} price={stop} /></div>
         </div>
       </div>
 
