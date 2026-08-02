@@ -1,13 +1,13 @@
 {
   "date": "2026-08-02",
-  "generated_at": "2026-08-02T07:54:50.524037",
+  "generated_at": "2026-08-02T08:15:06.540781",
   "fear_greed": {
     "index": 56,
     "label": "중립",
     "vix": 16.0,
     "detail": "VIX: 16.0 | S&P500 vs MA50: 1.00"
   },
-  "trump_summary": "이슈 60건 (호재 19건, 악재 34건)",
+  "trump_summary": "이슈 63건 (호재 19건, 악재 36건)",
   "market_indicators": [
     {
       "ticker": "KRW=X",
@@ -68,9 +68,9 @@
   },
   "us_signals": [
     {
-      "total_score": 53.1,
+      "total_score": 55.6,
       "tech_score": 75.0,
-      "fund_score": 40,
+      "fund_score": 50,
       "analyst_score": 60,
       "news_score": 15.0,
       "signal": "강력매수",
@@ -81,9 +81,9 @@
       "atr": 12.5278538295,
       "target_price": 610.6836,
       "stoploss_price": 554.3082,
-      "grade": "B (중립)",
-      "weight": 0.0973775903,
-      "suggested_amount": 19475
+      "grade": "B+ (관심)",
+      "weight": 0.1014968967,
+      "suggested_amount": 20299
     },
     {
       "total_score": 57.0,
@@ -100,8 +100,8 @@
       "target_price": 136.97,
       "stoploss_price": 126.815,
       "grade": "B+ (관심)",
-      "weight": 0.1045296167,
-      "suggested_amount": 20905
+      "weight": 0.1040525739,
+      "suggested_amount": 20810
     },
     {
       "total_score": 56.9,
@@ -118,8 +118,8 @@
       "target_price": 25.9481,
       "stoploss_price": 24.541,
       "grade": "B+ (관심)",
-      "weight": 0.1043462314,
-      "suggested_amount": 20869
+      "weight": 0.1038700256,
+      "suggested_amount": 20774
     },
     {
       "total_score": 55.3,
@@ -136,8 +136,8 @@
       "target_price": 126.7886,
       "stoploss_price": 117.3257,
       "grade": "B+ (관심)",
-      "weight": 0.1014120668,
-      "suggested_amount": 20282
+      "weight": 0.1009492516,
+      "suggested_amount": 20189
     },
     {
       "total_score": 51.5,
@@ -154,8 +154,8 @@
       "target_price": 162.7157,
       "stoploss_price": 151.8021,
       "grade": "B (중립)",
-      "weight": 0.0944434256,
-      "suggested_amount": 18888
+      "weight": 0.0940124133,
+      "suggested_amount": 18802
     },
     {
       "total_score": 60.2,
@@ -172,8 +172,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1103979461,
-      "suggested_amount": 22079
+      "weight": 0.1098941219,
+      "suggested_amount": 21978
     },
     {
       "total_score": 56.3,
@@ -190,8 +190,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1032459197,
-      "suggested_amount": 20649
+      "weight": 0.1027747353,
+      "suggested_amount": 20554
     },
     {
       "total_score": 52.6,
@@ -208,8 +208,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0964606639,
-      "suggested_amount": 19292
+      "weight": 0.0960204454,
+      "suggested_amount": 19204
     },
     {
       "total_score": 51.3,
@@ -226,8 +226,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0940766551,
-      "suggested_amount": 18815
+      "weight": 0.0936473165,
+      "suggested_amount": 18729
     },
     {
       "total_score": 51.1,
@@ -244,146 +244,146 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0937098845,
-      "suggested_amount": 18741
+      "weight": 0.0932822198,
+      "suggested_amount": 18656
     }
   ],
   "crypto_signals": [
     {
-      "total_score": 70.2,
+      "total_score": 70.3,
       "tech_score": 75.0,
-      "mom_score": 62.9,
-      "vol_score": 42.0,
+      "mom_score": 63.1,
+      "vol_score": 42.3,
       "signal": "강력매수",
-      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(8.6%) | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
+      "reasons": "정배열 | RSI 고점(67) | MACD 강세 | 5일 강세(8.8%) | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "UNI/USD",
-      "price": 4.223,
+      "price": 4.226,
       "change_24h": null,
       "atr": 0.2640714286,
-      "target_price": 5.0152,
-      "stoploss_price": 3.8269,
+      "target_price": 5.0182,
+      "stoploss_price": 3.8299,
       "grade": "A (매수)",
-      "weight": 0.1288073394,
-      "suggested_amount": 25761
+      "weight": 0.128943507,
+      "suggested_amount": 25788
     },
     {
-      "total_score": 68.4,
+      "total_score": 68.6,
       "tech_score": 60.0,
-      "mom_score": 72.5,
-      "vol_score": 51.2,
+      "mom_score": 72.8,
+      "vol_score": 51.7,
       "signal": "매수",
-      "reasons": "단기>중기 | RSI 고점(66) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(15.0%) | 트럼프 코인 호재 | 중립 (도미넌스 56.31%) | 공포탐욕 27 | 뉴스 부정(2)",
+      "reasons": "단기>중기 | RSI 고점(66) | MACD 강세 | 볼린저 상단 터치 | 5일 강세(15.2%) | 트럼프 코인 호재 | 중립 (도미넌스 56.32%) | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "ADA/USD",
-      "price": 0.1861,
+      "price": 0.1864,
       "change_24h": null,
       "atr": 0.0091357143,
-      "target_price": 0.2044,
-      "stoploss_price": 0.177,
+      "target_price": 0.2047,
+      "stoploss_price": 0.1773,
       "grade": "A (매수)",
-      "weight": 0.1255045872,
-      "suggested_amount": 25100
+      "weight": 0.1258253852,
+      "suggested_amount": 25165
     },
     {
       "total_score": 52.6,
       "tech_score": 42.5,
-      "mom_score": 49.1,
-      "vol_score": 39.5,
+      "mom_score": 48.9,
+      "vol_score": 39.6,
       "signal": "중립",
       "reasons": "역배열 | MACD 반등 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "DOGE/USD",
-      "price": 0.07033,
+      "price": 0.07025,
       "change_24h": null,
       "atr": 0.0025692857,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0965137615,
-      "suggested_amount": 19302
+      "weight": 0.0964783566,
+      "suggested_amount": 19295
     },
     {
       "total_score": 52.5,
       "tech_score": 45.0,
-      "mom_score": 45.6,
+      "mom_score": 45.5,
       "vol_score": 39.1,
       "signal": "중립",
       "reasons": "단기<중기 | RSI 저점(36) | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "LTC/USD",
-      "price": 44.8,
+      "price": 44.74,
       "change_24h": null,
       "atr": 1.3821428571,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0963302752,
-      "suggested_amount": 19266
+      "weight": 0.0962949376,
+      "suggested_amount": 19258
     },
     {
       "total_score": 51.3,
       "tech_score": 40.0,
-      "mom_score": 48.9,
-      "vol_score": 37.9,
+      "mom_score": 48.7,
+      "vol_score": 38.0,
       "signal": "매도",
       "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "LINK/USD",
-      "price": 8.371,
+      "price": 8.361,
       "change_24h": null,
       "atr": 0.3257142857,
-      "target_price": 7.7196,
-      "stoploss_price": 8.6967,
+      "target_price": 7.7096,
+      "stoploss_price": 8.6867,
       "grade": "B (중립)",
-      "weight": 0.0941284404,
-      "suggested_amount": 18825
+      "weight": 0.0940939105,
+      "suggested_amount": 18818
     },
     {
       "total_score": 50.8,
       "tech_score": 40.0,
       "mom_score": 49.0,
-      "vol_score": 33.7,
+      "vol_score": 33.9,
       "signal": "매도",
       "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "BTC/USD",
-      "price": 63429.38,
+      "price": 63423.28,
       "change_24h": null,
       "atr": 1587.1221428571,
-      "target_price": 60255.1357,
-      "stoploss_price": 65016.5021,
+      "target_price": 60249.0357,
+      "stoploss_price": 65010.4021,
       "grade": "B (중립)",
-      "weight": 0.0932110092,
-      "suggested_amount": 18642
+      "weight": 0.0931768158,
+      "suggested_amount": 18635
     },
     {
-      "total_score": 50.2,
-      "tech_score": 37.5,
-      "mom_score": 44.9,
-      "vol_score": 44.5,
-      "signal": "매도",
-      "reasons": "역배열 | RSI 과매도(20) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 과매도(17/9) | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
-      "symbol": "ATOM/USD",
-      "price": 1.262,
-      "change_24h": null,
-      "atr": 0.0477142857,
-      "target_price": 1.1666,
-      "stoploss_price": 1.3097,
-      "grade": "B (중립)",
-      "weight": 0.0921100917,
-      "suggested_amount": 18422
-    },
-    {
-      "total_score": 49.9,
+      "total_score": 50.0,
       "tech_score": 40.0,
-      "mom_score": 46.4,
-      "vol_score": 33.4,
+      "mom_score": 46.5,
+      "vol_score": 33.5,
       "signal": "매도",
-      "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.31%) | 공포탐욕 27 | 뉴스 부정(2)",
+      "reasons": "단기<중기 | MACD 하락 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.32%) | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "ETH/USD",
-      "price": 1873.76,
+      "price": 1874.97,
       "change_24h": null,
       "atr": 63.6364285714,
-      "target_price": 1746.4871,
-      "stoploss_price": 1937.3964,
+      "target_price": 1747.6971,
+      "stoploss_price": 1938.6064,
       "grade": "B (중립)",
-      "weight": 0.091559633,
-      "suggested_amount": 18311
+      "weight": 0.0917094644,
+      "suggested_amount": 18341
+    },
+    {
+      "total_score": 50.0,
+      "tech_score": 37.5,
+      "mom_score": 44.3,
+      "vol_score": 44.5,
+      "signal": "매도",
+      "reasons": "역배열 | RSI 과매도(19) | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 과매도(15/8) | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
+      "symbol": "ATOM/USD",
+      "price": 1.256,
+      "change_24h": null,
+      "atr": 0.0477142857,
+      "target_price": 1.1606,
+      "stoploss_price": 1.3037,
+      "grade": "B (중립)",
+      "weight": 0.0917094644,
+      "suggested_amount": 18341
     },
     {
       "total_score": 49.6,
@@ -399,14 +399,14 @@
       "target_price": 0.7329,
       "stoploss_price": 0.8246,
       "grade": "B (중립)",
-      "weight": 0.0910091743,
-      "suggested_amount": 18201
+      "weight": 0.0909757887,
+      "suggested_amount": 18195
     },
     {
       "total_score": 49.5,
       "tech_score": 27.5,
       "mom_score": 50.5,
-      "vol_score": 55.6,
+      "vol_score": 55.9,
       "signal": "매도",
       "reasons": "역배열 | MACD 약세 | 트럼프 코인 호재 | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 27 | 뉴스 부정(2)",
       "symbol": "AVAX/USD",
@@ -416,8 +416,8 @@
       "target_price": 5.9929,
       "stoploss_price": 6.8886,
       "grade": "B (중립)",
-      "weight": 0.0908256881,
-      "suggested_amount": 18165
+      "weight": 0.0907923698,
+      "suggested_amount": 18158
     }
   ],
   "kr_signals": [],
@@ -704,23 +704,23 @@
       {
         "symbol": "UNI/USD",
         "market": "crypto",
-        "buy_price": 4.223,
-        "quantity": 447.2996905393934,
+        "buy_price": 4.226,
+        "quantity": 446.9821564476712,
         "invest_amount": 1889,
-        "target_price": 4.8564,
-        "stoploss_price": 3.9274,
-        "buy_date": "2026-08-02 07:55",
+        "target_price": 4.8599,
+        "stoploss_price": 3.9302,
+        "buy_date": "2026-08-02 08:15",
         "signal": "강력매수"
       },
       {
         "symbol": "ADA/USD",
         "market": "crypto",
-        "buy_price": 0.1861,
-        "quantity": 8120.135811489988,
+        "buy_price": 0.1864,
+        "quantity": 8107.066923381365,
         "invest_amount": 1511,
-        "target_price": 0.2047,
-        "stoploss_price": 0.1768,
-        "buy_date": "2026-08-02 07:55",
+        "target_price": 0.205,
+        "stoploss_price": 0.1771,
+        "buy_date": "2026-08-02 08:15",
         "signal": "매수"
       },
       {
@@ -731,7 +731,7 @@
         "invest_amount": 1209,
         "target_price": 659.065,
         "stoploss_price": 532.983,
-        "buy_date": "2026-08-02 07:55",
+        "buy_date": "2026-08-02 08:15",
         "signal": "강력매수"
       }
     ],
