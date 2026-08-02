@@ -4,7 +4,6 @@ function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
 }
 
-// 가격 포맷 (해외주식: 달러 + 원화 병기, 코인/국내: 원화)
 function PriceDisplay({ symbol, price, rate }) {
   if (price == null) return <span>-</span>;
   if (isKRW(symbol)) {
@@ -29,6 +28,15 @@ function sigBadge(sig) {
   return "bg-card text-muted border-border";
 }
 
+// 거래량 라벨
+function volLabel(volScore) {
+  if (volScore == null) return null;
+  if (volScore >= 70) return { text: "거래량 활발", color: "text-danger" };
+  if (volScore >= 55) return { text: "거래량 증가", color: "text-red-400" };
+  if (volScore >= 45) return { text: "거래량 보통", color: "text-muted" };
+  return { text: "거래량 한산", color: "text-blue-400" };
+}
+
 export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
   const symbol = item.symbol || item.ticker || item.code || "";
   const name = item.name || symbol;
@@ -39,6 +47,15 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
   const signal = item.signal;
   const change = item.change_24h ?? item.change_pct;
   const reasons = item.reasons || "";
+  const kimchi = item.kimchi_premium;
+  const volScore = item.vol_score;
+
+  // 상승여력 계산
+  let upside = null;
+  if (price && target && price > 0) {
+    upside = ((target - price) / price) * 100;
+  }
+  const vol = volLabel(volScore);
 
   return (
     <div className={`bg-card border rounded-xl p-4 mb-2 ${highlight ? "border-danger/40" : "border-border"}`}>
@@ -78,6 +95,25 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
           <div className="text-xs text-muted">손절</div>
           <div className="text-sm font-semibold text-blue-400"><PriceDisplay symbol={symbol} price={stop} rate={rate} /></div>
         </div>
+      </div>
+
+      {/* 추가 지표: 상승여력 · 거래량 · 김프 */}
+      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs">
+        {upside != null && (
+          <span className="text-muted">
+            상승여력 <span className={upside >= 0 ? "text-danger font-semibold" : "text-blue-400 font-semibold"}>
+              {upside >= 0 ? "+" : ""}{upside.toFixed(1)}%
+            </span>
+          </span>
+        )}
+        {vol && (
+          <span className={vol.color}>· {vol.text}</span>
+        )}
+        {kimchi != null && Math.abs(kimchi) >= 0.3 && (
+          <span className={kimchi >= 8 ? "text-danger" : kimchi <= -3 ? "text-blue-400" : "text-muted"}>
+            · 김프 {kimchi >= 0 ? "+" : ""}{kimchi.toFixed(1)}%
+          </span>
+        )}
       </div>
 
       {reasons && (
