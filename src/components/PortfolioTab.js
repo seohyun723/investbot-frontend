@@ -35,8 +35,8 @@ export default function PortfolioTab({ data }) {
   useEffect(() => { loadPortfolio(); }, []);
 
   const handleSymbolChange = (val) => {
-    setSymbol(val);
-    const found = allSignals.find(s => s.symbol === val);
+    setSymbol(val.toUpperCase());
+    const found = allSignals.find(s => s.symbol === val.toUpperCase());
     if (found && !buyPrice) setBuyPrice(found.price.toString());
   };
 
@@ -112,7 +112,7 @@ export default function PortfolioTab({ data }) {
               onClick={() => setMode("dropdown")}
               className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "dropdown" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}
             >
-              워치리스트에서 선택
+              워치리스트 검색
             </button>
             <button
               onClick={() => setMode("custom")}
@@ -124,20 +124,24 @@ export default function PortfolioTab({ data }) {
 
           {mode === "dropdown" ? (
             <div className="mb-3">
-              <label className="text-xs text-muted block mb-1">종목</label>
-              <select
+              <label className="text-xs text-muted block mb-1">종목 검색 (U 입력 → UNI, UNH 등)</label>
+              <input
+                type="text"
+                list="watchlist-symbols"
                 value={symbol}
                 onChange={(e) => handleSymbolChange(e.target.value)}
-                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
+                placeholder="타이핑하면 자동완성..."
+                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white uppercase"
                 style={{ colorScheme: 'dark' }}
-              >
-                <option value="" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>종목 선택...</option>
+              />
+              <datalist id="watchlist-symbols">
                 {allSignals.map((s, i) => (
-                  <option key={i} value={s.symbol} style={{ backgroundColor: '#1a1a1a', color: 'white' }}>
-                    {s.symbol} ({s.name})
-                  </option>
+                  <option key={i} value={s.symbol}>{s.name}</option>
                 ))}
-              </select>
+              </datalist>
+              <div className="text-xs text-muted mt-1">
+                {allSignals.length}개 종목 중 검색
+              </div>
             </div>
           ) : (
             <div className="mb-3">
