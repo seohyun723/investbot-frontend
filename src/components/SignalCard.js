@@ -1,56 +1,90 @@
 "use client";
+
+// 통화 판단
+function isKRW(symbol) {
+  return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
+}
+
+// 가격 포맷 (원화/달러 구분)
+function fmtPrice(symbol, price) {
+  if (price == null) return "-";
+  if (isKRW(symbol)) {
+    return `₩${Math.round(price).toLocaleString()}`;
+  }
+  return `$${price.toFixed(2)}`;
+}
+
+function sigColor(sig) {
+  const s = String(sig || "");
+  if (s.includes("강력매수")) return "text-danger";
+  if (s.includes("매수")) return "text-red-400";
+  if (s.includes("강력매도")) return "text-blue-500";
+  if (s.includes("매도")) return "text-blue-400";
+  return "text-muted";
+}
+
+function sigBadge(sig) {
+  const s = String(sig || "");
+  if (s.includes("강력매수")) return "bg-danger/20 text-danger border-danger/30";
+  if (s.includes("매수")) return "bg-red-400/10 text-red-400 border-red-400/20";
+  if (s.includes("강력매도")) return "bg-blue-500/20 text-blue-400 border-blue-500/30";
+  if (s.includes("매도")) return "bg-blue-400/10 text-blue-400 border-blue-400/20";
+  return "bg-card text-muted border-border";
+}
+
 export default function SignalCard({ item, rank, highlight }) {
-  const sig = item.signal || "";
-  const isStrongBuy = sig.includes("강력매수");
-  const isBuy = sig.includes("매수");
-  const isSell = sig.includes("매도");
-
-  const badgeClass = isStrongBuy ? "bg-danger text-white" :
-                     isBuy ? "bg-accent text-white" :
-                     isSell ? "bg-muted text-white" : "bg-card text-muted";
-
-  const rankColors = ["bg-danger", "bg-warning", "bg-yellow-600"];
-  const cardClass = highlight ? "border-danger/50" : "border-border";
-
-  const price = item.price || 0;
-  const target = isBuy ? price * 1.10 : price * 0.95;
-  const stop = isBuy ? price * 0.95 : price * 1.05;
-
-  const isCrypto = item.market === "코인" || item.market_icon === "🪙";
-  const priceStr = isCrypto && price < 1 ? `$${price.toFixed(4)}` : `$${price.toFixed(2)}`;
-  const targetStr = isCrypto && target < 1 ? `$${target.toFixed(4)}` : `$${target.toFixed(2)}`;
-  const stopStr = isCrypto && stop < 1 ? `$${stop.toFixed(4)}` : `$${stop.toFixed(2)}`;
+  const symbol = item.symbol || item.ticker || item.code || "";
+  const name = item.name || symbol;
+  const price = item.price;
+  const target = item.target_price;
+  const stop = item.stoploss_price;
+  const score = item.total_score;
+  const signal = item.signal;
+  const change = item.change_24h ?? item.change_pct;
+  const reasons = item.reasons || "";
 
   return (
-    <div className={`bg-card border rounded-xl p-4 mb-2 ${cardClass}`}>
-      <div className="flex justify-between items-center mb-2">
-        <div className="flex items-center">
-          {rank && (
-            <span className={`w-6 h-6 ${rankColors[rank-1]} text-white rounded-full inline-flex items-center justify-center text-xs font-semibold mr-2`}>
-              {rank}
-            </span>
-          )}
+    <div className={`bg-card border rounded-xl p-4 mb-2 ${highlight ? "border-danger/40" : "border-border"}`}>
+      <div className="flex justify-between items-start mb-2">
+        <div className="flex items-center gap-2">
+          {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold">{rank}</span>}
           <div>
-            <div className="text-sm font-semibold">{item.name || item.symbol || item.ticker}</div>
-            <div className="text-xs text-muted">
-              {item.market_icon} {item.market} · 점수 {item.score || item.total_score}
-              {item.change_24h != null && item.change_24h !== 0 && (
-                <span className={item.change_24h > 0 ? "text-success ml-1" : "text-danger ml-1"}>
-                  ({item.change_24h > 0 ? "+" : ""}{item.change_24h.toFixed(1)}%)
+            <div className="font-semibold text-sm">{symbol}</div>
+            {name !== symbol && <div className="text-xs text-muted">{name}</div>}
+          </div>
+        </div>
+        <div className="text-right">
+          <div className={`text-xs px-2 py-0.5 rounded-full border ${sigBadge(signal)}`}>{signal}</div>
+          {score != null && (
+            <div className="text-xs text-muted mt-1">
+              점수 {score.toFixed(1)}
+              {change != null && (
+                <span className={change >= 0 ? "text-danger" : "text-blue-400"}>
+                  {" "}({change >= 0 ? "+" : ""}{change.toFixed(1)}%)
                 </span>
               )}
             </div>
-          </div>
+          )}
         </div>
-        <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${badgeClass}`}>{sig}</span>
       </div>
-      <div className="grid grid-cols-3 gap-2 text-xs">
-        <div><div className="text-muted">현재가</div><div className="font-semibold">{priceStr}</div></div>
-        <div><div className="text-muted">목표</div><div className="text-success font-semibold">{targetStr}</div></div>
-        <div><div className="text-muted">손절</div><div className="text-danger font-semibold">{stopStr}</div></div>
+
+      <div className="grid grid-cols-3 gap-2 text-center">
+        <div className="bg-bg/50 rounded-lg p-2">
+          <div className="text-xs text-muted">현재가</div>
+          <div className="text-sm font-semibold">{fmtPrice(symbol, price)}</div>
+        </div>
+        <div className="bg-bg/50 rounded-lg p-2">
+          <div className="text-xs text-muted">목표</div>
+          <div className="text-sm font-semibold text-danger">{fmtPrice(symbol, target)}</div>
+        </div>
+        <div className="bg-bg/50 rounded-lg p-2">
+          <div className="text-xs text-muted">손절</div>
+          <div className="text-sm font-semibold text-blue-400">{fmtPrice(symbol, stop)}</div>
+        </div>
       </div>
-      {item.reasons && (
-        <div className="text-xs text-muted mt-2 pt-2 border-t border-border">{item.reasons}</div>
+
+      {reasons && (
+        <div className="text-xs text-muted mt-2 leading-relaxed">{reasons}</div>
       )}
     </div>
   );
