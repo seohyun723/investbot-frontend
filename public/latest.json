@@ -1,13 +1,13 @@
 {
   "date": "2026-08-02",
-  "generated_at": "2026-08-02T07:23:33.761868",
+  "generated_at": "2026-08-02T07:23:35.048289",
   "fear_greed": {
     "index": 56,
     "label": "중립",
     "vix": 16.0,
     "detail": "VIX: 16.0 | S&P500 vs MA50: 1.00"
   },
-  "trump_summary": "이슈 64건 (호재 19건, 악재 36건)",
+  "trump_summary": "이슈 63건 (호재 19건, 악재 36건)",
   "market_indicators": [
     {
       "ticker": "KRW=X",
@@ -68,9 +68,9 @@
   },
   "us_signals": [
     {
-      "total_score": 55.6,
+      "total_score": 53.1,
       "tech_score": 75.0,
-      "fund_score": 50,
+      "fund_score": 40,
       "analyst_score": 60,
       "news_score": 15.0,
       "signal": "강력매수",
@@ -81,9 +81,9 @@
       "atr": 12.5278538295,
       "target_price": 610.6836,
       "stoploss_price": 554.3082,
-      "grade": "B+ (관심)",
-      "weight": 0.1014968967,
-      "suggested_amount": 20299
+      "grade": "B (중립)",
+      "weight": 0.0973775903,
+      "suggested_amount": 19475
     },
     {
       "total_score": 57.0,
@@ -100,8 +100,8 @@
       "target_price": 136.97,
       "stoploss_price": 126.815,
       "grade": "B+ (관심)",
-      "weight": 0.1040525739,
-      "suggested_amount": 20810
+      "weight": 0.1045296167,
+      "suggested_amount": 20905
     },
     {
       "total_score": 56.9,
@@ -118,8 +118,8 @@
       "target_price": 25.9481,
       "stoploss_price": 24.541,
       "grade": "B+ (관심)",
-      "weight": 0.1038700256,
-      "suggested_amount": 20774
+      "weight": 0.1043462314,
+      "suggested_amount": 20869
     },
     {
       "total_score": 55.3,
@@ -136,8 +136,8 @@
       "target_price": 126.7886,
       "stoploss_price": 117.3257,
       "grade": "B+ (관심)",
-      "weight": 0.1009492516,
-      "suggested_amount": 20189
+      "weight": 0.1014120668,
+      "suggested_amount": 20282
     },
     {
       "total_score": 51.5,
@@ -154,8 +154,8 @@
       "target_price": 162.7157,
       "stoploss_price": 151.8021,
       "grade": "B (중립)",
-      "weight": 0.0940124133,
-      "suggested_amount": 18802
+      "weight": 0.0944434256,
+      "suggested_amount": 18888
     },
     {
       "total_score": 60.2,
@@ -172,8 +172,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1098941219,
-      "suggested_amount": 21978
+      "weight": 0.1103979461,
+      "suggested_amount": 22079
     },
     {
       "total_score": 56.3,
@@ -190,8 +190,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1027747353,
-      "suggested_amount": 20554
+      "weight": 0.1032459197,
+      "suggested_amount": 20649
     },
     {
       "total_score": 52.6,
@@ -208,8 +208,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0960204454,
-      "suggested_amount": 19204
+      "weight": 0.0964606639,
+      "suggested_amount": 19292
     },
     {
       "total_score": 51.3,
@@ -226,8 +226,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0936473165,
-      "suggested_amount": 18729
+      "weight": 0.0940766551,
+      "suggested_amount": 18815
     },
     {
       "total_score": 51.1,
@@ -244,8 +244,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0932822198,
-      "suggested_amount": 18656
+      "weight": 0.0937098845,
+      "suggested_amount": 18741
     }
   ],
   "crypto_signals": [],
@@ -538,7 +538,7 @@
         "invest_amount": 1889,
         "target_price": 659.065,
         "stoploss_price": 532.983,
-        "buy_date": "2026-08-02 07:23",
+        "buy_date": "2026-08-02 07:24",
         "signal": "강력매수"
       }
     ],
