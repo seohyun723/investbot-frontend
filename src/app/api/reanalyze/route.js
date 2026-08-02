@@ -7,7 +7,7 @@ export async function POST() {
 
   try {
     const response = await fetch(
-      "https://api.github.com/repos/seohyun723/investbot-analysis/actions/workflows/analyze-signals.yml/dispatches",
+      "https://api.github.com/repos/seohyun723/investbot-analysis/actions/workflows/daily-run.yml/dispatches",
       {
         method: "POST",
         headers: {
