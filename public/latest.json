@@ -1,13 +1,13 @@
 {
   "date": "2026-08-02",
-  "generated_at": "2026-08-02T07:23:17.119224",
+  "generated_at": "2026-08-02T07:23:33.761868",
   "fear_greed": {
     "index": 56,
     "label": "중립",
     "vix": 16.0,
     "detail": "VIX: 16.0 | S&P500 vs MA50: 1.00"
   },
-  "trump_summary": "이슈 62건 (호재 19건, 악재 35건)",
+  "trump_summary": "이슈 64건 (호재 19건, 악재 36건)",
   "market_indicators": [
     {
       "ticker": "KRW=X",
