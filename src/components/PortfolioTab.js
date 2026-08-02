@@ -110,13 +110,13 @@ export default function PortfolioTab({ data }) {
           <div className="flex gap-2 mb-3">
             <button
               onClick={() => setMode("dropdown")}
-              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "dropdown" ? "bg-accent text-white border-accent" : "bg-base border-border text-muted"}`}
+              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "dropdown" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}
             >
               워치리스트에서 선택
             </button>
             <button
               onClick={() => setMode("custom")}
-              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "custom" ? "bg-accent text-white border-accent" : "bg-base border-border text-muted"}`}
+              className={`flex-1 px-3 py-1.5 text-xs rounded-lg border ${mode === "custom" ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"}`}
             >
               직접 입력
             </button>
@@ -128,11 +128,14 @@ export default function PortfolioTab({ data }) {
               <select
                 value={symbol}
                 onChange={(e) => handleSymbolChange(e.target.value)}
-                className="w-full bg-base border border-border rounded-lg px-3 py-2 text-sm"
+                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
+                style={{ colorScheme: 'dark' }}
               >
-                <option value="">종목 선택...</option>
+                <option value="" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>종목 선택...</option>
                 {allSignals.map((s, i) => (
-                  <option key={i} value={s.symbol}>{s.symbol} ({s.name})</option>
+                  <option key={i} value={s.symbol} style={{ backgroundColor: '#1a1a1a', color: 'white' }}>
+                    {s.symbol} ({s.name})
+                  </option>
                 ))}
               </select>
             </div>
@@ -144,7 +147,7 @@ export default function PortfolioTab({ data }) {
                 value={customSymbol}
                 onChange={(e) => setCustomSymbol(e.target.value)}
                 placeholder="예: HOOD, BTC/USD, 005930"
-                className="w-full bg-base border border-border rounded-lg px-3 py-2 text-sm uppercase"
+                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white uppercase"
               />
               <div className="text-xs text-muted mt-1">
                 해외주식: 티커 (HOOD) / 코인: 심볼/USD / 국내: 6자리 코드
@@ -159,7 +162,7 @@ export default function PortfolioTab({ data }) {
               value={buyPrice}
               onChange={(e) => setBuyPrice(e.target.value)}
               placeholder="0.00"
-              className="w-full bg-base border border-border rounded-lg px-3 py-2 text-sm"
+              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
             />
           </div>
 
@@ -170,7 +173,7 @@ export default function PortfolioTab({ data }) {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               placeholder="0"
-              className="w-full bg-base border border-border rounded-lg px-3 py-2 text-sm"
+              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white"
             />
           </div>
 
