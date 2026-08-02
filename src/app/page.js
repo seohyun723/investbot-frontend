@@ -60,9 +60,15 @@ export default function Home() {
     </div>
   );
 
-  const lastUpdate = data.generated_at ? new Date(data.generated_at).toLocaleString("ko-KR", { 
-    month: "long", day: "numeric", hour: "numeric", minute: "numeric", timeZone: "Asia/Seoul"
-  }) : "";
+  const lastUpdate = data.generated_at ? (() => {
+    // generated_at은 timezone 없이 UTC로 저장되어 있음
+    const utcStr = data.generated_at.includes('Z') || data.generated_at.includes('+') 
+      ? data.generated_at 
+      : data.generated_at + 'Z';
+    return new Date(utcStr).toLocaleString("ko-KR", { 
+      month: "long", day: "numeric", hour: "numeric", minute: "numeric", timeZone: "Asia/Seoul"
+    });
+  })() : "";
 
   return (
     <main className="max-w-2xl mx-auto p-4 pb-20">
