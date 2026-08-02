@@ -30,7 +30,6 @@ export default function Home() {
       const res = await fetch("/api/reanalyze", { method: "POST" });
       if (res.ok) {
         setProgress("분석 중... (5-7분 소요)");
-        // 5분 후 자동 새로고침
         setTimeout(async () => {
           setProgress("완료! 최신 데이터 로드 중...");
           await loadData();
@@ -62,7 +61,7 @@ export default function Home() {
   );
 
   const lastUpdate = data.generated_at ? new Date(data.generated_at).toLocaleString("ko-KR", { 
-    month: "long", day: "numeric", hour: "numeric", minute: "numeric" 
+    month: "long", day: "numeric", hour: "numeric", minute: "numeric", timeZone: "Asia/Seoul"
   }) : "";
 
   return (
