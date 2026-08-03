@@ -21,7 +21,6 @@ function sortByStrength(items) {
   });
 }
 
-// 시장 지표 한 줄 아이템
 function MarketItem({ name, price, change }) {
   const up = change >= 0;
   const fmtPrice = price >= 1000 ? Math.round(price).toLocaleString() : price.toFixed(2);
@@ -42,6 +41,7 @@ export default function TodayTab({ data }) {
   const us = data.us_signals || [];
   const crypto = data.crypto_signals || [];
   const kr = data.kr_signals || [];
+  const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
 
   const marketIndicators = data.market_indicators || [];
@@ -50,14 +50,14 @@ export default function TodayTab({ data }) {
   const trumpSummary = data.trump_summary || "";
 
   const filtered = market === "all"
-    ? sortByStrength([...us, ...crypto, ...kr])
+    ? sortByStrength([...us, ...crypto, ...kr, ...alt])
     : market === "us" ? us
     : market === "crypto" ? crypto
-    : kr;
+    : market === "kr" ? kr
+    : alt;
 
   return (
     <>
-      {/* 시장 요약 (가로 스크롤) */}
       {marketIndicators.length > 0 && (
         <div className="mb-4">
           <div className="text-xs font-semibold text-muted mb-2">시장 지표</div>
@@ -69,7 +69,6 @@ export default function TodayTab({ data }) {
         </div>
       )}
 
-      {/* 시장 심리 요약 */}
       <div className="grid grid-cols-3 gap-2 mb-4">
         <div className="bg-card border border-border rounded-lg p-2.5 text-center">
           <div className="text-[11px] text-muted">공포탐욕</div>
@@ -88,7 +87,6 @@ export default function TodayTab({ data }) {
         </div>
       </div>
 
-      {/* TOP 3 */}
       {top3.length > 0 && (
         <>
           <div className="text-sm font-semibold mb-2 flex items-center gap-2">
@@ -101,16 +99,16 @@ export default function TodayTab({ data }) {
         </>
       )}
 
-      {/* 시장 필터 */}
       <div className="flex gap-2 mt-6 mb-3 overflow-x-auto">
         {[
           { id: "all", label: "전체" },
           { id: "us", label: "🇺🇸 해외" },
           { id: "crypto", label: "🪙 코인" },
           { id: "kr", label: "🇰🇷 국내" },
+          { id: "alt", label: "🏦 원자재·채권" },
         ].map(m => (
           <button key={m.id} onClick={() => setMarket(m.id)}
-            className={`px-3 py-1.5 rounded-full text-xs border ${
+            className={`px-3 py-1.5 rounded-full text-xs border whitespace-nowrap ${
               market === m.id ? "bg-white text-black border-white" : "bg-card border-border text-muted"
             }`}>
             {m.label}
@@ -120,7 +118,7 @@ export default function TodayTab({ data }) {
 
       {filtered.length === 0 ? (
         <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
-          강력한 시그널이 없습니다
+          해당 시그널이 없습니다
         </div>
       ) : (
         filtered.map((item, i) => <SignalCard key={i} item={item} rate={rate} />)
