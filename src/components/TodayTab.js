@@ -21,6 +21,25 @@ function sortByStrength(items) {
   });
 }
 
+// VIX 상태 이모지
+function vixEmoji(v) {
+  if (v == null) return "";
+  if (v < 15) return "😌";
+  if (v < 20) return "🙂";
+  if (v < 30) return "⚠️";
+  return "🔴";
+}
+
+// 공포탐욕/코인심리 이모지 (0~100)
+function fgEmoji(v) {
+  if (v == null) return "";
+  if (v < 25) return "😱";
+  if (v < 45) return "😰";
+  if (v < 55) return "😐";
+  if (v < 75) return "🙂";
+  return "🤑";
+}
+
 function MarketItem({ name, price, change }) {
   const up = change >= 0;
   const fmtPrice = price >= 1000 ? Math.round(price).toLocaleString() : price.toFixed(2);
@@ -31,6 +50,18 @@ function MarketItem({ name, price, change }) {
       <div className={`text-[11px] ${up ? "text-danger" : "text-blue-400"}`}>
         {up ? "▲" : "▼"} {Math.abs(change).toFixed(2)}%
       </div>
+    </div>
+  );
+}
+
+function SentimentItem({ label, value, sub, emoji }) {
+  return (
+    <div className="bg-card border border-border rounded-lg px-2 py-1.5 text-center">
+      <div className="text-[10px] text-muted whitespace-nowrap">{label}</div>
+      <div className="text-sm font-bold leading-tight">
+        {emoji && <span className="mr-0.5">{emoji}</span>}{value}
+      </div>
+      <div className="text-[10px] text-muted whitespace-nowrap">{sub}</div>
     </div>
   );
 }
@@ -54,9 +85,9 @@ export default function TodayTab({ data }) {
   });
 
   const fg = data.fear_greed || {};
-  const macro = data.macro || {};
   const trumpSummary = data.trump_summary || "";
   const cryptoFg = data.crypto_fear_greed || null;
+  const vix = fg.vix;
 
   const filtered = market === "all"
     ? sortByStrength([...us, ...crypto, ...kr, ...alt])
@@ -68,7 +99,7 @@ export default function TodayTab({ data }) {
   return (
     <>
       {marketIndicators.length > 0 && (
-        <div className="mb-4">
+        <div className="mb-3">
           <div className="text-xs font-semibold text-muted mb-2">시장 지표</div>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {marketIndicators.map((m, i) => (
@@ -78,35 +109,20 @@ export default function TodayTab({ data }) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-        <div className="bg-card border border-border rounded-lg p-2.5 text-center">
-          <div className="text-[11px] text-muted">공포탐욕</div>
-          <div className="text-base font-bold">{fg.index ?? "-"}</div>
-          <div className="text-[11px] text-muted">{fg.label || ""}</div>
-        </div>
-        <div className="bg-card border border-border rounded-lg p-2.5 text-center">
-          <div className="text-[11px] text-muted">국채금리</div>
-          <div className="text-base font-bold">{macro.tnx ? macro.tnx.toFixed(2) : "-"}%</div>
-          <div className="text-[11px] text-muted">10년물</div>
-        </div>
-        <div className="bg-card border border-border rounded-lg p-2.5 text-center">
-          <div className="text-[11px] text-muted">뉴스</div>
-          <div className="text-base font-bold">{trumpSummary.match(/호재 (\d+)/)?.[1] || "-"}:{trumpSummary.match(/악재 (\d+)/)?.[1] || "-"}</div>
-          <div className="text-[11px] text-muted">호재:악재</div>
-        </div>
-        {cryptoFg ? (
-          <div className="bg-card border border-border rounded-lg p-2.5 text-center">
-            <div className="text-[11px] text-muted">코인 심리</div>
-            <div className="text-base font-bold">{cryptoFg.index}</div>
-            <div className="text-[11px] text-muted">{cryptoFg.label}</div>
-          </div>
-        ) : (
-          <div className="bg-card border border-border rounded-lg p-2.5 text-center">
-            <div className="text-[11px] text-muted">코인 심리</div>
-            <div className="text-base font-bold">-</div>
-            <div className="text-[11px] text-muted">수집 중</div>
-          </div>
-        )}
+      <div className="grid grid-cols-4 gap-1.5 mb-4">
+        <SentimentItem label="공포탐욕" value={fg.index ?? "-"} sub={fg.label || ""} emoji={fgEmoji(fg.index)} />
+        <SentimentItem label="VIX" value={vix != null ? vix.toFixed(1) : "-"} sub="변동성" emoji={vixEmoji(vix)} />
+        <SentimentItem
+          label="뉴스"
+          value={`${trumpSummary.match(/호재 (\d+)/)?.[1] || "-"}:${trumpSummary.match(/악재 (\d+)/)?.[1] || "-"}`}
+          sub="호재:악재"
+        />
+        <SentimentItem
+          label="코인심리"
+          value={cryptoFg ? cryptoFg.index : "-"}
+          sub={cryptoFg ? cryptoFg.label : "수집중"}
+          emoji={cryptoFg ? fgEmoji(cryptoFg.index) : ""}
+        />
       </div>
 
       {top3.length > 0 && (
