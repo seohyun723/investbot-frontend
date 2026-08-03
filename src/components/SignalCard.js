@@ -214,7 +214,7 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
               <div className="font-semibold text-sm">{symbol}</div>
               {name !== symbol && <div className="text-xs text-muted">{name}</div>}
             </div>
-            {tag && <span className={`text-[10px] px-1.5 py-0.5 rounded-full border ${tagColor(tag)}`}>{tag}</span>}
+            {tag && <span className={`text-[10px] px-1.5 py-0.5 rounded-full border whitespace-nowrap flex-shrink-0 ${tagColor(tag)}`}>{tag}</span>}
           </div>
           <div className="text-right">
             <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
