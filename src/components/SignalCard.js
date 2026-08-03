@@ -5,7 +5,6 @@ function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
 }
 
-// reasons에서 [전략태그] 분리
 function parseStrategyTag(reasons) {
   const m = String(reasons || "").match(/^\[([^\]]+)\]/);
   return {
@@ -105,7 +104,7 @@ function DetailModal({ item, rate, onClose }) {
           <div>
             <div className="text-lg font-bold">{symbol}</div>
             {name !== symbol && <div className="text-xs text-muted">{name}</div>}
-            {tag && <span className={`inline-block mt-1 text-[11px] px-2 py-0.5 rounded-full border ${tagColor(tag)}`}>{tag}</span>}
+            {tag && <span className={`inline-block mt-1 text-[11px] px-2 py-0.5 rounded-full border whitespace-nowrap ${tagColor(tag)}`}>{tag}</span>}
           </div>
           <button onClick={onClose} className="text-muted text-xl leading-none">✕</button>
         </div>
@@ -208,15 +207,15 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
     <>
       <div onClick={() => setShowDetail(true)} className={`bg-card border rounded-xl p-4 mb-2 cursor-pointer hover:border-border-strong transition-colors ${highlight ? "border-danger/40" : "border-border"}`}>
         <div className="flex justify-between items-start mb-2">
-          <div className="flex items-center gap-2">
-            {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold">{rank}</span>}
-            <div>
-              <div className="font-semibold text-sm">{symbol}</div>
-              {name !== symbol && <div className="text-xs text-muted">{name}</div>}
+          <div className="flex items-start gap-2 min-w-0">
+            {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">{rank}</span>}
+            <div className="min-w-0">
+              <div className="font-semibold text-sm truncate">{symbol}</div>
+              {name !== symbol && <div className="text-xs text-muted truncate">{name}</div>}
+              {tag && <span className={`inline-block mt-1 text-[10px] px-1.5 py-0.5 rounded-full border whitespace-nowrap ${tagColor(tag)}`}>{tag}</span>}
             </div>
-            {tag && <span className={`text-[10px] px-1.5 py-0.5 rounded-full border whitespace-nowrap flex-shrink-0 ${tagColor(tag)}`}>{tag}</span>}
           </div>
-          <div className="text-right">
+          <div className="text-right flex-shrink-0 ml-2">
             <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
             {score != null && (
               <div className="text-xs text-muted mt-1">
