@@ -210,8 +210,10 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
           <div className="flex items-start gap-2 min-w-0">
             {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">{rank}</span>}
             <div className="min-w-0">
-              <div className="font-semibold text-sm truncate">{symbol}</div>
-              {name !== symbol && <div className="text-xs text-muted truncate">{name}</div>}
+              <div className="flex items-baseline gap-1.5 min-w-0">
+                <span className="font-semibold text-sm flex-shrink-0">{symbol}</span>
+                {name !== symbol && <span className="text-xs text-muted truncate">{name}</span>}
+              </div>
               {tag && <span className={`inline-block mt-1 text-[10px] px-1.5 py-0.5 rounded-full border whitespace-nowrap ${tagColor(tag)}`}>{tag}</span>}
             </div>
           </div>
