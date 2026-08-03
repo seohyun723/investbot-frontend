@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
@@ -28,7 +29,6 @@ function sigBadge(sig) {
   return "bg-card text-muted border-border";
 }
 
-// 거래량 라벨
 function volLabel(volScore) {
   if (volScore == null) return null;
   if (volScore >= 70) return { text: "거래량 활발", color: "text-danger" };
@@ -37,7 +37,146 @@ function volLabel(volScore) {
   return { text: "거래량 한산", color: "text-blue-400" };
 }
 
+// 종목 상세 모달
+function DetailModal({ item, rate, onClose }) {
+  const symbol = item.symbol || item.ticker || item.code || "";
+  const name = item.name || symbol;
+  const price = item.price;
+  const target = item.target_price;
+  const stop = item.stoploss_price;
+  const signal = item.signal;
+  const score = item.total_score;
+  const tech = item.tech_score;
+  const mom = item.mom_score;
+  const vol = item.vol_score;
+  const change = item.change_24h ?? item.change_pct;
+  const reasons = (item.reasons || "").split("|").map(r => r.trim()).filter(Boolean);
+  const kimchi = item.kimchi_premium;
+
+  const krw = isKRW(symbol);
+  const fmt = (v) => v == null ? "-" : (krw ? `₩${Math.round(v).toLocaleString()}` : `$${v.toFixed(2)}`);
+
+  // 상승여력 / 하방 / 손익비
+  let upside = null, downside = null, rr = null;
+  if (price && target) upside = ((target - price) / price) * 100;
+  if (price && stop) downside = ((stop - price) / price) * 100;
+  if (upside && downside && downside !== 0) rr = Math.abs(upside / downside);
+
+  const reasonColor = (r) => {
+    if (r.includes("정배열") || r.includes("강세") || r.includes("과매도") || r.includes("역프") || r.includes("호재") || r.includes("상승")) return "bg-danger/10 text-danger";
+    if (r.includes("과매수") || r.includes("고점") || r.includes("악재") || r.includes("부정") || r.includes("역배열") || r.includes("과열")) return "bg-blue-400/10 text-blue-400";
+    return "bg-card text-muted border border-border";
+  };
+
+  return (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-bg border border-border rounded-t-2xl sm:rounded-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto"
+      >
+        {/* 헤더 */}
+        <div className="sticky top-0 bg-bg border-b border-border p-4 flex justify-between items-start">
+          <div>
+            <div className="text-lg font-bold">{symbol}</div>
+            {name !== symbol && <div className="text-xs text-muted">{name}</div>}
+          </div>
+          <button onClick={onClose} className="text-muted text-xl leading-none">✕</button>
+        </div>
+
+        <div className="p-4 space-y-3">
+          {/* 현재가 + 시그널 */}
+          <div className="flex justify-between items-center">
+            <div>
+              <div className="text-2xl font-bold">{fmt(price)}</div>
+              {change != null && (
+                <div className={`text-sm ${change >= 0 ? "text-danger" : "text-blue-400"}`}>
+                  {change >= 0 ? "▲" : "▼"} {Math.abs(change).toFixed(2)}%
+                </div>
+              )}
+            </div>
+            <span className={`text-xs px-2.5 py-1 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
+          </div>
+
+          {/* 목표/손절 */}
+          <div className="grid grid-cols-2 gap-2">
+            <div className="bg-card border border-border rounded-xl p-3">
+              <div className="text-xs text-muted">목표가</div>
+              <div className="text-base font-semibold text-danger">{fmt(target)}</div>
+              {upside != null && <div className="text-xs text-muted">상승여력 +{upside.toFixed(1)}%</div>}
+            </div>
+            <div className="bg-card border border-border rounded-xl p-3">
+              <div className="text-xs text-muted">손절가</div>
+              <div className="text-base font-semibold text-blue-400">{fmt(stop)}</div>
+              {downside != null && <div className="text-xs text-muted">하방 {downside.toFixed(1)}%</div>}
+            </div>
+          </div>
+
+          {/* 손익비 */}
+          {rr != null && (
+            <div className="bg-accent/10 rounded-xl p-3">
+              <div className="text-xs text-accent">
+                ⚖ 손익비 {rr.toFixed(1)} : 1 {rr >= 2 ? "(양호 - 기대수익이 리스크의 " + rr.toFixed(1) + "배)" : rr >= 1.5 ? "(적정)" : "(주의 - 리스크 대비 기대수익 낮음)"}
+              </div>
+            </div>
+          )}
+
+          {/* 종합점수 브레이크다운 */}
+          {score != null && (
+            <div className="bg-card border border-border rounded-xl p-3">
+              <div className="text-xs text-muted mb-2">종합점수 {score.toFixed(1)} / 100</div>
+              <div className="space-y-1.5">
+                {tech != null && <ScoreBar label="기술적" value={tech} />}
+                {mom != null && <ScoreBar label="모멘텀" value={mom} />}
+                {vol != null && <ScoreBar label="거래량" value={vol} />}
+              </div>
+            </div>
+          )}
+
+          {/* 김프 (코인) */}
+          {kimchi != null && Math.abs(kimchi) >= 0.3 && (
+            <div className="bg-card border border-border rounded-xl p-3 text-xs">
+              <span className="text-muted">김치프리미엄 </span>
+              <span className={kimchi >= 8 ? "text-danger font-semibold" : kimchi <= -3 ? "text-blue-400 font-semibold" : "text-primary"}>
+                {kimchi >= 0 ? "+" : ""}{kimchi.toFixed(2)}%
+              </span>
+              <span className="text-muted"> {kimchi >= 8 ? "(과열 주의)" : kimchi <= -3 ? "(역프 - 매수 기회)" : ""}</span>
+            </div>
+          )}
+
+          {/* 매수 근거 태그 */}
+          {reasons.length > 0 && (
+            <div className="bg-card border border-border rounded-xl p-3">
+              <div className="text-xs text-muted mb-2">분석 근거</div>
+              <div className="flex flex-wrap gap-1.5">
+                {reasons.map((r, i) => (
+                  <span key={i} className={`text-xs px-2 py-1 rounded-lg ${reasonColor(r)}`}>{r}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScoreBar({ label, value }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-xs w-12 text-muted">{label}</span>
+      <div className="flex-1 h-1.5 bg-bg rounded-full overflow-hidden">
+        <div className="h-full bg-accent" style={{ width: `${Math.min(100, Math.max(0, value))}%` }}></div>
+      </div>
+      <span className="text-xs w-6 text-right">{Math.round(value)}</span>
+    </div>
+  );
+}
+
 export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
+  const [showDetail, setShowDetail] = useState(false);
   const symbol = item.symbol || item.ticker || item.code || "";
   const name = item.name || symbol;
   const price = item.price;
@@ -50,75 +189,77 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
   const kimchi = item.kimchi_premium;
   const volScore = item.vol_score;
 
-  // 상승여력 계산
   let upside = null;
-  if (price && target && price > 0) {
-    upside = ((target - price) / price) * 100;
-  }
+  if (price && target && price > 0) upside = ((target - price) / price) * 100;
   const vol = volLabel(volScore);
 
   return (
-    <div className={`bg-card border rounded-xl p-4 mb-2 ${highlight ? "border-danger/40" : "border-border"}`}>
-      <div className="flex justify-between items-start mb-2">
-        <div className="flex items-center gap-2">
-          {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold">{rank}</span>}
-          <div>
-            <div className="font-semibold text-sm">{symbol}</div>
-            {name !== symbol && <div className="text-xs text-muted">{name}</div>}
+    <>
+      <div
+        onClick={() => setShowDetail(true)}
+        className={`bg-card border rounded-xl p-4 mb-2 cursor-pointer hover:border-border-strong transition-colors ${highlight ? "border-danger/40" : "border-border"}`}
+      >
+        <div className="flex justify-between items-start mb-2">
+          <div className="flex items-center gap-2">
+            {rank && <span className="text-xs bg-danger/20 text-danger rounded-full w-5 h-5 flex items-center justify-center font-bold">{rank}</span>}
+            <div>
+              <div className="font-semibold text-sm">{symbol}</div>
+              {name !== symbol && <div className="text-xs text-muted">{name}</div>}
+            </div>
+          </div>
+          <div className="text-right">
+            <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
+            {score != null && (
+              <div className="text-xs text-muted mt-1">
+                점수 {score.toFixed(1)}
+                {change != null && (
+                  <span className={change >= 0 ? "text-danger" : "text-blue-400"}>
+                    {" "}({change >= 0 ? "+" : ""}{change.toFixed(1)}%)
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
-        <div className="text-right">
-          <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
-          {score != null && (
-            <div className="text-xs text-muted mt-1">
-              점수 {score.toFixed(1)}
-              {change != null && (
-                <span className={change >= 0 ? "text-danger" : "text-blue-400"}>
-                  {" "}({change >= 0 ? "+" : ""}{change.toFixed(1)}%)
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
 
-      <div className="grid grid-cols-3 gap-2 text-center">
-        <div className="bg-bg/50 rounded-lg p-2">
-          <div className="text-xs text-muted">현재가</div>
-          <div className="text-sm font-semibold"><PriceDisplay symbol={symbol} price={price} rate={rate} /></div>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          <div className="bg-bg/50 rounded-lg p-2">
+            <div className="text-xs text-muted">현재가</div>
+            <div className="text-sm font-semibold"><PriceDisplay symbol={symbol} price={price} rate={rate} /></div>
+          </div>
+          <div className="bg-bg/50 rounded-lg p-2">
+            <div className="text-xs text-muted">목표</div>
+            <div className="text-sm font-semibold text-danger"><PriceDisplay symbol={symbol} price={target} rate={rate} /></div>
+          </div>
+          <div className="bg-bg/50 rounded-lg p-2">
+            <div className="text-xs text-muted">손절</div>
+            <div className="text-sm font-semibold text-blue-400"><PriceDisplay symbol={symbol} price={stop} rate={rate} /></div>
+          </div>
         </div>
-        <div className="bg-bg/50 rounded-lg p-2">
-          <div className="text-xs text-muted">목표</div>
-          <div className="text-sm font-semibold text-danger"><PriceDisplay symbol={symbol} price={target} rate={rate} /></div>
-        </div>
-        <div className="bg-bg/50 rounded-lg p-2">
-          <div className="text-xs text-muted">손절</div>
-          <div className="text-sm font-semibold text-blue-400"><PriceDisplay symbol={symbol} price={stop} rate={rate} /></div>
-        </div>
-      </div>
 
-      {/* 추가 지표: 상승여력 · 거래량 · 김프 */}
-      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs">
-        {upside != null && (
-          <span className="text-muted">
-            상승여력 <span className={upside >= 0 ? "text-danger font-semibold" : "text-blue-400 font-semibold"}>
-              {upside >= 0 ? "+" : ""}{upside.toFixed(1)}%
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs">
+          {upside != null && (
+            <span className="text-muted">
+              상승여력 <span className={upside >= 0 ? "text-danger font-semibold" : "text-blue-400 font-semibold"}>
+                {upside >= 0 ? "+" : ""}{upside.toFixed(1)}%
+              </span>
             </span>
-          </span>
-        )}
-        {vol && (
-          <span className={vol.color}>· {vol.text}</span>
-        )}
-        {kimchi != null && Math.abs(kimchi) >= 0.3 && (
-          <span className={kimchi >= 8 ? "text-danger" : kimchi <= -3 ? "text-blue-400" : "text-muted"}>
-            · 김프 {kimchi >= 0 ? "+" : ""}{kimchi.toFixed(1)}%
-          </span>
+          )}
+          {vol && <span className={vol.color}>· {vol.text}</span>}
+          {kimchi != null && Math.abs(kimchi) >= 0.3 && (
+            <span className={kimchi >= 8 ? "text-danger" : kimchi <= -3 ? "text-blue-400" : "text-muted"}>
+              · 김프 {kimchi >= 0 ? "+" : ""}{kimchi.toFixed(1)}%
+            </span>
+          )}
+          <span className="text-muted ml-auto">자세히 ›</span>
+        </div>
+
+        {reasons && (
+          <div className="text-xs text-muted mt-2 leading-relaxed line-clamp-2">{reasons}</div>
         )}
       </div>
 
-      {reasons && (
-        <div className="text-xs text-muted mt-2 leading-relaxed">{reasons}</div>
-      )}
-    </div>
+      {showDetail && <DetailModal item={item} rate={rate} onClose={() => setShowDetail(false)} />}
+    </>
   );
 }
