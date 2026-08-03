@@ -45,7 +45,6 @@ export default function TodayTab({ data }) {
   const rate = data.usd_krw || 1436;
 
   const rawIndicators = data.market_indicators || [];
-  // 원달러 → 코스피 → 나스닥 → S&P 우선 정렬, 나머지는 뒤에
   const ORDER = ["원달러", "KOSPI", "NASDAQ", "S&P 500"];
   const marketIndicators = [...rawIndicators].sort((a, b) => {
     const ia = ORDER.indexOf(a.name); const ib = ORDER.indexOf(b.name);
@@ -53,9 +52,11 @@ export default function TodayTab({ data }) {
     const rb = ib === -1 ? 999 : ib;
     return ra - rb;
   });
+
   const fg = data.fear_greed || {};
   const macro = data.macro || {};
   const trumpSummary = data.trump_summary || "";
+  const cryptoFg = data.crypto_fear_greed || null;
 
   const filtered = market === "all"
     ? sortByStrength([...us, ...crypto, ...kr, ...alt])
@@ -77,7 +78,7 @@ export default function TodayTab({ data }) {
         </div>
       )}
 
-      <div className="grid grid-cols-3 gap-2 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
         <div className="bg-card border border-border rounded-lg p-2.5 text-center">
           <div className="text-[11px] text-muted">공포탐욕</div>
           <div className="text-base font-bold">{fg.index ?? "-"}</div>
@@ -93,6 +94,19 @@ export default function TodayTab({ data }) {
           <div className="text-base font-bold">{trumpSummary.match(/호재 (\d+)/)?.[1] || "-"}:{trumpSummary.match(/악재 (\d+)/)?.[1] || "-"}</div>
           <div className="text-[11px] text-muted">호재:악재</div>
         </div>
+        {cryptoFg ? (
+          <div className="bg-card border border-border rounded-lg p-2.5 text-center">
+            <div className="text-[11px] text-muted">코인 심리</div>
+            <div className="text-base font-bold">{cryptoFg.index}</div>
+            <div className="text-[11px] text-muted">{cryptoFg.label}</div>
+          </div>
+        ) : (
+          <div className="bg-card border border-border rounded-lg p-2.5 text-center">
+            <div className="text-[11px] text-muted">코인 심리</div>
+            <div className="text-base font-bold">-</div>
+            <div className="text-[11px] text-muted">수집 중</div>
+          </div>
+        )}
       </div>
 
       {top3.length > 0 && (
