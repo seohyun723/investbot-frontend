@@ -218,7 +218,7 @@ export default function SignalCard({ item, rank, highlight, rate = 1436 }) {
           <div className="text-right flex-shrink-0 ml-2">
             <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap ${sigBadge(signal)}`}>{signal}</span>
             {score != null && (
-              <div className="text-xs text-muted mt-1">
+              <div className="text-xs text-muted mt-1 whitespace-nowrap">
                 점수 {score.toFixed(1)}
                 {change != null && (
                   <span className={change >= 0 ? "text-danger" : "text-blue-400"}>
