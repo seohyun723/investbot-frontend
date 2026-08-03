@@ -4,6 +4,8 @@ import Dashboard from "../components/Dashboard";
 
 const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/latest.json";
 
+const VALID_TABS = ["today", "sim", "portfolio", "backtest"];
+
 export default function Home() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -48,7 +50,29 @@ export default function Home() {
     }
   };
 
-  useEffect(() => { loadData(); }, []);
+  // 초기 로드 시 URL 해시에서 탭 복원
+  useEffect(() => {
+    loadData();
+    const hash = window.location.hash.replace("#", "");
+    if (VALID_TABS.includes(hash)) {
+      setTab(hash);
+    }
+    // 뒤로가기/앞으로가기 대응
+    const onHashChange = () => {
+      const h = window.location.hash.replace("#", "");
+      if (VALID_TABS.includes(h)) setTab(h);
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  // 탭 변경 시 URL 해시 업데이트
+  const changeTab = (id) => {
+    setTab(id);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${id}`);
+    }
+  };
 
   if (loading) return <div className="p-6 text-center text-muted">로딩 중...</div>;
   if (!data) return (
@@ -61,7 +85,6 @@ export default function Home() {
   );
 
   const lastUpdate = data.generated_at ? (() => {
-    // generated_at은 timezone 없이 UTC로 저장되어 있음
     const utcStr = data.generated_at.includes('Z') || data.generated_at.includes('+') 
       ? data.generated_at 
       : data.generated_at + 'Z';
@@ -115,7 +138,7 @@ export default function Home() {
           { id: "portfolio", label: "포트폴리오" },
           { id: "backtest", label: "백테스트" },
         ].map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)}
+          <button key={t.id} onClick={() => changeTab(t.id)}
             className={`px-4 py-2 rounded-full text-xs whitespace-nowrap border ${
               tab === t.id ? "bg-white text-black border-white" : "bg-card border-border text-muted"
             }`}>
