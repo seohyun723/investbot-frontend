@@ -44,7 +44,15 @@ export default function TodayTab({ data }) {
   const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
 
-  const marketIndicators = data.market_indicators || [];
+  const rawIndicators = data.market_indicators || [];
+  // 원달러 → 코스피 → 나스닥 → S&P 우선 정렬, 나머지는 뒤에
+  const ORDER = ["원달러", "KOSPI", "NASDAQ", "S&P 500"];
+  const marketIndicators = [...rawIndicators].sort((a, b) => {
+    const ia = ORDER.indexOf(a.name); const ib = ORDER.indexOf(b.name);
+    const ra = ia === -1 ? 999 : ia;
+    const rb = ib === -1 ? 999 : ib;
+    return ra - rb;
+  });
   const fg = data.fear_greed || {};
   const macro = data.macro || {};
   const trumpSummary = data.trump_summary || "";
