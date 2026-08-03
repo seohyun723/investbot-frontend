@@ -1,16 +1,3 @@
 {
-  "holdings": [
-    {
-      "id": "1785711112972",
-      "symbol": "KRW-ADA",
-      "name": "KRW-ADA",
-      "buy_price": 273,
-      "quantity": 10,
-      "buy_date": "2026-08-02T22:51:52.623Z",
-      "target_price": 313.95,
-      "stoploss_price": 253.89000000000001,
-      "status": "active",
-      "user_added": true
-    }
-  ]
+  "holdings": []
 }
