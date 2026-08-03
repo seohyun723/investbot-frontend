@@ -41,14 +41,16 @@ function fgEmoji(v) {
 }
 
 function MarketItem({ name, price, change }) {
-  const up = change >= 0;
+  if (price == null) return null;
+  const up = (change ?? 0) >= 0;
   const fmtPrice = price >= 1000 ? Math.round(price).toLocaleString() : price.toFixed(2);
+  const chg = change ?? 0;
   return (
     <div className="flex-shrink-0 bg-card border border-border rounded-lg px-3 py-2 min-w-[100px]">
       <div className="text-[11px] text-muted whitespace-nowrap">{name}</div>
       <div className="text-sm font-semibold">{fmtPrice}</div>
-      <div className={`text-[11px] ${up ? "text-danger" : "text-blue-400"}`}>
-        {up ? "▲" : "▼"} {Math.abs(change).toFixed(2)}%
+     <div className={`text-[11px] ${up ? "text-danger" : "text-blue-400"}`}>
+        {up ? "▲" : "▼"} {Math.abs(chg).toFixed(2)}%
       </div>
     </div>
   );
