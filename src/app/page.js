@@ -146,9 +146,19 @@ export default function Home() {
           >
             <span className={refreshing ? "animate-spin" : ""}>⚙️</span>
           </button>
-          <div className="bg-card px-3 py-2 rounded-full text-xs text-muted whitespace-nowrap">
-            🌡 {data.fear_greed?.index ?? 50} · {data.fear_greed?.label ?? ""}
-          </div>
+          {(() => {
+            const fgIdx = data.fear_greed?.index ?? 50;
+            const fgColor = fgIdx < 25 ? "text-blue-400 border-blue-400/40 bg-blue-400/10"
+              : fgIdx < 45 ? "text-blue-300 border-blue-300/30 bg-blue-300/5"
+              : fgIdx < 55 ? "text-muted border-border bg-card"
+              : fgIdx < 75 ? "text-red-300 border-red-300/30 bg-red-300/5"
+              : "text-danger border-danger/40 bg-danger/10";
+            return (
+              <div className={`px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap border ${fgColor}`}>
+                🌡 {fgIdx} · {data.fear_greed?.label ?? ""}
+              </div>
+            );
+          })()}
         </div>
       </header>
 
