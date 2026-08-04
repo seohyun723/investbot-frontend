@@ -1,7 +1,7 @@
 {
   "date": "2026-08-04",
-  "generated_at": "2026-08-04T13:04:14.932139",
-  "usd_krw": 1427.800048828125,
+  "generated_at": "2026-08-04T13:08:37.894154",
+  "usd_krw": 1427.93994140625,
   "fear_greed": {
     "index": 59,
     "label": "중립",
@@ -12,35 +12,35 @@
     "index": 25,
     "label": "극단적 공포"
   },
-  "trump_summary": "이슈 62건 (호재 18건, 악재 37건)",
+  "trump_summary": "이슈 61건 (호재 18건, 악재 36건)",
   "market_indicators": [
     {
       "ticker": "KRW=X",
       "name": "원달러",
       "type": "환율",
-      "price": 1427.78,
-      "change_pct": -0.55
+      "price": 1427.88,
+      "change_pct": -0.54
     },
     {
       "ticker": "CL=F",
       "name": "WTI 유가",
       "type": "원자재",
-      "price": 77.42,
-      "change_pct": -3.63
+      "price": 77.45,
+      "change_pct": -3.6
     },
     {
       "ticker": "GC=F",
       "name": "금",
       "type": "원자재",
-      "price": 4131.2,
-      "change_pct": 2.42
+      "price": 4127.5,
+      "change_pct": 2.33
     },
     {
       "ticker": "^VIX",
       "name": "VIX 공포지수",
       "type": "지표",
-      "price": 15.62,
-      "change_pct": -1.51
+      "price": 15.59,
+      "change_pct": -1.7
     },
     {
       "ticker": "^KS11",
@@ -65,7 +65,7 @@
     }
   ],
   "macro": {
-    "dxy_change": -0.03,
+    "dxy_change": -0.01,
     "dxy_score": 0,
     "tnx": 4.66,
     "tnx_change": -0.03,
@@ -96,49 +96,74 @@
       "target_price": 304.5714,
       "stoploss_price": 263.2143,
       "grade": "A (매수)",
-      "weight": 0.1248271093,
-      "suggested_amount": 24965
+      "weight": 0.1246116672,
+      "suggested_amount": 24922
     },
     {
-      "total_score": 69.4,
+      "total_score": 69.9,
       "tech_score": 65.0,
-      "mom_score": 73.0,
-      "vol_score": 43.5,
+      "mom_score": 74.3,
+      "vol_score": 43.9,
       "signal": "매수",
-      "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 5일 강세(15.3%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 5일 강세(16.2%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-ALGO",
-      "price": 128.0,
-      "change_24h": 0.0,
+      "price": 129.0,
+      "change_24h": 0.78125,
       "kimchi_premium": 0,
       "atr": 6.5714285714,
-      "target_price": 141.1429,
-      "stoploss_price": 121.4286,
+      "target_price": 142.1429,
+      "stoploss_price": 122.4286,
       "grade": "A (매수)",
-      "weight": 0.1199861687,
-      "suggested_amount": 23997
+      "weight": 0.1206420435,
+      "suggested_amount": 24128
     },
     {
-      "total_score": 57.2,
-      "tech_score": 65.0,
-      "mom_score": 45.8,
-      "vol_score": 48.5,
-      "news_score": 50.0,
+      "total_score": 58.6,
+      "tech_score": 70.0,
+      "fund_score": 50,
+      "analyst_score": 50,
+      "mom_score": 59.5,
+      "vol_score": 42.6,
+      "news_score": 58.0,
       "signal": "매수",
-      "reasons": "[단기·고변동] | 단기>중기 | MACD 강세",
-      "strategy_tag": "단기·고변동",
-      "ticker": "USO",
-      "name": "United States Oil Fund",
-      "price": 122.12,
-      "atr": 5.9464280265,
-      "target_price": 134.0129,
-      "stoploss_price": 116.1736,
+      "reasons": "[중기·추세] | 정배열 | RSI 고점(65) | MACD 강세 | 트럼프 호재 | 스토캐스틱 상승 전환",
+      "strategy_tag": "중기·추세",
+      "code": "068270",
+      "ticker": "068270",
+      "name": "셀트리온",
+      "price": 185800.0,
+      "change_24h": 1.98,
+      "atr": 7435.7142857143,
+      "target_price": 200671.4286,
+      "stoploss_price": 178364.2857,
       "grade": "B+ (관심)",
-      "weight": 0.1842783505,
-      "suggested_amount": 36855
+      "weight": 0.1398234312,
+      "suggested_amount": 27964
     }
   ],
   "us_signals": [
+    {
+      "total_score": 55.9,
+      "tech_score": 65.0,
+      "fund_score": 65,
+      "analyst_score": 80,
+      "mom_score": 41.4,
+      "vol_score": 50.0,
+      "news_score": 13.0,
+      "signal": "매수",
+      "reasons": "[중기·추세] | 단기>중기 | MACD 강세 | 트럼프 악재 | 스토캐스틱 상승 전환",
+      "strategy_tag": "중기·추세",
+      "ticker": "SLB",
+      "name": "SLB Limited",
+      "price": 49.31,
+      "atr": 1.7221426283,
+      "target_price": 52.7543,
+      "stoploss_price": 47.5879,
+      "grade": "B+ (관심)",
+      "weight": 0.1013783098,
+      "suggested_amount": 20275
+    },
     {
       "total_score": 55.4,
       "tech_score": 62.5,
@@ -157,29 +182,8 @@
       "target_price": 125.43,
       "stoploss_price": 116.025,
       "grade": "B+ (관심)",
-      "weight": 0.1007455901,
-      "suggested_amount": 20149
-    },
-    {
-      "total_score": 54.4,
-      "tech_score": 65.0,
-      "fund_score": 65,
-      "analyst_score": 80,
-      "mom_score": 41.4,
-      "vol_score": 50.0,
-      "news_score": 3.0,
-      "signal": "매수",
-      "reasons": "[중기·추세] | 단기>중기 | MACD 강세 | 트럼프 악재 | 스토캐스틱 상승 전환",
-      "strategy_tag": "중기·추세",
-      "ticker": "SLB",
-      "name": "SLB Limited",
-      "price": 49.31,
-      "atr": 1.7221426283,
-      "target_price": 52.7543,
-      "stoploss_price": 47.5879,
-      "grade": "B (중립)",
-      "weight": 0.0989270777,
-      "suggested_amount": 19785
+      "weight": 0.100471527,
+      "suggested_amount": 20094
     },
     {
       "total_score": 53.6,
@@ -199,8 +203,8 @@
       "target_price": 304.0843,
       "stoploss_price": 273.9879,
       "grade": "B (중립)",
-      "weight": 0.0974722677,
-      "suggested_amount": 19494
+      "weight": 0.0972071092,
+      "suggested_amount": 19441
     },
     {
       "total_score": 53.5,
@@ -220,8 +224,8 @@
       "target_price": 201.7929,
       "stoploss_price": 188.8736,
       "grade": "B (중립)",
-      "weight": 0.0972904164,
-      "suggested_amount": 19458
+      "weight": 0.0970257526,
+      "suggested_amount": 19405
     },
     {
       "total_score": 52.6,
@@ -241,8 +245,8 @@
       "target_price": 596.2443,
       "stoploss_price": 558.3329,
       "grade": "B (중립)",
-      "weight": 0.0956537552,
-      "suggested_amount": 19130
+      "weight": 0.0953935437,
+      "suggested_amount": 19078
     },
     {
       "total_score": 59.9,
@@ -262,8 +266,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1089288962,
-      "suggested_amount": 21785
+      "weight": 0.1086325716,
+      "suggested_amount": 21726
     },
     {
       "total_score": 59.9,
@@ -283,8 +287,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1089288962,
-      "suggested_amount": 21785
+      "weight": 0.1086325716,
+      "suggested_amount": 21726
     },
     {
       "total_score": 55.3,
@@ -304,8 +308,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1005637389,
-      "suggested_amount": 20112
+      "weight": 0.1002901705,
+      "suggested_amount": 20058
     },
     {
       "total_score": 52.7,
@@ -325,8 +329,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0958356065,
-      "suggested_amount": 19167
+      "weight": 0.0955749003,
+      "suggested_amount": 19114
     },
     {
       "total_score": 52.6,
@@ -346,8 +350,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0956537552,
-      "suggested_amount": 19130
+      "weight": 0.0953935437,
+      "suggested_amount": 19078
     }
   ],
   "crypto_signals": [
@@ -367,33 +371,33 @@
       "target_price": 304.5714,
       "stoploss_price": 263.2143,
       "grade": "A (매수)",
-      "weight": 0.1248271093,
-      "suggested_amount": 24965
+      "weight": 0.1246116672,
+      "suggested_amount": 24922
     },
     {
-      "total_score": 69.4,
+      "total_score": 69.9,
       "tech_score": 65.0,
-      "mom_score": 73.0,
-      "vol_score": 43.5,
+      "mom_score": 74.3,
+      "vol_score": 43.9,
       "signal": "매수",
-      "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 5일 강세(15.3%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 5일 강세(16.2%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-ALGO",
-      "price": 128.0,
-      "change_24h": 0.0,
+      "price": 129.0,
+      "change_24h": 0.78125,
       "kimchi_premium": 0,
       "atr": 6.5714285714,
-      "target_price": 141.1429,
-      "stoploss_price": 121.4286,
+      "target_price": 142.1429,
+      "stoploss_price": 122.4286,
       "grade": "A (매수)",
-      "weight": 0.1199861687,
-      "suggested_amount": 23997
+      "weight": 0.1206420435,
+      "suggested_amount": 24128
     },
     {
       "total_score": 62.8,
       "tech_score": 55.0,
       "mom_score": 63.1,
-      "vol_score": 45.8,
+      "vol_score": 45.9,
       "signal": "중립",
       "reasons": "[단기·고변동] | 단기<중기 | MACD 반등 | 5일 강세(8.7%) | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
@@ -405,8 +409,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1085753804,
-      "suggested_amount": 21715
+      "weight": 0.1083879876,
+      "suggested_amount": 21677
     },
     {
       "total_score": 59.2,
@@ -424,46 +428,46 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.102351314,
-      "suggested_amount": 20470
+      "weight": 0.1021746634,
+      "suggested_amount": 20434
     },
     {
-      "total_score": 52.3,
+      "total_score": 52.8,
       "tech_score": 42.5,
-      "mom_score": 50.0,
+      "mom_score": 51.5,
       "vol_score": 35.6,
       "signal": "중립",
-      "reasons": "[단기·고변동] | 역배열 | MACD 반등 | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 하락 전환 | 중립 (도미넌스 56.46%) | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 역배열 | MACD 반등 | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.46%) | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-DOGE",
-      "price": 100.0,
-      "change_24h": 0.1001001,
+      "price": 101.0,
+      "change_24h": 1.1011011,
       "kimchi_premium": 0,
       "atr": 3.9071428571,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0904218534,
-      "suggested_amount": 18084
+      "weight": 0.0911287539,
+      "suggested_amount": 18225
     },
     {
-      "total_score": 51.7,
+      "total_score": 51.6,
       "tech_score": 52.5,
-      "mom_score": 31.2,
+      "mom_score": 31.0,
       "vol_score": 42.0,
       "signal": "중립",
-      "reasons": "[단기·고변동] | 정배열 | MACD 하락 | 5일 약세(-12.5%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 정배열 | MACD 하락 | 5일 약세(-12.7%) | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-UNI",
-      "price": 5490.0,
-      "change_24h": -1.34770889,
+      "price": 5480.0,
+      "change_24h": -1.52740341,
       "kimchi_premium": 0,
       "atr": 372.5,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.089384509,
-      "suggested_amount": 17876
+      "weight": 0.0890576458,
+      "suggested_amount": 17811
     },
     {
       "total_score": 58.7,
@@ -471,7 +475,7 @@
       "mom_score": 59.8,
       "vol_score": 71.9,
       "signal": "매도",
-      "reasons": "[단기·고변동] | 역배열 | MACD 반등 | 거래량 급증(하락) | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 역배열 | MACD 반등 | 거래량 급증(하락) | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.46%) | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-AVAX",
       "price": 9705.0,
@@ -481,8 +485,27 @@
       "target_price": 8823.5714,
       "stoploss_price": 10145.7143,
       "grade": "B+ (관심)",
-      "weight": 0.1014868603,
-      "suggested_amount": 20297
+      "weight": 0.1013117018,
+      "suggested_amount": 20262
+    },
+    {
+      "total_score": 51.0,
+      "tech_score": 40.0,
+      "mom_score": 46.6,
+      "vol_score": 39.9,
+      "signal": "매도",
+      "reasons": "[단기·고변동] | 단기<중기 | RSI 저점(34) | MACD 약세 | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
+      "strategy_tag": "단기·고변동",
+      "symbol": "KRW-LINK",
+      "price": 11690.0,
+      "change_24h": 0.34334764,
+      "kimchi_premium": 0,
+      "atr": 422.1428571429,
+      "target_price": 10845.7143,
+      "stoploss_price": 12112.1429,
+      "grade": "B (중립)",
+      "weight": 0.0880220918,
+      "suggested_amount": 17604
     },
     {
       "total_score": 51.0,
@@ -490,37 +513,18 @@
       "mom_score": 47.6,
       "vol_score": 37.8,
       "signal": "매도",
-      "reasons": "[단기·고변동] | 단기<중기 | MACD 하락 | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 중립 (도미넌스 56.46%) | 공포탐욕 25",
+      "reasons": "[단기·고변동] | 단기<중기 | MACD 하락 | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-ETH",
-      "price": 2670000.0,
-      "change_24h": 0.83081571,
+      "price": 2671000.0,
+      "change_24h": 0.86858006,
       "kimchi_premium": 0,
       "atr": 78571.4285714286,
-      "target_price": 2512857.1429,
-      "stoploss_price": 2748571.4286,
+      "target_price": 2513857.1429,
+      "stoploss_price": 2749571.4286,
       "grade": "B (중립)",
-      "weight": 0.0881742739,
-      "suggested_amount": 17634
-    },
-    {
-      "total_score": 50.9,
-      "tech_score": 40.0,
-      "mom_score": 46.5,
-      "vol_score": 39.9,
-      "signal": "매도",
-      "reasons": "[단기·고변동] | 단기<중기 | RSI 저점(34) | MACD 약세 | 트럼프 코인 호재 | 코인 공포(25) | 도미넌스 조회 실패 | 공포탐욕 25",
-      "strategy_tag": "단기·고변동",
-      "symbol": "KRW-LINK",
-      "price": 11680.0,
-      "change_24h": 0.25751073,
-      "kimchi_premium": 0,
-      "atr": 422.1428571429,
-      "target_price": 10835.7143,
-      "stoploss_price": 12102.1429,
-      "grade": "B (중립)",
-      "weight": 0.0880013831,
-      "suggested_amount": 17600
+      "weight": 0.0880220918,
+      "suggested_amount": 17604
     },
     {
       "total_score": 50.2,
@@ -531,18 +535,41 @@
       "reasons": "[단기·고변동] | 역배열 | RSI 저점(27) | MACD 약세 | 트럼프 코인 호재 | 코인 공포(25) | 스토캐스틱 상승 전환 | 도미넌스 조회 실패 | 공포탐욕 25",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-NEAR",
-      "price": 2462.0,
-      "change_24h": -0.20267531,
+      "price": 2463.0,
+      "change_24h": -0.16214025,
       "kimchi_premium": 0,
       "atr": 110.7142857143,
-      "target_price": 2240.5714,
-      "stoploss_price": 2572.7143,
+      "target_price": 2241.5714,
+      "stoploss_price": 2573.7143,
       "grade": "B (중립)",
-      "weight": 0.086791148,
-      "suggested_amount": 17358
+      "weight": 0.0866413531,
+      "suggested_amount": 17328
     }
   ],
   "kr_signals": [
+    {
+      "total_score": 58.6,
+      "tech_score": 70.0,
+      "fund_score": 50,
+      "analyst_score": 50,
+      "mom_score": 59.5,
+      "vol_score": 42.6,
+      "news_score": 58.0,
+      "signal": "매수",
+      "reasons": "[중기·추세] | 정배열 | RSI 고점(65) | MACD 강세 | 트럼프 호재 | 스토캐스틱 상승 전환",
+      "strategy_tag": "중기·추세",
+      "code": "068270",
+      "ticker": "068270",
+      "name": "셀트리온",
+      "price": 185800.0,
+      "change_24h": 1.98,
+      "atr": 7435.7142857143,
+      "target_price": 200671.4286,
+      "stoploss_price": 178364.2857,
+      "grade": "B+ (관심)",
+      "weight": 0.1398234312,
+      "suggested_amount": 27964
+    },
     {
       "total_score": 56.5,
       "tech_score": 72.5,
@@ -558,36 +585,59 @@
       "ticker": "207940",
       "name": "삼성바이오로직스",
       "price": 1476000.0,
-      "change_24h": 3.72,
+      "change_24h": 3.72452565,
       "atr": 81428.5714285714,
       "target_price": 1638857.1429,
       "stoploss_price": 1394571.4286,
       "grade": "B+ (관심)",
-      "weight": 0.1586632968,
-      "suggested_amount": 31732
+      "weight": 0.1348126939,
+      "suggested_amount": 26962
     },
     {
-      "total_score": 54.3,
+      "total_score": 54.9,
+      "tech_score": 67.5,
+      "fund_score": 50,
+      "analyst_score": 50,
+      "mom_score": 62.6,
+      "vol_score": 51.2,
+      "news_score": 35.0,
+      "signal": "매수",
+      "reasons": "[중기·추세] | 단기>중기 | RSI 고점(68) | MACD 강세 | 5일 강세(6.3%) | 트럼프 악재 | 스토캐스틱 과매수(97/90)",
+      "strategy_tag": "중기·추세",
+      "code": "035720",
+      "ticker": "035720",
+      "name": "카카오",
+      "price": 37900.0,
+      "change_24h": 1.8817204301,
+      "atr": 1883.9285714286,
+      "target_price": 41667.8571,
+      "stoploss_price": 36016.0714,
+      "grade": "B (중립)",
+      "weight": 0.1309949893,
+      "suggested_amount": 26198
+    },
+    {
+      "total_score": 53.4,
       "tech_score": 47.5,
       "fund_score": 50,
       "analyst_score": 50,
-      "mom_score": 75.6,
-      "vol_score": 56.7,
+      "mom_score": 69.6,
+      "vol_score": 44.9,
       "news_score": 58.0,
       "signal": "중립",
-      "reasons": "[중기·추세] | 역배열 | MACD 반등 | 5일 강세(12.8%) | 트럼프 호재 | 스토캐스틱 상승 전환",
+      "reasons": "[중기·추세] | 역배열 | MACD 반등 | 5일 강세(9.8%) | 트럼프 호재 | 스토캐스틱 상승 전환",
       "strategy_tag": "중기·추세",
-      "code": "086520",
-      "ticker": "086520",
-      "name": "에코프로",
-      "price": 82000.0,
-      "change_24h": 5.9431524548,
-      "atr": 7821.4285714286,
+      "code": "006400",
+      "ticker": "006400",
+      "name": "삼성SDI",
+      "price": 419500.0,
+      "change_24h": 7.7,
+      "atr": 36464.2857142857,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.152485257,
-      "suggested_amount": 30497
+      "weight": 0.1274158912,
+      "suggested_amount": 25483
     },
     {
       "total_score": 52.8,
@@ -604,36 +654,13 @@
       "ticker": "005380",
       "name": "현대차",
       "price": 392500.0,
-      "change_24h": -0.13,
+      "change_24h": -0.1272264631,
       "atr": 28607.1428571429,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.148272957,
-      "suggested_amount": 29654
-    },
-    {
-      "total_score": 50.4,
-      "tech_score": 45.0,
-      "fund_score": 50,
-      "analyst_score": 50,
-      "mom_score": 54.4,
-      "vol_score": 37.2,
-      "news_score": 58.0,
-      "signal": "중립",
-      "reasons": "[중기·추세] | 단기<중기 | RSI 저점(39) | MACD 하락 | 트럼프 호재 | 스토캐스틱 상승 전환",
-      "strategy_tag": "중기·추세",
-      "code": "105560",
-      "ticker": "105560",
-      "name": "KB금융",
-      "price": 168800.0,
-      "change_24h": -0.41,
-      "atr": 8885.7142857143,
-      "target_price": null,
-      "stoploss_price": null,
-      "grade": "B (중립)",
-      "weight": 0.1415332772,
-      "suggested_amount": 28306
+      "weight": 0.125984252,
+      "suggested_amount": 25196
     },
     {
       "total_score": 50.3,
@@ -650,36 +677,36 @@
       "ticker": "373220",
       "name": "LG에너지솔루션",
       "price": 328500.0,
-      "change_24h": 3.96,
+      "change_24h": 3.9556962025,
       "atr": 20535.7142857143,
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.1412524572,
-      "suggested_amount": 28250
+      "weight": 0.1200190885,
+      "suggested_amount": 24003
     },
     {
-      "total_score": 46.3,
-      "tech_score": 32.5,
+      "total_score": 47.1,
+      "tech_score": 35.0,
       "fund_score": 50,
       "analyst_score": 50,
-      "mom_score": 68.2,
-      "vol_score": 47.8,
-      "news_score": 42.0,
+      "mom_score": 52.8,
+      "vol_score": 39.6,
+      "news_score": 58.0,
       "signal": "매도",
-      "reasons": "[중기·추세] | 역배열 | MACD 약세 | 5일 강세(9.1%) | 트럼프 악재 | 스토캐스틱 하락 전환",
+      "reasons": "[중기·추세] | 단기<중기 | MACD 약세 | 트럼프 호재 | 스토캐스틱 상승 전환",
       "strategy_tag": "중기·추세",
-      "code": "005930",
-      "ticker": "005930",
-      "name": "삼성전자",
-      "price": 240000.0,
-      "change_24h": 0.21,
-      "atr": 25485.7142857143,
-      "target_price": 189028.5714,
-      "stoploss_price": 265485.7143,
+      "code": "055550",
+      "ticker": "055550",
+      "name": "신한지주",
+      "price": 102300.0,
+      "change_24h": -0.3894839338,
+      "atr": 5414.2857142857,
+      "target_price": 91471.4286,
+      "stoploss_price": 107714.2857,
       "grade": "B (중립)",
-      "weight": 0.1300196574,
-      "suggested_amount": 26003
+      "weight": 0.1123836793,
+      "suggested_amount": 22476
     },
     {
       "total_score": 45.5,
@@ -701,8 +728,8 @@
       "target_price": 112271.4286,
       "stoploss_price": 138264.2857,
       "grade": "B (중립)",
-      "weight": 0.1277730974,
-      "suggested_amount": 25554
+      "weight": 0.1085659747,
+      "suggested_amount": 21713
     }
   ],
   "alt_signals": [
@@ -721,9 +748,11 @@
       "atr": 5.9464280265,
       "target_price": 134.0129,
       "stoploss_price": 116.1736,
+      "code": null,
+      "change_24h": null,
       "grade": "B+ (관심)",
-      "weight": 0.1842783505,
-      "suggested_amount": 36855
+      "weight": 0.1631954351,
+      "suggested_amount": 32639
     },
     {
       "total_score": 55.6,
@@ -740,9 +769,11 @@
       "atr": 0.5913146561,
       "target_price": 83.3726,
       "stoploss_price": 81.5987,
+      "code": null,
+      "change_24h": null,
       "grade": "B+ (관심)",
-      "weight": 0.1791237113,
-      "suggested_amount": 35824
+      "weight": 0.1586305278,
+      "suggested_amount": 31726
     },
     {
       "total_score": 51.3,
@@ -759,9 +790,11 @@
       "atr": 0.325938361,
       "target_price": null,
       "stoploss_price": null,
+      "code": null,
+      "change_24h": null,
       "grade": "B (중립)",
-      "weight": 0.1652706186,
-      "suggested_amount": 33054
+      "weight": 0.1463623395,
+      "suggested_amount": 29272
     },
     {
       "total_score": 50.3,
@@ -778,28 +811,11 @@
       "atr": 0.4146325245,
       "target_price": null,
       "stoploss_price": null,
+      "code": null,
+      "change_24h": null,
       "grade": "B (중립)",
-      "weight": 0.1620489691,
-      "suggested_amount": 32409
-    },
-    {
-      "total_score": 48.0,
-      "tech_score": 50.0,
-      "mom_score": 48.4,
-      "vol_score": 44.3,
-      "news_score": 42.0,
-      "signal": "중립",
-      "reasons": "[장기·안전자산] | 단기<중기 | MACD 반등 | 거시 악재 | 스토캐스틱 하락 전환",
-      "strategy_tag": "장기·안전자산",
-      "ticker": "GLD",
-      "name": "SPDR Gold Shares",
-      "price": 371.71,
-      "atr": 6.2607138497,
-      "target_price": null,
-      "stoploss_price": null,
-      "grade": "B (중립)",
-      "weight": 0.1546391753,
-      "suggested_amount": 30927
+      "weight": 0.1435092725,
+      "suggested_amount": 28701
     },
     {
       "total_score": 48.0,
@@ -816,9 +832,53 @@
       "atr": 1.7350000654,
       "target_price": null,
       "stoploss_price": null,
+      "code": null,
+      "change_24h": null,
       "grade": "B (중립)",
-      "weight": 0.1546391753,
-      "suggested_amount": 30927
+      "weight": 0.1369472183,
+      "suggested_amount": 27389
+    },
+    {
+      "total_score": 48.0,
+      "tech_score": 50.0,
+      "mom_score": 48.4,
+      "vol_score": 44.3,
+      "news_score": 42.0,
+      "signal": "중립",
+      "reasons": "[장기·안전자산] | 단기<중기 | MACD 반등 | 거시 악재 | 스토캐스틱 하락 전환",
+      "strategy_tag": "장기·안전자산",
+      "ticker": "GLD",
+      "name": "SPDR Gold Shares",
+      "price": 371.71,
+      "atr": 6.2607138497,
+      "target_price": null,
+      "stoploss_price": null,
+      "code": null,
+      "change_24h": null,
+      "grade": "B (중립)",
+      "weight": 0.1369472183,
+      "suggested_amount": 27389
+    },
+    {
+      "total_score": 40.1,
+      "tech_score": 27.5,
+      "mom_score": 47.9,
+      "vol_score": 44.7,
+      "news_score": 65.0,
+      "signal": "매도",
+      "reasons": "[장기·안전자산] | 역배열 | MACD 약세 | 거시 호재 | 스토캐스틱 과매도(20/16)",
+      "strategy_tag": "장기·안전자산",
+      "ticker": "411060",
+      "name": "KODEX 골드선물",
+      "price": 26005.0,
+      "atr": 488.5714285714,
+      "target_price": 25027.8571,
+      "stoploss_price": 26493.5714,
+      "code": "411060",
+      "change_24h": 0.89,
+      "grade": "C (주의)",
+      "weight": 0.1144079886,
+      "suggested_amount": 22881
     }
   ],
   "sim_report": {
