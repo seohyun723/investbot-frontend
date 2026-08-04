@@ -190,10 +190,11 @@ export default function Home() {
           ))}
         </nav>
         <button onClick={() => setEditMode(!editMode)}
-          className={`ml-2 flex-shrink-0 text-xs px-2 py-1 rounded-lg border ${
+          title="탭 순서 변경"
+          className={`ml-2 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border text-sm ${
             editMode ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"
           }`}>
-          {editMode ? "완료" : "순서변경"}
+          {editMode ? "✓" : "⋮⋮"}
         </button>
       </div>
       {editMode && (
