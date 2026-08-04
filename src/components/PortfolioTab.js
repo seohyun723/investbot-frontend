@@ -2,11 +2,21 @@
 import { useState, useEffect, useRef } from "react";
 
 const PORTFOLIO_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/portfolio.json";
-const REFRESH_INTERVAL = 5 * 60 * 1000; // 5분
+const REFRESH_INTERVAL = 5 * 60 * 1000;
 
-// 원화 종목 판별 (KRW- 코인, 6자리 국내코드)
+// 자산군/통화 판별
 function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
+}
+function assetType(symbol) {
+  const s = (symbol || "").toUpperCase();
+  if (s.startsWith("KRW-")) return "코인(원화)";
+  if (/^\d{6}$/.test(s)) return "국내주식";
+  if (s.includes("/USD") || s.includes("USDT")) return "코인(달러)";
+  return "해외주식";
+}
+function currencyLabel(symbol) {
+  return isKRW(symbol) ? "원(₩)" : "달러($)";
 }
 
 export default function PortfolioTab({ data }) {
@@ -25,15 +35,17 @@ export default function PortfolioTab({ data }) {
 
   const rate = data.usd_krw || 1436;
 
-  // 금액 포맷: 해외는 $ + 원화 병기, 국내/코인은 원화
+  const activeSymbol = mode === "dropdown" ? symbol : customSymbol.trim().toUpperCase();
+  const activeCurrency = currencyLabel(activeSymbol);
+  const activeType = activeSymbol ? assetType(activeSymbol) : "";
+
   const fmtPrice = (sym, val) => {
     if (val == null) return "-";
     if (isKRW(sym)) return `₩${Math.round(val).toLocaleString()}`;
     return `$${val.toFixed(2)}`;
   };
-  const fmtPriceKRW = (sym, val) => {
-    if (val == null) return "";
-    if (isKRW(sym)) return "";
+  const fmtKRW = (sym, val) => {
+    if (val == null || isKRW(sym)) return "";
     return `≈₩${Math.round(val * rate).toLocaleString()}`;
   };
 
@@ -41,7 +53,7 @@ export default function PortfolioTab({ data }) {
     ...(data.us_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
     ...(data.crypto_signals || []).map(s => ({ symbol: s.symbol, price: s.price, name: s.symbol })),
     ...(data.kr_signals || []).map(s => ({ symbol: s.code || s.ticker, price: s.price, name: s.name })),
-    ...(data.alt_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
+    ...(data.alt_signals || []).map(s => ({ symbol: s.ticker || s.code, price: s.price, name: s.name })),
   ];
 
   const loadPortfolio = async () => {
@@ -72,9 +84,7 @@ export default function PortfolioTab({ data }) {
     } catch (e) {}
   };
 
-  useEffect(() => {
-    loadPortfolio();
-  }, []);
+  useEffect(() => { loadPortfolio(); }, []);
 
   useEffect(() => {
     if (portfolio.length === 0) return;
@@ -91,7 +101,7 @@ export default function PortfolioTab({ data }) {
   };
 
   const handleAdd = async () => {
-    const targetSymbol = mode === "dropdown" ? symbol : customSymbol.trim().toUpperCase();
+    const targetSymbol = activeSymbol;
     if (!targetSymbol || !buyPrice || !quantity) {
       setMsg("모든 항목을 입력하세요");
       return;
@@ -107,6 +117,7 @@ export default function PortfolioTab({ data }) {
           buy_price: parseFloat(buyPrice),
           quantity: parseFloat(quantity),
           buy_date: new Date().toISOString(),
+          currency: isKRW(targetSymbol) ? "KRW" : "USD",
           verify: mode === "custom",
         }),
       });
@@ -149,7 +160,7 @@ export default function PortfolioTab({ data }) {
     fetchRealtimePrices(symbols);
   };
 
-  const addKRW = buyPrice && quantity && !isKRW(mode === "dropdown" ? symbol : customSymbol.trim().toUpperCase());
+  const totalAmt = buyPrice && quantity ? parseFloat(buyPrice) * parseFloat(quantity) : 0;
 
   return (
     <div>
@@ -164,9 +175,7 @@ export default function PortfolioTab({ data }) {
         </div>
         <div className="flex gap-2">
           {portfolio.length > 0 && (
-            <button onClick={handleManualRefresh} className="w-8 h-8 bg-card border border-border rounded-lg flex items-center justify-center text-xs">
-              🔄
-            </button>
+            <button onClick={handleManualRefresh} className="w-8 h-8 bg-card border border-border rounded-lg flex items-center justify-center text-xs">🔄</button>
           )}
           <button onClick={() => setShowAdd(!showAdd)} className="px-3 py-1.5 text-xs bg-accent text-white rounded-lg">
             {showAdd ? "취소" : "+ 매수 등록"}
@@ -187,7 +196,7 @@ export default function PortfolioTab({ data }) {
 
           {mode === "dropdown" ? (
             <div className="mb-3">
-              <label className="text-xs text-muted block mb-1">종목 검색 (U 입력 → UNI 등)</label>
+              <label className="text-xs text-muted block mb-1">종목 검색</label>
               <input
                 type="text" list="watchlist-symbols"
                 value={symbol}
@@ -219,18 +228,30 @@ export default function PortfolioTab({ data }) {
             </div>
           )}
 
+          {activeSymbol && (
+            <div className="mb-3 bg-accent/10 border border-accent/30 rounded-lg p-2 text-xs">
+              <span className="text-accent font-semibold">{activeType}</span>
+              <span className="text-muted"> · 매수가를 </span>
+              <span className="text-accent font-semibold">{activeCurrency}</span>
+              <span className="text-muted">로 입력하세요</span>
+            </div>
+          )}
+
           <div className="mb-3">
-            <label className="text-xs text-muted block mb-1">매수가</label>
-            <input type="number" step="0.01" value={buyPrice} onChange={(e) => setBuyPrice(e.target.value)} placeholder="0.00" className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
+            <label className="text-xs text-muted block mb-1">매수가 ({activeCurrency})</label>
+            <input type="number" step="0.01" value={buyPrice} onChange={(e) => setBuyPrice(e.target.value)}
+              placeholder={isKRW(activeSymbol) ? "예: 71000" : "예: 150.00"}
+              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
           </div>
           <div className="mb-3">
             <label className="text-xs text-muted block mb-1">수량</label>
-            <input type="number" step="0.0001" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0" className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
+            <input type="number" step="0.0001" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0"
+              className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
           </div>
-          {buyPrice && quantity && (
+          {totalAmt > 0 && (
             <div className="text-xs text-muted mb-3">
-              총 매수 금액: ${(parseFloat(buyPrice) * parseFloat(quantity)).toFixed(2)}
-              {addKRW && <span className="ml-1">≈₩{Math.round(parseFloat(buyPrice) * parseFloat(quantity) * rate).toLocaleString()}</span>}
+              총 매수 금액: {isKRW(activeSymbol) ? `₩${Math.round(totalAmt).toLocaleString()}` : `$${totalAmt.toFixed(2)}`}
+              {!isKRW(activeSymbol) && <span className="ml-1">≈₩{Math.round(totalAmt * rate).toLocaleString()}</span>}
             </div>
           )}
           <button onClick={handleAdd} disabled={loading} className="w-full py-2 bg-accent text-white rounded-lg text-sm disabled:opacity-50">
@@ -262,6 +283,7 @@ export default function PortfolioTab({ data }) {
                       {isRealtime && <span className="text-xs text-danger">● 실시간</span>}
                     </div>
                     {h.name && <div className="text-xs text-muted">{h.name}</div>}
+                    <div className="text-[10px] text-muted mt-0.5">{assetType(h.symbol)}</div>
                     <div className="text-xs text-muted mt-1">
                       {new Date(h.buy_date).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" })}
                     </div>
@@ -273,12 +295,12 @@ export default function PortfolioTab({ data }) {
                   <div>
                     <div className="text-muted">매수가</div>
                     <div>{fmtPrice(h.symbol, h.buy_price)}</div>
-                    {!krw && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, h.buy_price)}</div>}
+                    {!krw && <div className="text-[10px] text-muted">{fmtKRW(h.symbol, h.buy_price)}</div>}
                   </div>
                   <div>
                     <div className="text-muted">현재가</div>
                     <div>{fmtPrice(h.symbol, current)}</div>
-                    {!krw && current && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, current)}</div>}
+                    {!krw && current && <div className="text-[10px] text-muted">{fmtKRW(h.symbol, current)}</div>}
                   </div>
                   <div>
                     <div className="text-muted">수량</div>
@@ -287,7 +309,7 @@ export default function PortfolioTab({ data }) {
                   <div>
                     <div className="text-muted">평가금액</div>
                     <div>{current ? fmtPrice(h.symbol, current * h.quantity) : "-"}</div>
-                    {!krw && current && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, current * h.quantity)}</div>}
+                    {!krw && current && <div className="text-[10px] text-muted">{fmtKRW(h.symbol, current * h.quantity)}</div>}
                   </div>
                 </div>
 
