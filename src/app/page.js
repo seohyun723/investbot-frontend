@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Dashboard from "../components/Dashboard";
 
 const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/latest.json";
@@ -20,9 +20,7 @@ export default function Home() {
   const [tab, setTab] = useState("today");
   const [progress, setProgress] = useState("");
   const [tabOrder, setTabOrder] = useState(DEFAULT_ORDER);
-  const [dragIdx, setDragIdx] = useState(null);
-  const holdTimer = useRef(null);
-  const [holding, setHolding] = useState(null);
+  const [editMode, setEditMode] = useState(false);
 
   const loadData = async () => {
     try {
@@ -63,10 +61,8 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
-    // URL 해시에서 탭 복원
     const hash = window.location.hash.replace("#", "");
     if (VALID_TABS.includes(hash)) setTab(hash);
-    // URL 쿼리에서 탭 순서 복원 (?order=today,sim,...)
     const params = new URLSearchParams(window.location.search);
     const savedOrder = params.get("order");
     if (savedOrder) {
@@ -97,27 +93,11 @@ export default function Home() {
     }
   };
 
-  // 롱프레스 시작 → 드래그 모드
-  const handlePressStart = (idx) => {
-    holdTimer.current = setTimeout(() => {
-      setHolding(idx);
-      setDragIdx(idx);
-    }, 400);
-  };
-  const handlePressEnd = (id) => {
-    if (holdTimer.current) clearTimeout(holdTimer.current);
-    if (holding === null) {
-      changeTab(id); // 짧게 누르면 탭 전환
-    }
-    setHolding(null);
-    setDragIdx(null);
-  };
-  const handleDragEnter = (idx) => {
-    if (dragIdx === null || dragIdx === idx) return;
+  const moveTab = (idx, dir) => {
+    const newIdx = idx + dir;
+    if (newIdx < 0 || newIdx >= tabOrder.length) return;
     const newOrder = [...tabOrder];
-    const [moved] = newOrder.splice(dragIdx, 1);
-    newOrder.splice(idx, 0, moved);
-    setDragIdx(idx);
+    [newOrder[idx], newOrder[newIdx]] = [newOrder[newIdx], newOrder[idx]];
     saveOrder(newOrder);
   };
 
@@ -178,27 +158,38 @@ export default function Home() {
         </div>
       )}
 
-      <nav className="flex gap-2 mb-2 overflow-x-auto">
-        {tabOrder.map((id, idx) => (
-          <button
-            key={id}
-            onMouseDown={() => handlePressStart(idx)}
-            onMouseUp={() => handlePressEnd(id)}
-            onMouseLeave={() => { if (holdTimer.current) clearTimeout(holdTimer.current); }}
-            onTouchStart={() => handlePressStart(idx)}
-            onTouchEnd={() => handlePressEnd(id)}
-            onMouseEnter={() => holding !== null && handleDragEnter(idx)}
-            className={`px-4 py-2 rounded-full text-xs whitespace-nowrap border transition-all select-none ${
-              holding === idx ? "scale-105 ring-2 ring-accent opacity-80" : ""
-            } ${
-              tab === id ? "bg-white text-black border-white" : "bg-card border-border text-muted"
-            }`}
-          >
-            {holding === idx && "⣿ "}{TAB_LABELS[id]}
-          </button>
-        ))}
-      </nav>
-      <div className="text-[10px] text-muted mb-4 pl-1">💡 탭을 길게 눌러 순서 변경</div>
+      <div className="flex items-center justify-between mb-2">
+        <nav className="flex gap-2 overflow-x-auto">
+          {tabOrder.map((id, idx) => (
+            <div key={id} className="flex items-center flex-shrink-0">
+              {editMode && (
+                <button onClick={() => moveTab(idx, -1)} disabled={idx === 0}
+                  className="px-1 text-muted disabled:opacity-20 text-sm">◀</button>
+              )}
+              <button onClick={() => changeTab(id)}
+                className={`px-4 py-2 rounded-full text-xs whitespace-nowrap border ${
+                  tab === id ? "bg-white text-black border-white" : "bg-card border-border text-muted"
+                } ${editMode ? "ring-1 ring-accent/40" : ""}`}>
+                {TAB_LABELS[id]}
+              </button>
+              {editMode && (
+                <button onClick={() => moveTab(idx, 1)} disabled={idx === tabOrder.length - 1}
+                  className="px-1 text-muted disabled:opacity-20 text-sm">▶</button>
+              )}
+            </div>
+          ))}
+        </nav>
+        <button onClick={() => setEditMode(!editMode)}
+          className={`ml-2 flex-shrink-0 text-xs px-2 py-1 rounded-lg border ${
+            editMode ? "bg-accent text-white border-accent" : "bg-card border-border text-muted"
+          }`}>
+          {editMode ? "완료" : "순서변경"}
+        </button>
+      </div>
+      {editMode && (
+        <div className="text-[10px] text-muted mb-4 pl-1">◀ ▶ 버튼으로 탭 순서를 바꾸세요</div>
+      )}
+      {!editMode && <div className="mb-4" />}
 
       <Dashboard data={data} tab={tab} />
     </main>
