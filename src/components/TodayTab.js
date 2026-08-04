@@ -1,6 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SignalCard from "./SignalCard";
+
+const SIM_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/simulation.json";
+const PORTFOLIO_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/portfolio.json";
 
 function sigPriority(sig) {
   const s = String(sig || "");
@@ -21,7 +24,6 @@ function sortByStrength(items) {
   });
 }
 
-// VIX 상태 이모지
 function vixEmoji(v) {
   if (v == null) return "";
   if (v < 15) return "😌";
@@ -30,7 +32,6 @@ function vixEmoji(v) {
   return "🔴";
 }
 
-// 공포탐욕/코인심리 이모지 (0~100)
 function fgEmoji(v) {
   if (v == null) return "";
   if (v < 25) return "😱";
@@ -70,12 +71,37 @@ function SentimentItem({ label, value, sub, emoji }) {
 
 export default function TodayTab({ data }) {
   const [market, setMarket] = useState("all");
+  const [myHoldings, setMyHoldings] = useState([]);
+
   const top3 = data.top3 || [];
   const us = data.us_signals || [];
   const crypto = data.crypto_signals || [];
   const kr = data.kr_signals || [];
   const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
+
+  // 보유 종목 심볼 로드 (시뮬 + 포트폴리오)
+  useEffect(() => {
+    const load = async () => {
+      const symbols = new Set();
+      try {
+        const r = await fetch(`${SIM_URL}?t=${Date.now()}`);
+        if (r.ok) {
+          const j = await r.json();
+          (j.holdings || []).filter(h => h.status === "active").forEach(h => symbols.add(h.symbol));
+        }
+      } catch (e) {}
+      try {
+        const r = await fetch(`${PORTFOLIO_URL}?t=${Date.now()}`);
+        if (r.ok) {
+          const j = await r.json();
+          (j.holdings || []).forEach(h => symbols.add(h.symbol));
+        }
+      } catch (e) {}
+      setMyHoldings([...symbols]);
+    };
+    load();
+  }, []);
 
   const rawIndicators = (data.market_indicators || []).filter(
     m => !(m.name || "").includes("VIX")
@@ -93,8 +119,18 @@ export default function TodayTab({ data }) {
   const cryptoFg = data.crypto_fear_greed || null;
   const vix = fg.vix;
 
+  // 전체 종목에서 심볼 매칭 함수
+  const allItems = [...us, ...crypto, ...kr, ...alt];
+  const getSymbol = (item) => item.ticker || item.symbol || item.code || "";
+
+  // "나의 종목" = 보유 심볼과 매칭되는 시그널
+  const myItems = sortByStrength(
+    allItems.filter(item => myHoldings.includes(getSymbol(item)))
+  );
+
   const filtered = market === "all"
     ? sortByStrength([...us, ...crypto, ...kr, ...alt])
+    : market === "mine" ? myItems
     : market === "us" ? us
     : market === "crypto" ? crypto
     : market === "kr" ? kr
@@ -144,6 +180,7 @@ export default function TodayTab({ data }) {
       <div className="flex gap-2 mt-6 mb-3 overflow-x-auto">
         {[
           { id: "all", label: "전체" },
+          { id: "mine", label: `📌 나의 종목${myHoldings.length ? ` (${myItems.length})` : ""}` },
           { id: "us", label: "🇺🇸 해외" },
           { id: "crypto", label: "🪙 코인" },
           { id: "kr", label: "🇰🇷 국내" },
@@ -158,7 +195,12 @@ export default function TodayTab({ data }) {
         ))}
       </div>
 
-      {filtered.length === 0 ? (
+      {market === "mine" && myItems.length === 0 ? (
+        <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
+          보유 종목이 없습니다<br />
+          <span className="text-[11px]">시뮬레이션 매수 또는 포트폴리오 등록 시 여기 표시됩니다</span>
+        </div>
+      ) : filtered.length === 0 ? (
         <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
           해당 시그널이 없습니다
         </div>
