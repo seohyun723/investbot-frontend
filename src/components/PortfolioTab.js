@@ -4,6 +4,11 @@ import { useState, useEffect, useRef } from "react";
 const PORTFOLIO_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/portfolio.json";
 const REFRESH_INTERVAL = 5 * 60 * 1000; // 5분
 
+// 원화 종목 판별 (KRW- 코인, 6자리 국내코드)
+function isKRW(symbol) {
+  return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
+}
+
 export default function PortfolioTab({ data }) {
   const [portfolio, setPortfolio] = useState([]);
   const [realtimePrices, setRealtimePrices] = useState({});
@@ -18,10 +23,25 @@ export default function PortfolioTab({ data }) {
   const [lastUpdate, setLastUpdate] = useState(null);
   const timerRef = useRef(null);
 
+  const rate = data.usd_krw || 1436;
+
+  // 금액 포맷: 해외는 $ + 원화 병기, 국내/코인은 원화
+  const fmtPrice = (sym, val) => {
+    if (val == null) return "-";
+    if (isKRW(sym)) return `₩${Math.round(val).toLocaleString()}`;
+    return `$${val.toFixed(2)}`;
+  };
+  const fmtPriceKRW = (sym, val) => {
+    if (val == null) return "";
+    if (isKRW(sym)) return "";
+    return `≈₩${Math.round(val * rate).toLocaleString()}`;
+  };
+
   const allSignals = [
     ...(data.us_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
     ...(data.crypto_signals || []).map(s => ({ symbol: s.symbol, price: s.price, name: s.symbol })),
     ...(data.kr_signals || []).map(s => ({ symbol: s.code || s.ticker, price: s.price, name: s.name })),
+    ...(data.alt_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
   ];
 
   const loadPortfolio = async () => {
@@ -129,6 +149,8 @@ export default function PortfolioTab({ data }) {
     fetchRealtimePrices(symbols);
   };
 
+  const addKRW = buyPrice && quantity && !isKRW(mode === "dropdown" ? symbol : customSymbol.trim().toUpperCase());
+
   return (
     <div>
       <div className="flex justify-between items-center mb-3">
@@ -206,7 +228,10 @@ export default function PortfolioTab({ data }) {
             <input type="number" step="0.0001" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0" className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-white" />
           </div>
           {buyPrice && quantity && (
-            <div className="text-xs text-muted mb-3">총 매수 금액: ${(parseFloat(buyPrice) * parseFloat(quantity)).toFixed(2)}</div>
+            <div className="text-xs text-muted mb-3">
+              총 매수 금액: ${(parseFloat(buyPrice) * parseFloat(quantity)).toFixed(2)}
+              {addKRW && <span className="ml-1">≈₩{Math.round(parseFloat(buyPrice) * parseFloat(quantity) * rate).toLocaleString()}</span>}
+            </div>
           )}
           <button onClick={handleAdd} disabled={loading} className="w-full py-2 bg-accent text-white rounded-lg text-sm disabled:opacity-50">
             {loading ? "처리 중..." : "등록하기"}
@@ -225,6 +250,8 @@ export default function PortfolioTab({ data }) {
             const current = getCurrentPrice(h.symbol);
             const pnl = current ? ((current - h.buy_price) / h.buy_price) * 100 : 0;
             const isRealtime = realtimePrices[h.symbol]?.price;
+            const krw = isKRW(h.symbol);
+            const pnlAmount = current ? Math.abs((current - h.buy_price) * h.quantity) : 0;
 
             return (
               <div key={h.id} className="bg-card border border-border rounded-xl p-4">
@@ -243,15 +270,30 @@ export default function PortfolioTab({ data }) {
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div><div className="text-muted">매수가</div><div>${h.buy_price.toFixed(2)}</div></div>
-                  <div><div className="text-muted">현재가</div><div>{current ? `$${current.toFixed(2)}` : "-"}</div></div>
-                  <div><div className="text-muted">수량</div><div>{h.quantity}</div></div>
-                  <div><div className="text-muted">평가금액</div><div>{current ? `$${(current * h.quantity).toFixed(2)}` : "-"}</div></div>
+                  <div>
+                    <div className="text-muted">매수가</div>
+                    <div>{fmtPrice(h.symbol, h.buy_price)}</div>
+                    {!krw && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, h.buy_price)}</div>}
+                  </div>
+                  <div>
+                    <div className="text-muted">현재가</div>
+                    <div>{fmtPrice(h.symbol, current)}</div>
+                    {!krw && current && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, current)}</div>}
+                  </div>
+                  <div>
+                    <div className="text-muted">수량</div>
+                    <div>{h.quantity}</div>
+                  </div>
+                  <div>
+                    <div className="text-muted">평가금액</div>
+                    <div>{current ? fmtPrice(h.symbol, current * h.quantity) : "-"}</div>
+                    {!krw && current && <div className="text-[10px] text-muted">{fmtPriceKRW(h.symbol, current * h.quantity)}</div>}
+                  </div>
                 </div>
 
                 {current && (
                   <div className={`mt-2 pt-2 border-t border-border text-sm font-semibold ${pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                    {pnl >= 0 ? "▲" : "▼"} {Math.abs(pnl).toFixed(2)}% (${Math.abs((current - h.buy_price) * h.quantity).toFixed(2)})
+                    {pnl >= 0 ? "▲" : "▼"} {Math.abs(pnl).toFixed(2)}% ({krw ? `₩${Math.round(pnlAmount).toLocaleString()}` : `$${pnlAmount.toFixed(2)}`})
                   </div>
                 )}
               </div>
