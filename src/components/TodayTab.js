@@ -77,7 +77,9 @@ export default function TodayTab({ data }) {
   const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
 
-  const rawIndicators = data.market_indicators || [];
+  const rawIndicators = (data.market_indicators || []).filter(
+    m => !(m.name || "").includes("VIX")
+  );
   const ORDER = ["원달러", "KOSPI", "NASDAQ", "S&P 500"];
   const marketIndicators = [...rawIndicators].sort((a, b) => {
     const ia = ORDER.indexOf(a.name); const ib = ORDER.indexOf(b.name);
