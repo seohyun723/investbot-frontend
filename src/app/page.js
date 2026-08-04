@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Dashboard from "../components/Dashboard";
 
 const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/latest.json";
@@ -21,6 +21,10 @@ export default function Home() {
   const [progress, setProgress] = useState("");
   const [tabOrder, setTabOrder] = useState(DEFAULT_ORDER);
   const [editMode, setEditMode] = useState(false);
+  const [pullDist, setPullDist] = useState(0);
+  const [pullRefreshing, setPullRefreshing] = useState(false);
+  const touchStartY = useRef(0);
+  const pulling = useRef(false);
 
   const loadData = async () => {
     try {
@@ -77,6 +81,36 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
+  // 당겨서 새로고침
+  const handleTouchStart = (e) => {
+    if (window.scrollY <= 0) {
+      touchStartY.current = e.touches[0].clientY;
+      pulling.current = true;
+    }
+  };
+  const handleTouchMove = (e) => {
+    if (!pulling.current || pullRefreshing) return;
+    const dist = e.touches[0].clientY - touchStartY.current;
+    if (dist > 0 && window.scrollY <= 0) {
+      setPullDist(Math.min(dist * 0.5, 80));
+    }
+  };
+  const handleTouchEnd = async () => {
+    if (!pulling.current) return;
+    pulling.current = false;
+    if (pullDist > 50) {
+      setPullRefreshing(true);
+      setPullDist(60);
+      await loadData();
+      setTimeout(() => {
+        setPullRefreshing(false);
+        setPullDist(0);
+      }, 500);
+    } else {
+      setPullDist(0);
+    }
+  };
+
   const changeTab = (id) => {
     setTab(id);
     if (typeof window !== "undefined") {
@@ -121,7 +155,22 @@ export default function Home() {
   })() : "";
 
   return (
-    <main className="max-w-2xl mx-auto p-4 pb-20">
+    <main
+      className="max-w-2xl mx-auto p-4 pb-20"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* 당겨서 새로고침 인디케이터 */}
+      {pullDist > 0 && (
+        <div className="flex items-center justify-center overflow-hidden transition-all"
+          style={{ height: `${pullDist}px` }}>
+          <span className={`text-xs text-muted ${pullRefreshing ? "animate-pulse" : ""}`}>
+            {pullRefreshing ? "🔄 새로고침 중..." : pullDist > 50 ? "↓ 놓으면 새로고침" : "↓ 당겨서 새로고침"}
+          </span>
+        </div>
+      )}
+
       <header className="flex justify-between items-center mb-3">
         <div>
           <div className="text-xs text-muted tracking-wider">INVESTBOT</div>
@@ -131,13 +180,6 @@ export default function Home() {
           )}
         </div>
         <div className="flex gap-2 items-center">
-          <button
-            onClick={loadData}
-            className="w-9 h-9 bg-card border border-border rounded-lg flex items-center justify-center"
-            title="새로고침"
-          >
-            🔄
-          </button>
           <button
             onClick={triggerReanalysis}
             disabled={refreshing}
