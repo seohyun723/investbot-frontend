@@ -80,7 +80,7 @@ export default function TodayTab({ data }) {
   const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
 
-  // 보유 종목 심볼 로드 (시뮬 + 포트폴리오)
+  // 보유 종목 심볼 로드 (시뮬 active + 포트폴리오)
   useEffect(() => {
     const load = async () => {
       const symbols = new Set();
@@ -119,22 +119,30 @@ export default function TodayTab({ data }) {
   const cryptoFg = data.crypto_fear_greed || null;
   const vix = fg.vix;
 
-  // 전체 종목에서 심볼 매칭 함수
-  const allItems = [...us, ...crypto, ...kr, ...alt];
   const getSymbol = (item) => item.ticker || item.symbol || item.code || "";
 
-  // "나의 종목" = 보유 심볼과 매칭되는 시그널
-  const myItems = sortByStrength(
-    allItems.filter(item => myHoldings.includes(getSymbol(item)))
-  );
-
-  const filtered = market === "all"
-    ? sortByStrength([...us, ...crypto, ...kr, ...alt])
-    : market === "mine" ? myItems
+  // 필터별 기본 목록
+  const baseList = market === "all"
+    ? [...us, ...crypto, ...kr, ...alt]
     : market === "us" ? us
     : market === "crypto" ? crypto
     : market === "kr" ? kr
     : alt;
+
+  // 보유 종목 여부 판별
+  const isHeld = (item) => myHoldings.includes(getSymbol(item));
+
+  // 상단: 점수순 정렬된 일반 목록 (보유 종목도 점수 높으면 여기 포함됨)
+  const sortedList = sortByStrength(baseList);
+
+  // 하단에 추가로 붙일 보유 종목 = 보유 중인데 상단 목록에 없는 것
+  // (all 필터는 전체가 다 나오므로 하단 추가 불필요. 개별 필터에서 잘린 보유 종목만 하단에)
+  const shownSymbols = new Set(sortedList.map(getSymbol));
+  const heldElsewhere = market === "all"
+    ? []
+    : [...us, ...crypto, ...kr, ...alt].filter(
+        item => isHeld(item) && !shownSymbols.has(getSymbol(item))
+      );
 
   return (
     <>
@@ -180,7 +188,6 @@ export default function TodayTab({ data }) {
       <div className="flex gap-2 mt-6 mb-3 overflow-x-auto">
         {[
           { id: "all", label: "전체" },
-          { id: "mine", label: `📌 나의 종목${myHoldings.length ? ` (${myItems.length})` : ""}` },
           { id: "us", label: "🇺🇸 해외" },
           { id: "crypto", label: "🪙 코인" },
           { id: "kr", label: "🇰🇷 국내" },
@@ -195,17 +202,26 @@ export default function TodayTab({ data }) {
         ))}
       </div>
 
-      {market === "mine" && myItems.length === 0 ? (
-        <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
-          보유 종목이 없습니다<br />
-          <span className="text-[11px]">시뮬레이션 매수 또는 포트폴리오 등록 시 여기 표시됩니다</span>
-        </div>
-      ) : filtered.length === 0 ? (
+      {sortedList.length === 0 && heldElsewhere.length === 0 ? (
         <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
           해당 시그널이 없습니다
         </div>
       ) : (
-        filtered.map((item, i) => <SignalCard key={i} item={item} rate={rate} />)
+        <>
+          {sortedList.map((item, i) => (
+            <SignalCard key={`main-${i}`} item={item} rate={rate} held={isHeld(item)} />
+          ))}
+          {heldElsewhere.length > 0 && (
+            <>
+              <div className="text-[11px] text-muted mt-4 mb-2 pl-1 flex items-center gap-1">
+                <span>📌 보유 중 (점수 무관 표시)</span>
+              </div>
+              {heldElsewhere.map((item, i) => (
+                <SignalCard key={`held-${i}`} item={item} rate={rate} held />
+              ))}
+            </>
+          )}
+        </>
       )}
     </>
   );
