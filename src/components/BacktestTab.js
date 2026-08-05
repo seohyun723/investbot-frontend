@@ -139,6 +139,7 @@ export default function BacktestTab({ data }) {
             <div className="flex gap-2 mb-3 overflow-x-auto">
               {[
                 { id: "summary", label: "요약" },
+                { id: "signal", label: "📊 신호별" },
                 { id: "symbol", label: "종목별" },
                 { id: "market", label: "시장별" },
                 { id: "best", label: "TOP/WORST" },
@@ -157,9 +158,40 @@ export default function BacktestTab({ data }) {
               </div>
             )}
 
-            {view === "symbol" && (
+            {view === "signal" && (
               <div className="space-y-2">
-                {simStats.bySymbol.map((s, i) => (
+                <div className="text-xs text-muted mb-1">신호별 성적표 — 어떤 신호가 실제로 잘 맞는지 추적</div>
+                {simStats.bySignal.length === 0 ? (
+                  <div className="text-center py-6 text-muted text-xs bg-card border border-dashed border-border rounded-lg">
+                    매도 데이터가 쌓이면 신호별 승률이 표시됩니다
+                  </div>
+                ) : simStats.bySignal.map((s, i) => {
+                  const wr = s.trades > 0 ? (s.wins / s.trades) * 100 : 0;
+                  const wrColor = wr >= 60 ? "text-danger" : wr >= 40 ? "text-muted" : "text-blue-400";
+                  return (
+                    <div key={i} className="bg-card border border-border rounded-lg p-3">
+                      <div className="flex justify-between items-center">
+                        <div className="font-semibold text-sm">{s.signal}</div>
+                        <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
+                          {s.pnl >= 0 ? "+" : ""}{Math.round(s.pnl).toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 mt-2">
+                        <div className={`text-xs font-bold ${wrColor}`}>승률 {wr.toFixed(0)}%</div>
+                        <div className="text-xs text-muted">({s.wins}/{s.trades}회)</div>
+                      </div>
+                      <div className="mt-1 h-1.5 bg-border rounded-full overflow-hidden">
+                        <div className={`h-full ${wr >= 60 ? "bg-danger" : wr >= 40 ? "bg-muted" : "bg-blue-400"}`}
+                          style={{ width: `${wr}%` }}></div>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="text-[11px] text-muted mt-2 pl-1">
+                  💡 승률 높은 신호는 신뢰, 낮은 신호는 재검토. 데이터가 쌓일수록 정확해집니다.
+                </div>
+              </div>
+            )}
                   <div key={i} className="bg-card border border-border rounded-lg p-3">
                     <div className="flex justify-between items-center">
                       <div className="font-semibold text-sm">{s.symbol}</div>
