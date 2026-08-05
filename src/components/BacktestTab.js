@@ -25,7 +25,7 @@ function calcStats(history, holdings) {
   const byMarket = { crypto: { trades: 0, wins: 0, pnl: 0 }, us: { trades: 0, wins: 0, pnl: 0 }, kr: { trades: 0, wins: 0, pnl: 0 } };
   sells.forEach(s => {
     const sym = s.symbol;
-    const market = sym.includes("/USD") ? "crypto" : /^\d{6}$/.test(sym) ? "kr" : "us";
+    const market = sym.includes("/USD") || sym.startsWith("KRW-") ? "crypto" : /^\d{6}$/.test(sym) ? "kr" : "us";
     byMarket[market].trades++;
     if ((s.pnl || 0) > 0) byMarket[market].wins++;
     byMarket[market].pnl += (s.pnl || 0);
@@ -53,6 +53,8 @@ function calcStats(history, holdings) {
   };
 }
 
+const won = (v) => `₩${Math.round(v || 0).toLocaleString()}`;
+
 export default function BacktestTab({ data }) {
   const [sim, setSim] = useState(null);
   const [portfolio, setPortfolio] = useState(null);
@@ -79,6 +81,10 @@ export default function BacktestTab({ data }) {
 
   const simStats = sim ? calcStats(sim.history || [], sim.holdings || []) : null;
 
+  const rate = data.usd_krw || 1436;
+  const isKRW = (sym) => (sym || "").startsWith("KRW-") || /^\d{6}$/.test(sym || "");
+  const toKRW = (sym, val) => isKRW(sym) ? val : val * rate;
+
   const portfolioHoldings = portfolio?.holdings || [];
   const currentPrices = {};
   (data.us_signals || []).forEach(s => { currentPrices[s.ticker] = s.price; });
@@ -90,9 +96,9 @@ export default function BacktestTab({ data }) {
     totalHoldings: activePortfolio.length,
     unrealizedPnl: activePortfolio.reduce((sum, h) => {
       const cur = currentPrices[h.symbol];
-      return cur ? sum + (cur - h.buy_price) * h.quantity : sum;
+      return cur ? sum + toKRW(h.symbol, (cur - h.buy_price) * h.quantity) : sum;
     }, 0),
-    totalInvested: activePortfolio.reduce((sum, h) => sum + h.buy_price * h.quantity, 0),
+    totalInvested: activePortfolio.reduce((sum, h) => sum + toKRW(h.symbol, h.buy_price * h.quantity), 0),
   };
 
   return (
@@ -130,7 +136,7 @@ export default function BacktestTab({ data }) {
                 <div>
                   <div className="text-xs text-muted">실현 손익</div>
                   <div className={`text-lg font-bold ${simStats.totalPnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                    {simStats.totalPnl >= 0 ? "+" : ""}{Math.round(simStats.totalPnl).toLocaleString()}
+                    {simStats.totalPnl >= 0 ? "+" : ""}{won(simStats.totalPnl)}
                   </div>
                 </div>
               </div>
@@ -173,7 +179,7 @@ export default function BacktestTab({ data }) {
                       <div className="flex justify-between items-center">
                         <div className="font-semibold text-sm">{s.signal}</div>
                         <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                          {s.pnl >= 0 ? "+" : ""}{Math.round(s.pnl).toLocaleString()}
+                          {s.pnl >= 0 ? "+" : ""}{won(s.pnl)}
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mt-2">
@@ -192,10 +198,14 @@ export default function BacktestTab({ data }) {
                 </div>
               </div>
             )}
+
+            {view === "symbol" && (
+              <div className="space-y-2">
+                {simStats.bySymbol.map((s, i) => (
                   <div key={i} className="bg-card border border-border rounded-lg p-3">
                     <div className="flex justify-between items-center">
                       <div className="font-semibold text-sm">{s.symbol}</div>
-                      <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>{s.pnl >= 0 ? "+" : ""}{Math.round(s.pnl).toLocaleString()}</div>
+                      <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>{s.pnl >= 0 ? "+" : ""}{won(s.pnl)}</div>
                     </div>
                     <div className="text-xs text-muted mt-1">거래 {s.trades}회 · 승률 {((s.wins / s.trades) * 100).toFixed(0)}%</div>
                   </div>
@@ -211,7 +221,7 @@ export default function BacktestTab({ data }) {
                     <div key={key} className="bg-card border border-border rounded-lg p-3">
                       <div className="flex justify-between items-center">
                         <div className="font-semibold text-sm">{label}</div>
-                        <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>{s.pnl >= 0 ? "+" : ""}{Math.round(s.pnl).toLocaleString()}</div>
+                        <div className={`text-sm font-semibold ${s.pnl >= 0 ? "text-danger" : "text-blue-400"}`}>{s.pnl >= 0 ? "+" : ""}{won(s.pnl)}</div>
                       </div>
                       <div className="text-xs text-muted mt-1">거래 {s.trades}회 · 승률 {s.trades > 0 ? ((s.wins / s.trades) * 100).toFixed(0) : 0}%</div>
                     </div>
@@ -227,7 +237,7 @@ export default function BacktestTab({ data }) {
                   {simStats.best5.map((t, i) => (
                     <div key={i} className="bg-card border border-border rounded-lg p-2 text-xs flex justify-between">
                       <div>{t.symbol}</div>
-                      <div className="text-danger font-semibold">+{Math.round(t.pnl || 0).toLocaleString()}</div>
+                      <div className="text-danger font-semibold">+{won(t.pnl)}</div>
                     </div>
                   ))}
                 </div>
@@ -236,7 +246,7 @@ export default function BacktestTab({ data }) {
                   {simStats.worst5.map((t, i) => (
                     <div key={i} className="bg-card border border-border rounded-lg p-2 text-xs flex justify-between">
                       <div>{t.symbol}</div>
-                      <div className="text-blue-400 font-semibold">{Math.round(t.pnl || 0).toLocaleString()}</div>
+                      <div className="text-blue-400 font-semibold">{won(t.pnl)}</div>
                     </div>
                   ))}
                 </div>
@@ -263,12 +273,12 @@ export default function BacktestTab({ data }) {
                 </div>
                 <div>
                   <div className="text-xs text-muted">투자금</div>
-                  <div className="text-lg font-bold">${realStats.totalInvested.toFixed(0)}</div>
+                  <div className="text-lg font-bold">{won(realStats.totalInvested)}</div>
                 </div>
                 <div>
                   <div className="text-xs text-muted">평가 손익</div>
                   <div className={`text-lg font-bold ${realStats.unrealizedPnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                    {realStats.unrealizedPnl >= 0 ? "+" : ""}${realStats.unrealizedPnl.toFixed(0)}
+                    {realStats.unrealizedPnl >= 0 ? "+" : ""}{won(realStats.unrealizedPnl)}
                   </div>
                 </div>
               </div>
@@ -278,6 +288,7 @@ export default function BacktestTab({ data }) {
               {activePortfolio.map((h, i) => {
                 const cur = currentPrices[h.symbol];
                 const pnl = cur ? ((cur - h.buy_price) / h.buy_price) * 100 : 0;
+                const cs = isKRW(h.symbol) ? "₩" : "$";
                 return (
                   <div key={i} className="bg-card border border-border rounded-lg p-3">
                     <div className="flex justify-between items-center mb-1">
@@ -288,7 +299,7 @@ export default function BacktestTab({ data }) {
                         </div>
                       )}
                     </div>
-                    <div className="text-xs text-muted">매수 ${h.buy_price?.toFixed(2)} → 현재 {cur ? `$${cur.toFixed(2)}` : "-"}</div>
+                    <div className="text-xs text-muted">매수 {cs}{h.buy_price?.toLocaleString()} → 현재 {cur ? `${cs}${cur.toLocaleString()}` : "-"}</div>
                   </div>
                 );
               })}
@@ -304,7 +315,7 @@ export default function BacktestTab({ data }) {
       {mode === "compare" && (
         <div className="space-y-3">
           <div className="text-xs text-muted mb-2">🤖 시뮬 vs 💰 실전 비교</div>
-          
+
           <div className="grid grid-cols-2 gap-2">
             <div className="bg-card border border-border rounded-lg p-3">
               <div className="text-xs text-muted mb-1">🤖 시뮬 승률</div>
@@ -322,13 +333,13 @@ export default function BacktestTab({ data }) {
             <div className="bg-card border border-border rounded-lg p-3">
               <div className="text-xs text-muted mb-1">🤖 시뮬 손익</div>
               <div className={`text-lg font-bold ${(simStats?.totalPnl || 0) >= 0 ? "text-danger" : "text-blue-400"}`}>
-                {(simStats?.totalPnl || 0) >= 0 ? "+" : ""}{Math.round(simStats?.totalPnl || 0).toLocaleString()}
+                {(simStats?.totalPnl || 0) >= 0 ? "+" : ""}{won(simStats?.totalPnl || 0)}
               </div>
             </div>
             <div className="bg-card border border-border rounded-lg p-3">
               <div className="text-xs text-muted mb-1">💰 실전 평가손익</div>
               <div className={`text-lg font-bold ${realStats.unrealizedPnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                {realStats.unrealizedPnl >= 0 ? "+" : ""}${realStats.unrealizedPnl.toFixed(0)}
+                {realStats.unrealizedPnl >= 0 ? "+" : ""}{won(realStats.unrealizedPnl)}
               </div>
             </div>
           </div>
