@@ -135,15 +135,6 @@ export default function TodayTab({ data }) {
   // 상단: 점수순 정렬된 일반 목록 (보유 종목도 점수 높으면 여기 포함됨)
   const sortedList = sortByStrength(baseList);
 
-  // 하단에 추가로 붙일 보유 종목 = 보유 중인데 상단 목록에 없는 것
-  // (all 필터는 전체가 다 나오므로 하단 추가 불필요. 개별 필터에서 잘린 보유 종목만 하단에)
-  const shownSymbols = new Set(sortedList.map(getSymbol));
-  const heldElsewhere = market === "all"
-    ? []
-    : [...us, ...crypto, ...kr, ...alt].filter(
-        item => isHeld(item) && !shownSymbols.has(getSymbol(item))
-      );
-
   return (
     <>
       {marketIndicators.length > 0 && (
@@ -202,7 +193,7 @@ export default function TodayTab({ data }) {
         ))}
       </div>
 
-      {sortedList.length === 0 && heldElsewhere.length === 0 ? (
+      {sortedList.length === 0 ? (
         <div className="text-center py-8 text-muted text-sm bg-card border border-dashed border-border rounded-xl">
           해당 시그널이 없습니다
         </div>
