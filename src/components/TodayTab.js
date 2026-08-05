@@ -207,20 +207,10 @@ export default function TodayTab({ data }) {
           해당 시그널이 없습니다
         </div>
       ) : (
-        <>
+<>
           {sortedList.map((item, i) => (
             <SignalCard key={`main-${i}`} item={item} rate={rate} held={isHeld(item)} />
           ))}
-          {heldElsewhere.length > 0 && (
-            <>
-              <div className="text-[11px] text-muted mt-4 mb-2 pl-1 flex items-center gap-1">
-                <span>📌 보유 중 (점수 무관 표시)</span>
-              </div>
-              {heldElsewhere.map((item, i) => (
-                <SignalCard key={`held-${i}`} item={item} rate={rate} held />
-              ))}
-            </>
-          )}
         </>
       )}
     </>
