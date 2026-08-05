@@ -11,6 +11,18 @@
       "stoploss_price": 258.54,
       "status": "active",
       "user_added": true
+    },
+    {
+      "id": "1785925209909",
+      "symbol": "KRW-ADA",
+      "name": "KRW-ADA",
+      "buy_price": 276,
+      "quantity": 359.175,
+      "buy_date": "2026-08-05T10:20:09.491Z",
+      "target_price": 317.4,
+      "stoploss_price": 256.68,
+      "status": "active",
+      "user_added": true
     }
   ]
 }
