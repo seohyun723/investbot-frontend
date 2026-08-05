@@ -35,9 +35,20 @@ function calcStats(history, holdings) {
   const best5 = sortedSells.slice(0, 5);
   const worst5 = sortedSells.slice(-5).reverse();
 
+  // 신호별 집계 (자기개선: 어떤 신호가 잘 맞나)
+  const bySignal = {};
+  sells.forEach(s => {
+    const sig = s.signal || s.buy_signal || "미분류";
+    if (!bySignal[sig]) bySignal[sig] = { signal: sig, trades: 0, wins: 0, pnl: 0 };
+    bySignal[sig].trades++;
+    if ((s.pnl || 0) > 0) bySignal[sig].wins++;
+    bySignal[sig].pnl += (s.pnl || 0);
+  });
+
   return {
     totalTrades, wins, losses, totalPnl, winRate, activeCount,
     bySymbol: Object.values(bySymbol).sort((a, b) => b.pnl - a.pnl),
+    bySignal: Object.values(bySignal).sort((a, b) => b.pnl - a.pnl),
     byMarket, best5, worst5,
   };
 }
