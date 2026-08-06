@@ -7,8 +7,8 @@ const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-fronten
 const VALID_TABS = ["today", "sim", "portfolio", "backtest"];
 const TAB_LABELS = {
   today: "오늘의 시그널",
-  sim: "시뮬레이션",
   portfolio: "포트폴리오",
+  sim: "시뮬레이션",
   backtest: "백테스트",
 };
 
