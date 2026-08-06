@@ -80,7 +80,6 @@ export default function TodayTab({ data }) {
   const alt = data.alt_signals || [];
   const rate = data.usd_krw || 1436;
 
-  // 보유 종목 심볼 로드 (시뮬 active + 포트폴리오)
   useEffect(() => {
     const load = async () => {
       const symbols = new Set();
@@ -120,19 +119,19 @@ export default function TodayTab({ data }) {
   const vix = fg.vix;
 
   const getSymbol = (item) => item.ticker || item.symbol || item.code || "";
+  const isHeld = (item) => myHoldings.includes(getSymbol(item));
 
-  // 필터별 기본 목록
+  // 내 종목 = 보유 중인 모든 종목 (전 자산군에서)
+  const allItems = [...us, ...crypto, ...kr, ...alt];
+  const myItems = sortByStrength(allItems.filter(isHeld));
+
   const baseList = market === "all"
-    ? [...us, ...crypto, ...kr, ...alt]
+    ? allItems
     : market === "us" ? us
     : market === "crypto" ? crypto
     : market === "kr" ? kr
     : alt;
 
-  // 보유 종목 여부 판별
-  const isHeld = (item) => myHoldings.includes(getSymbol(item));
-
-  // 상단: 점수순 정렬된 일반 목록 (보유 종목도 점수 높으면 여기 포함됨)
   const sortedList = sortByStrength(baseList);
 
   return (
@@ -164,6 +163,18 @@ export default function TodayTab({ data }) {
         />
       </div>
 
+      {myItems.length > 0 && (
+        <>
+          <div className="text-sm font-semibold mb-2 flex items-center gap-2">
+            <span>📌</span> 내 종목 (보유 중)
+          </div>
+          {myItems.map((item, i) => (
+            <SignalCard key={`my-${i}`} item={item} rate={rate} held />
+          ))}
+          <div className="border-t border-border my-4"></div>
+        </>
+      )}
+
       {top3.length > 0 && (
         <>
           <div className="text-sm font-semibold mb-2 flex items-center gap-2">
@@ -171,7 +182,7 @@ export default function TodayTab({ data }) {
             오늘의 TOP 3
           </div>
           {top3.map((item, i) => (
-            <SignalCard key={i} item={item} rank={i + 1} highlight rate={rate} />
+            <SignalCard key={i} item={item} rank={i + 1} highlight rate={rate} held={isHeld(item)} />
           ))}
         </>
       )}
@@ -198,7 +209,7 @@ export default function TodayTab({ data }) {
           해당 시그널이 없습니다
         </div>
       ) : (
-<>
+        <>
           {sortedList.map((item, i) => (
             <SignalCard key={`main-${i}`} item={item} rate={rate} held={isHeld(item)} />
           ))}
