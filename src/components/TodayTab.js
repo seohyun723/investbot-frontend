@@ -163,18 +163,6 @@ export default function TodayTab({ data }) {
         />
       </div>
 
-      {myItems.length > 0 && (
-        <>
-          <div className="text-sm font-semibold mb-2 flex items-center gap-2">
-            <span>📌</span> 내 종목 (보유 중)
-          </div>
-          {myItems.map((item, i) => (
-            <SignalCard key={`my-${i}`} item={item} rate={rate} held />
-          ))}
-          <div className="border-t border-border my-4"></div>
-        </>
-      )}
-
       {top3.length > 0 && (
         <>
           <div className="text-sm font-semibold mb-2 flex items-center gap-2">
