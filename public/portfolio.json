@@ -11,6 +11,18 @@
       "stoploss_price": 259.47,
       "status": "active",
       "user_added": true
+    },
+    {
+      "id": "1786012409867",
+      "symbol": "006340",
+      "name": "006340",
+      "buy_price": 15200,
+      "quantity": 4,
+      "buy_date": "2026-08-06T10:33:29.605Z",
+      "target_price": 17480,
+      "stoploss_price": 14136,
+      "status": "active",
+      "user_added": true
     }
   ]
 }
