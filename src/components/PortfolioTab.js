@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 const PORTFOLIO_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/portfolio.json";
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
-// 자산군/통화 판별
 function isKRW(symbol) {
   return (symbol || "").startsWith("KRW-") || /^\d{6}$/.test(symbol || "");
 }
@@ -17,6 +16,15 @@ function assetType(symbol) {
 }
 function currencyLabel(symbol) {
   return isKRW(symbol) ? "원(₩)" : "달러($)";
+}
+
+function signalColor(sig) {
+  const s = String(sig || "");
+  if (s.includes("강력매수")) return "text-danger border-danger/40 bg-danger/10";
+  if (s.includes("매수")) return "text-red-300 border-red-300/30 bg-red-300/5";
+  if (s.includes("강력매도")) return "text-blue-400 border-blue-400/40 bg-blue-400/10";
+  if (s.includes("매도")) return "text-blue-300 border-blue-300/30 bg-blue-300/5";
+  return "text-muted border-border bg-card";
 }
 
 export default function PortfolioTab({ data }) {
@@ -49,12 +57,25 @@ export default function PortfolioTab({ data }) {
     return `≈₩${Math.round(val * rate).toLocaleString()}`;
   };
 
+  // 시그널 데이터 (신호/목표가/손절가/근거 포함)
   const allSignals = [
-    ...(data.us_signals || []).map(s => ({ symbol: s.ticker, price: s.price, name: s.name })),
-    ...(data.crypto_signals || []).map(s => ({ symbol: s.symbol, price: s.price, name: s.symbol })),
-    ...(data.kr_signals || []).map(s => ({ symbol: s.code || s.ticker, price: s.price, name: s.name })),
-    ...(data.alt_signals || []).map(s => ({ symbol: s.ticker || s.code, price: s.price, name: s.name })),
-  ];
+    ...(data.us_signals || []),
+    ...(data.crypto_signals || []),
+    ...(data.kr_signals || []),
+    ...(data.alt_signals || []),
+  ].map(s => ({
+    symbol: s.ticker || s.symbol || s.code,
+    price: s.price,
+    name: s.name || s.symbol,
+    signal: s.signal,
+    total_score: s.total_score,
+    target_price: s.target_price,
+    stoploss_price: s.stoploss_price,
+    reasons: s.reasons,
+    strategy_tag: s.strategy_tag,
+  }));
+
+  const getSignalInfo = (sym) => allSignals.find(s => s.symbol === sym);
 
   const loadPortfolio = async () => {
     try {
@@ -273,6 +294,7 @@ export default function PortfolioTab({ data }) {
             const isRealtime = realtimePrices[h.symbol]?.price;
             const krw = isKRW(h.symbol);
             const pnlAmount = current ? Math.abs((current - h.buy_price) * h.quantity) : 0;
+            const sig = getSignalInfo(h.symbol);
 
             return (
               <div key={h.id} className="bg-card border border-border rounded-xl p-4">
@@ -288,7 +310,14 @@ export default function PortfolioTab({ data }) {
                       {new Date(h.buy_date).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" })}
                     </div>
                   </div>
-                  <button onClick={() => handleDelete(h.id)} className="text-xs text-muted hover:text-danger">삭제</button>
+                  <div className="flex flex-col items-end gap-1">
+                    {sig?.signal && (
+                      <div className={`px-2 py-0.5 rounded-full text-[11px] font-bold border ${signalColor(sig.signal)}`}>
+                        {sig.signal}{sig.total_score != null ? ` ${sig.total_score}` : ""}
+                      </div>
+                    )}
+                    <button onClick={() => handleDelete(h.id)} className="text-xs text-muted hover:text-danger">삭제</button>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
@@ -316,6 +345,41 @@ export default function PortfolioTab({ data }) {
                 {current && (
                   <div className={`mt-2 pt-2 border-t border-border text-sm font-semibold ${pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
                     {pnl >= 0 ? "▲" : "▼"} {Math.abs(pnl).toFixed(2)}% ({krw ? `₩${Math.round(pnlAmount).toLocaleString()}` : `$${pnlAmount.toFixed(2)}`})
+                  </div>
+                )}
+
+                {sig && (sig.target_price || sig.stoploss_price) && (
+                  <div className="mt-2 pt-2 border-t border-border">
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      {sig.target_price && (
+                        <div>
+                          <div className="text-muted">🎯 목표가 (익절)</div>
+                          <div className="text-danger font-semibold">{fmtPrice(h.symbol, sig.target_price)}</div>
+                          {current && (
+                            <div className="text-[10px] text-muted">
+                              {(((sig.target_price - current) / current) * 100).toFixed(1)}% 여력
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {sig.stoploss_price && (
+                        <div>
+                          <div className="text-muted">🛑 손절가</div>
+                          <div className="text-blue-400 font-semibold">{fmtPrice(h.symbol, sig.stoploss_price)}</div>
+                          {current && (
+                            <div className="text-[10px] text-muted">
+                              {(((sig.stoploss_price - current) / current) * 100).toFixed(1)}%
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    {sig.strategy_tag && (
+                      <div className="text-[10px] text-muted mt-2">{sig.strategy_tag}</div>
+                    )}
+                    {sig.reasons && (
+                      <div className="text-[10px] text-muted mt-1 leading-relaxed">{sig.reasons}</div>
+                    )}
                   </div>
                 )}
               </div>
