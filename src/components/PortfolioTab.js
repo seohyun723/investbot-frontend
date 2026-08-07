@@ -30,7 +30,6 @@ export default function PortfolioTab({ data }) {
   const [portfolio, setPortfolio] = useState([]);
   const [realtimePrices, setRealtimePrices] = useState({});
   const [showAdd, setShowAdd] = useState(false);
-  const [expanded, setExpanded] = useState({});
   const [mode, setMode] = useState("dropdown");
   const [symbol, setSymbol] = useState("");
   const [customSymbol, setCustomSymbol] = useState("");
@@ -70,6 +69,16 @@ export default function PortfolioTab({ data }) {
   }));
 
   const getSignalInfo = (sym) => allSignals.find(s => s.symbol === sym);
+
+  // 이름: 네이버 실시간 > 시그널 > 저장된 이름 (단, 코드와 같으면 무시)
+  const getName = (h) => {
+    const rt = realtimePrices[h.symbol]?.name;
+    if (rt && rt !== h.symbol) return rt;
+    const sig = getSignalInfo(h.symbol);
+    if (sig?.name && sig.name !== h.symbol) return sig.name;
+    if (h.name && h.name !== h.symbol) return h.name;
+    return null;
+  };
 
   const loadPortfolio = async () => {
     try {
@@ -235,78 +244,62 @@ export default function PortfolioTab({ data }) {
             const krw = isKRW(h.symbol);
             const pnlAmount = current ? Math.abs((current - h.buy_price) * h.quantity) : 0;
             const sig = getSignalInfo(h.symbol);
-            const displayName = h.name || sig?.name;
-            const isOpen = expanded[h.id];
+            const displayName = getName(h);
 
             return (
               <div key={h.id} className="bg-card border border-border rounded-xl p-3">
-                {/* 상단: 종목명 + 신호 + 손익 (한 줄 요약) */}
-                <div className="flex justify-between items-center">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-sm truncate">{displayName || h.symbol}</span>
-                      {isRealtime && <span className="text-[9px] text-danger flex-shrink-0">●</span>}
-                    </div>
-                    <div className="text-[10px] text-muted">{assetType(h.symbol)} · {h.symbol}</div>
+                {/* 헤더: 이름 + 신호 + 삭제 */}
+                <div className="flex justify-between items-center mb-2">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="font-semibold text-sm truncate">{displayName || h.symbol}</span>
+                    {isRealtime && <span className="text-[9px] text-danger flex-shrink-0">● 실시간</span>}
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    {current && (
-                      <div className={`text-sm font-bold ${pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                        {pnl >= 0 ? "+" : ""}{pnl.toFixed(1)}%
-                      </div>
-                    )}
                     {sig?.signal && (
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${signalColor(sig.signal)}`}>{sig.signal}</span>
                     )}
+                    <button onClick={() => handleDelete(h.id)} className="text-[10px] text-muted hover:text-danger">삭제</button>
                   </div>
                 </div>
 
-                {/* 중단: 현재가 + 평가손익 (컴팩트) */}
-                <div className="flex justify-between items-center mt-2 text-xs">
-                  <div className="text-muted">
-                    {fmtPrice(h.symbol, current)} <span className="text-[10px]">/ 매수 {fmtPrice(h.symbol, h.buy_price)}</span>
+                {/* 현재가 강조 (크게) + 손익 */}
+                <div className="flex items-end justify-between mb-2">
+                  <div>
+                    <div className="text-[10px] text-muted">{assetType(h.symbol)} · {h.symbol}</div>
+                    <div className="text-lg font-bold leading-tight">{fmtPrice(h.symbol, current)}</div>
                   </div>
                   {current && (
-                    <div className={`text-[11px] ${pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
-                      {pnl >= 0 ? "▲" : "▼"} {krw ? `₩${Math.round(pnlAmount).toLocaleString()}` : `$${pnlAmount.toFixed(2)}`}
+                    <div className={`text-right ${pnl >= 0 ? "text-danger" : "text-blue-400"}`}>
+                      <div className="text-base font-bold">{pnl >= 0 ? "+" : ""}{pnl.toFixed(2)}%</div>
+                      <div className="text-[11px]">{pnl >= 0 ? "▲" : "▼"} {krw ? `₩${Math.round(pnlAmount).toLocaleString()}` : `$${pnlAmount.toFixed(2)}`}</div>
                     </div>
                   )}
                 </div>
 
-                {/* 토글 버튼 */}
-                <button onClick={() => setExpanded(p => ({ ...p, [h.id]: !p[h.id] }))} className="w-full mt-2 text-[10px] text-muted border-t border-border pt-1.5">
-                  {isOpen ? "접기 ▲" : "상세 ▼"}
-                </button>
+                {/* 상세 정보 (간격 좁게, 항상 표시) */}
+                <div className="grid grid-cols-4 gap-1.5 text-[11px] border-t border-border pt-2">
+                  <div><div className="text-muted">매수가</div><div>{fmtPrice(h.symbol, h.buy_price)}</div></div>
+                  <div><div className="text-muted">수량</div><div>{h.quantity}</div></div>
+                  <div><div className="text-muted">평가금액</div><div>{current ? fmtPrice(h.symbol, current * h.quantity) : "-"}</div></div>
+                  <div><div className="text-muted">매수일</div><div>{new Date(h.buy_date).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", timeZone: "Asia/Seoul" })}</div></div>
+                </div>
 
-                {/* 하단: 상세 (접기) */}
-                {isOpen && (
-                  <div className="mt-2 space-y-2">
-                    <div className="grid grid-cols-3 gap-2 text-[11px]">
-                      <div><div className="text-muted">수량</div><div>{h.quantity}</div></div>
-                      <div><div className="text-muted">평가금액</div><div>{current ? fmtPrice(h.symbol, current * h.quantity) : "-"}</div></div>
-                      <div><div className="text-muted">매수일</div><div>{new Date(h.buy_date).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", timeZone: "Asia/Seoul" })}</div></div>
-                    </div>
-                    {sig && (sig.target_price || sig.stoploss_price) && (
-                      <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-border pt-2">
-                        {sig.target_price && (
-                          <div>
-                            <div className="text-muted">🎯 목표가</div>
-                            <div className="text-danger font-semibold">{fmtPrice(h.symbol, sig.target_price)}</div>
-                            {current && <div className="text-[9px] text-muted">{(((sig.target_price - current) / current) * 100).toFixed(1)}% 여력</div>}
-                          </div>
-                        )}
-                        {sig.stoploss_price && (
-                          <div>
-                            <div className="text-muted">🛑 손절가</div>
-                            <div className="text-blue-400 font-semibold">{fmtPrice(h.symbol, sig.stoploss_price)}</div>
-                          </div>
-                        )}
+                {/* 목표가/손절가 */}
+                {sig && (sig.target_price || sig.stoploss_price) && (
+                  <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-border pt-2 mt-2">
+                    {sig.target_price && (
+                      <div>
+                        <span className="text-muted">🎯 목표 </span>
+                        <span className="text-danger font-semibold">{fmtPrice(h.symbol, sig.target_price)}</span>
+                        {current && <span className="text-[9px] text-muted"> ({(((sig.target_price - current) / current) * 100).toFixed(1)}%)</span>}
                       </div>
                     )}
-                    {sig?.reasons && (
-                      <div className="text-[10px] text-muted leading-relaxed border-t border-border pt-2">{sig.reasons}</div>
+                    {sig.stoploss_price && (
+                      <div>
+                        <span className="text-muted">🛑 손절 </span>
+                        <span className="text-blue-400 font-semibold">{fmtPrice(h.symbol, sig.stoploss_price)}</span>
+                      </div>
                     )}
-                    <button onClick={() => handleDelete(h.id)} className="text-[10px] text-muted hover:text-danger">삭제</button>
                   </div>
                 )}
               </div>
