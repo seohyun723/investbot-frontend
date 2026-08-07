@@ -284,6 +284,28 @@ const openEdit = (h) => {
                   </div>
                 </div>
 
+                {editId === h.id && (
+                  <div className="mt-2 p-2 bg-accent/10 border border-accent/30 rounded-lg">
+                    <div className="text-[10px] text-muted mb-2">수량↑ 추가매수 · 수량↓ 부분매도 · 매수가 수정 시 손절가 재계산</div>
+                    <div className="flex gap-2 mb-2">
+                      <div className="flex-1">
+                        <label className="text-[9px] text-muted">평단가</label>
+                        <input type="number" step="0.01" value={editPrice} onChange={(e) => setEditPrice(e.target.value)}
+                          className="w-full bg-card border border-border rounded px-2 py-1 text-xs text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <label className="text-[9px] text-muted">수량</label>
+                        <input type="number" step="0.0001" value={editQty} onChange={(e) => setEditQty(e.target.value)}
+                          className="w-full bg-card border border-border rounded px-2 py-1 text-xs text-white" />
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={() => handleEditSave(h.id)} className="flex-1 py-1 bg-accent text-white rounded text-xs">저장</button>
+                      <button onClick={() => setEditId(null)} className="flex-1 py-1 bg-card border border-border text-muted rounded text-xs">취소</button>
+                    </div>
+                  </div>
+                )}
+
                 {/* 현재가 강조 (크게) + 손익 */}
                 <div className="flex items-end justify-between mb-2">
                   <div>
