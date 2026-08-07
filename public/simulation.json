@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 1400000,
+  "cash": 1289449.8381877022,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -116,6 +116,42 @@
       "buy_date": "2026-08-05T11:28:02.429815",
       "score": 70,
       "signal": "강력매수",
+      "status": "sold",
+      "partial_sold": false,
+      "note": "",
+      "currency": "KRW",
+      "sell_price": 13820.0,
+      "sell_date": "2026-08-07T05:03:33.327397"
+    },
+    {
+      "symbol": "214450",
+      "market": "kr",
+      "buy_price": 362500.0,
+      "buy_price_original": 362500.0,
+      "quantity": 0.27586206896551724,
+      "buy_amount": 100000,
+      "target_price": 416875.0,
+      "stoploss_price": 337125.0,
+      "buy_date": "2026-08-07T05:03:33.925637",
+      "score": 70,
+      "signal": "강력매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "006340",
+      "market": "kr",
+      "buy_price": 13820.0,
+      "buy_price_original": 13820.0,
+      "quantity": 7.23589001447178,
+      "buy_amount": 100000,
+      "target_price": 15893.0,
+      "stoploss_price": 12852.6,
+      "buy_date": "2026-08-07T05:03:33.926590",
+      "score": 70,
+      "signal": "강력매수",
       "status": "active",
       "partial_sold": false,
       "note": "",
@@ -190,6 +226,36 @@
       "amount": 100000,
       "quantity": 6.472491909385114,
       "date": "2026-08-05T11:28:02.429821",
+      "reason": "점수 70 · 시그널 강력매수",
+      "signal": "강력매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "006340",
+      "price": 13820.0,
+      "quantity": 6.472491909385114,
+      "amount": 89449.83818770228,
+      "pnl": -10550.161812297736,
+      "date": "2026-08-07T05:03:33.327404",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "214450",
+      "price": 362500.0,
+      "amount": 100000,
+      "quantity": 0.27586206896551724,
+      "date": "2026-08-07T05:03:33.925649",
+      "reason": "점수 70 · 시그널 강력매수",
+      "signal": "강력매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "006340",
+      "price": 13820.0,
+      "amount": 100000,
+      "quantity": 7.23589001447178,
+      "date": "2026-08-07T05:03:33.926597",
       "reason": "점수 70 · 시그널 강력매수",
       "signal": "강력매수"
     }
