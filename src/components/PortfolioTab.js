@@ -38,6 +38,9 @@ export default function PortfolioTab({ data }) {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [lastUpdate, setLastUpdate] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [editPrice, setEditPrice] = useState("");
+  const [editQty, setEditQty] = useState("");
   const timerRef = useRef(null);
 
   const rate = data.usd_krw || 1436;
@@ -152,7 +155,25 @@ export default function PortfolioTab({ data }) {
       }
     } catch (e) { setMsg("서버 오류"); setLoading(false); }
   };
+const openEdit = (h) => {
+    setEditId(h.id);
+    setEditPrice(String(h.buy_price));
+    setEditQty(String(h.quantity));
+  };
 
+  const handleEditSave = async (id) => {
+    try {
+      const res = await fetch("/api/portfolio/edit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, buy_price: parseFloat(editPrice), quantity: parseFloat(editQty) }),
+      });
+      if (res.ok) {
+        setEditId(null);
+        setTimeout(loadPortfolio, 2000);
+      }
+    } catch (e) {}
+  };
   const handleDelete = async (id) => {
     if (!confirm("삭제하시겠어요?")) return;
     try {
@@ -258,6 +279,7 @@ export default function PortfolioTab({ data }) {
                     {sig?.signal && (
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${signalColor(sig.signal)}`}>{sig.signal}</span>
                     )}
+                    <button onClick={() => openEdit(h)} className="text-[10px] text-accent hover:underline">수정</button>
                     <button onClick={() => handleDelete(h.id)} className="text-[10px] text-muted hover:text-danger">삭제</button>
                   </div>
                 </div>
