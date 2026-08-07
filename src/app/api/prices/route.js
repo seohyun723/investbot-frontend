@@ -47,7 +47,7 @@ export async function POST(request) {
               const price = parseFloat(String(item.closePrice).replace(/,/g, ""));
               const chg = item.compareToPreviousClosePrice ? parseFloat(String(item.compareToPreviousClosePrice).replace(/,/g, "")) : 0;
               const chgPct = item.fluctuationsRatio ? parseFloat(item.fluctuationsRatio) : 0;
-              results[sym] = { price, change: chg, changePct: chgPct, source: "naver" };
+              results[sym] = { price, change: chg, changePct: chgPct, source: "naver", name: item.stockName || item.name || "" };
               got = true;
             }
           }
