@@ -284,20 +284,21 @@ export default function PortfolioTab({ data }) {
                   <div><div className="text-muted">매수일</div><div>{new Date(h.buy_date).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", timeZone: "Asia/Seoul" })}</div></div>
                 </div>
 
-                {/* 목표가/손절가 */}
-                {sig && (sig.target_price || sig.stoploss_price) && (
+                {/* 목표가/손절가 (등록 시 박제된 값 사용 - 텔레그램과 동일) */}
+                {(h.target_price || h.stoploss_price) && (
                   <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-border pt-2 mt-2">
-                    {sig.target_price && (
+                    {h.target_price && (
                       <div>
                         <span className="text-muted">🎯 목표 </span>
-                        <span className="text-danger font-semibold">{fmtPrice(h.symbol, sig.target_price)}</span>
-                        {current && <span className="text-[9px] text-muted"> ({(((sig.target_price - current) / current) * 100).toFixed(1)}%)</span>}
+                        <span className="text-danger font-semibold">{fmtPrice(h.symbol, h.target_price)}</span>
+                        {current && <span className="text-[9px] text-muted"> ({(((h.target_price - current) / current) * 100).toFixed(1)}%)</span>}
                       </div>
                     )}
-                    {sig.stoploss_price && (
+                    {h.stoploss_price && (
                       <div>
                         <span className="text-muted">🛑 손절 </span>
-                        <span className="text-blue-400 font-semibold">{fmtPrice(h.symbol, sig.stoploss_price)}</span>
+                        <span className="text-blue-400 font-semibold">{fmtPrice(h.symbol, h.stoploss_price)}</span>
+                        {current && <span className="text-[9px] text-muted"> ({(((h.stoploss_price - current) / current) * 100).toFixed(1)}%)</span>}
                       </div>
                     )}
                   </div>
