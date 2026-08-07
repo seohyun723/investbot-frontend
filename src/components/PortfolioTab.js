@@ -162,17 +162,25 @@ const openEdit = (h) => {
   };
 
   const handleEditSave = async (id) => {
+    setMsg("저장 중...");
     try {
       const res = await fetch("/api/portfolio/edit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, buy_price: parseFloat(editPrice), quantity: parseFloat(editQty) }),
       });
+      const result = await res.json();
       if (res.ok) {
+        setMsg("✅ 저장됨! 1~2분 후 반영됩니다");
         setEditId(null);
-        setTimeout(loadPortfolio, 2000);
+        setTimeout(loadPortfolio, 3000);
+        setTimeout(() => setMsg(""), 4000);
+      } else {
+        setMsg(`❌ ${result.error || "저장 실패"}`);
       }
-    } catch (e) {}
+    } catch (e) {
+      setMsg(`❌ 오류: ${e.message}`);
+    }
   };
   const handleDelete = async (id) => {
     if (!confirm("삭제하시겠어요?")) return;
