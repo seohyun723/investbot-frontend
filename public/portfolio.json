@@ -12,6 +12,19 @@
       "status": "active",
       "user_added": true,
       "updated_at": "2026-08-07T11:25:31.467Z"
+    },
+    {
+      "id": "1786166751588",
+      "symbol": "KRW-ENSO",
+      "name": "KRW-ENSO",
+      "buy_price": 1413,
+      "quantity": 70.771,
+      "buy_date": "2026-08-08T05:25:51.556Z",
+      "target_price": 1582.5600000000002,
+      "stoploss_price": 1314.0900000000001,
+      "is_strong": false,
+      "status": "active",
+      "user_added": true
     }
   ]
 }
