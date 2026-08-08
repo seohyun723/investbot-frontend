@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 889449.8381877022,
+  "cash": 935922.2308257391,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -237,10 +237,12 @@
       "buy_date": "2026-08-08T08:08:31.105077",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 303.0,
+      "sell_date": "2026-08-08T14:47:26.851576"
     },
     {
       "symbol": "KRW-CARV",
@@ -474,6 +476,16 @@
       "date": "2026-08-08T12:57:59.346164",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-MMT",
+      "price": 303.0,
+      "quantity": 153.37423312883436,
+      "amount": 46472.392638036814,
+      "pnl": -3527.60736196319,
+      "date": "2026-08-08T14:47:26.851583",
+      "reason": "손절"
     }
   ]
 }
