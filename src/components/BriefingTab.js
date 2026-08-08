@@ -51,6 +51,16 @@ function judgmentHint(sig) {
   return "신호 발생 → 지표 확인 후 판단";
 }
 
+// 비중 제안 (월 20만원 기준, 코어-새틀라이트)
+function allocHint(sig, isSafe) {
+  const sym = sig.symbol || sig.ticker || "";
+  const coin = sym.startsWith("KRW-");
+  const major = ["KRW-BTC","KRW-ETH","KRW-XRP","KRW-SOL","KRW-ADA","KRW-DOGE","KRW-AVAX","KRW-LINK","KRW-DOT","KRW-UNI","KRW-ATOM","KRW-NEAR","KRW-APT","KRW-ALGO"].includes(sym);
+  if (isSafe) return "코어 · 3~5만원";
+  if (coin && major) return "새틀라이트 · 1~2만원";
+  return "새틀라이트 · 2천~4천원 (1~2%)";
+}
+
 const RISK_STYLE = {
   "낮음": { bg: "#EAF3DE", fg: "#3B6D11" },
   "보통": { bg: "#F1EFE8", fg: "#5F5E5A" },
@@ -77,8 +87,9 @@ export default function BriefingTab({ data }) {
     .filter((x) => x.signal && x.signal.includes("매수") && !x.signal.includes("매도"))
     .sort((a, b) => (b.total_score || 0) - (a.total_score || 0));
 
-  const safeTop = buys.filter((x) => !isNewCoin(x) && !isOverextended(x)).slice(0, 3);
-  const highRisk = buys.filter((x) => isNewCoin(x)).slice(0, 4);
+  const isCoin = (x) => (x.symbol || x.ticker || "").startsWith("KRW-");
+  const safeTop = buys.filter((x) => !isCoin(x) && !isOverextended(x)).slice(0, 3);
+  const highRisk = buys.filter((x) => isCoin(x)).slice(0, 5);
   const cautions = buys.filter(isOverextended).slice(0, 4);
 
   const genAt = (data.generated_at || "").substring(5, 16).replace("T", " ");
@@ -140,6 +151,7 @@ export default function BriefingTab({ data }) {
               </div>
               <div style={{ fontSize: 13, color: "#666", marginBottom: 3 }}>💡 {judgmentHint(sig)}</div>
               <div style={{ fontSize: 12, color: "#999" }}>🎯 진입: 눌림 시 분할 · 손절 {sig.stoploss_price ? Math.round(sig.stoploss_price).toLocaleString() : "-7%"}</div>
+              <div style={{ fontSize: 12, color: "#3B6D11", marginTop: 2 }}>💰 {allocHint(sig, true)}</div>
             </div>
           );
         })}
@@ -164,6 +176,7 @@ export default function BriefingTab({ data }) {
                     <>
                       <div style={{ fontSize: 13, color: "#666", marginBottom: 3 }}>✅ RSI 저점/과매도 반등 → 진입 타이밍 양호 (새틀라이트 규칙 충족)</div>
                       <div style={{ fontSize: 12, color: "#854F0B" }}>⚠️ 소액만 · 8% 트레일링 스톱 · 손절 엄수</div>
+                      <div style={{ fontSize: 12, color: "#854F0B", marginTop: 2 }}>💰 {allocHint(sig, false)}</div>
                     </>
                   )}
                   {!good && tooHigh && <div style={{ fontSize: 13, color: "#666" }}>✕ 점수 높지만 RSI 고점 → 지금 진입 부적합 (눌림 대기)</div>}
