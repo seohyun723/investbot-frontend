@@ -4,7 +4,7 @@ import Dashboard from "../components/Dashboard";
 
 const DATA_URL = "https://raw.githubusercontent.com/seohyun723/investbot-frontend/main/public/latest.json";
 
-const VALID_TABS = ["today", "portfolio", "sim", "backtest"];
+const VALID_TABS = ["today", "portfolio", "briefing", "sim", "backtest"];
 const TAB_LABELS = {
   today: "오늘의 시그널",
   portfolio: "포트폴리오",
