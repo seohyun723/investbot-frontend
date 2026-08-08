@@ -29,6 +29,13 @@ export default function Home() {
       const res = await fetch(`${DATA_URL}?t=${Date.now()}`);
       if (!res.ok) throw new Error("데이터 로드 실패");
       const json = await res.json();
+      try {
+        const pRes = await fetch(`/portfolio.json?t=${Date.now()}`);
+        if (pRes.ok) {
+          const pJson = await pRes.json();
+          json.holdings = pJson.holdings || [];
+        }
+      } catch (pe) {}
       setData(json);
     } catch (e) {
       console.error(e);
