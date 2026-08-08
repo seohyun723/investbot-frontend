@@ -163,17 +163,6 @@ export default function TodayTab({ data }) {
         />
       </div>
 
-      {top3.length > 0 && (
-        <>
-          <div className="text-sm font-semibold mb-2 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-danger rounded-full inline-block"></span>
-            오늘의 TOP 3
-          </div>
-          {top3.map((item, i) => (
-            <SignalCard key={i} item={item} rank={i + 1} highlight rate={rate} held={isHeld(item)} />
-          ))}
-        </>
-      )}
 
       <div className="flex gap-2 mt-6 mb-3 overflow-x-auto">
         {[
