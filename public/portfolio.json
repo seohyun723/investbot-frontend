@@ -12,6 +12,19 @@
       "status": "active",
       "user_added": true,
       "updated_at": "2026-08-08T05:42:59.692Z"
+    },
+    {
+      "id": "1786196879109",
+      "symbol": "KRW-MMT",
+      "name": "KRW-MMT",
+      "buy_price": 324,
+      "quantity": 379.02,
+      "buy_date": "2026-08-08T13:47:58.690Z",
+      "target_price": 362.88000000000005,
+      "stoploss_price": 301.32,
+      "is_strong": false,
+      "status": "active",
+      "user_added": true
     }
   ]
 }
