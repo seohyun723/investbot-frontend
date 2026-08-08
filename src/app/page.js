@@ -8,6 +8,7 @@ const VALID_TABS = ["today", "portfolio", "briefing", "sim", "backtest"];
 const TAB_LABELS = {
   today: "오늘의 시그널",
   portfolio: "포트폴리오",
+  briefing: "브리핑",
   sim: "시뮬레이션",
   backtest: "백테스트",
 };
