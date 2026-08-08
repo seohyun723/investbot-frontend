@@ -1,5 +1,28 @@
 async function verifyTicker(symbol) {
   try {
+    // 1. 코인 (KRW-XXX) → 업비트 검증
+    if (symbol.startsWith("KRW-")) {
+      const res = await fetch(`https://api.upbit.com/v1/ticker?markets=${symbol}`);
+      if (!res.ok) return null;
+      const arr = await res.json();
+      if (Array.isArray(arr) && arr.length > 0 && arr[0].trade_price) {
+        return { valid: true, name: symbol };
+      }
+      return null;
+    }
+    // 2. 국내주식 (6자리 숫자) → 네이버 검증
+    if (/^\d{6}$/.test(symbol)) {
+      const res = await fetch(`https://polling.finance.naver.com/api/realtime/domestic/stock/${symbol}`);
+      if (!res.ok) return null;
+      const data = await res.json();
+      const datas = data?.datas || (data?.result?.areas?.[0]?.datas);
+      if (datas && datas.length > 0) {
+        const nm = datas[0].nm || symbol;
+        return { valid: true, name: nm };
+      }
+      return null;
+    }
+    // 3. 해외주식 → 야후 검증
     const url = `https://query1.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(symbol)}&quotesCount=1`;
     const res = await fetch(url);
     if (!res.ok) return null;
