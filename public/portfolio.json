@@ -17,14 +17,15 @@
       "id": "1786182002100",
       "symbol": "KRW-MMT",
       "name": "KRW-MMT",
-      "buy_price": 303,
-      "quantity": 329,
+      "buy_price": 305.9,
+      "quantity": 483.987,
       "buy_date": "2026-08-08T09:40:01.707Z",
-      "target_price": 339.36,
-      "stoploss_price": 281.79,
+      "target_price": 342.608,
+      "stoploss_price": 284.48699999999997,
       "is_strong": false,
       "status": "active",
-      "user_added": true
+      "user_added": true,
+      "updated_at": "2026-08-08T09:44:18.975Z"
     }
   ]
 }
