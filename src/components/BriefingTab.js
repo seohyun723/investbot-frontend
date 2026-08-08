@@ -71,23 +71,18 @@ export default function BriefingTab({ data }) {
   if (!data) return <div style={{ padding: 20, color: "#888" }}>데이터 로딩 중...</div>;
 
   const all = [...(data.us_signals || []), ...(data.crypto_signals || []), ...(data.kr_signals || [])];
+  const holdings = data.holdings || [];
 
   const buys = all
     .filter((x) => x.signal && x.signal.includes("매수") && !x.signal.includes("매도"))
     .sort((a, b) => (b.total_score || 0) - (a.total_score || 0));
 
-  // 안전 TOP: 신생코인 아니고, 급등 안 한 것 (위험 낮음/보통)
   const safeTop = buys.filter((x) => !isNewCoin(x) && !isOverextended(x)).slice(0, 3);
-
-  // 고위험 기회: 신생 코인. 눌림목이면 진입OK, 고점이면 대기표시
   const highRisk = buys.filter((x) => isNewCoin(x)).slice(0, 4);
-
-  // 주의: 급등 후
   const cautions = buys.filter(isOverextended).slice(0, 4);
 
   const genAt = (data.generated_at || "").substring(5, 16).replace("T", " ");
   const fg = (data.fear_greed && data.fear_greed.index) || (data.crypto_fear_greed && data.crypto_fear_greed.index);
-  const btcDom = data.btc_dominance;
 
   return (
     <div style={{ maxWidth: 760, margin: "0 auto", padding: "16px 12px" }}>
@@ -99,7 +94,37 @@ export default function BriefingTab({ data }) {
         안전 종목은 메인으로, 신생 코인은 소액(전체의 1~2%)만 · 손절 엄수.
       </p>
 
-      {/* 안전 TOP */}
+      {holdings.length > 0 && (
+        <>
+          <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 6 }}>
+            📋 내 보유 종목 점검
+          </div>
+          <div style={{ display: "grid", gap: 8, marginBottom: 20 }}>
+            {holdings.map((h, i) => {
+              const sig = all.find((x) => (x.symbol || x.ticker) === h.symbol);
+              const rl = sig ? riskLevel(sig) : (isNewCoin({ symbol: h.symbol }) ? "높음" : "보통");
+              const flowWarn = sig && hasFlag(sig.reasons, "외국인") && !hasGoodFlow(sig);
+              return (
+                <div key={i} style={{ background: "#fff", border: "0.5px solid #e5e5e5", borderRadius: 12, padding: "12px 16px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: 14, fontWeight: 500 }}>
+                      {h.name || h.symbol} <span style={{ fontSize: 11, color: "#999" }}>평단 {Math.round(h.buy_price).toLocaleString()}</span>
+                    </span>
+                    <Badge level={rl} />
+                  </div>
+                  {sig && (
+                    <div style={{ fontSize: 13, color: flowWarn ? "#993C1D" : "#666", marginTop: 5 }}>
+                      {flowWarn ? "⚠️ " : ""}{sig.signal} {sig.total_score}점 · {flowWarn ? "외국인 순매도 주의" : judgmentHint(sig)}
+                    </div>
+                  )}
+                  {!sig && <div style={{ fontSize: 13, color: "#999", marginTop: 5 }}>오늘 신호 없음 · 보유 유지</div>}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+
       <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 6 }}>
         🛡 안전 TOP <span style={{ fontSize: 11, color: "#999", fontWeight: 400 }}>코어 · 메인 투자</span>
       </div>
@@ -120,7 +145,6 @@ export default function BriefingTab({ data }) {
         })}
       </div>
 
-      {/* 고위험 기회 */}
       {highRisk.length > 0 && (
         <>
           <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 6 }}>
@@ -151,7 +175,6 @@ export default function BriefingTab({ data }) {
         </>
       )}
 
-      {/* 주의 급등 */}
       {cautions.length > 0 && (
         <>
           <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 6 }}>⚠️ 주의 — 이미 급등 (추격 위험)</div>
