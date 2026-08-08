@@ -24,6 +24,19 @@
       "status": "active",
       "user_added": true,
       "updated_at": "2026-08-07T11:25:31.467Z"
+    },
+    {
+      "id": "1786147697045",
+      "symbol": "KRW-ALGO",
+      "name": "KRW-ALGO",
+      "buy_price": 126,
+      "quantity": 396.626,
+      "buy_date": "2026-08-08T00:08:17.296Z",
+      "target_price": 141.12,
+      "stoploss_price": 117.18,
+      "is_strong": false,
+      "status": "active",
+      "user_added": true
     }
   ]
 }
