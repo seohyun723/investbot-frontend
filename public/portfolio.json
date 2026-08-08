@@ -30,14 +30,15 @@
       "id": "1786166864070",
       "symbol": "KRW-ELSA",
       "name": "KRW-ELSA",
-      "buy_price": 79.4,
-      "quantity": 615.045,
+      "buy_price": 79.3999872529673,
+      "quantity": 615.0450999999999,
       "buy_date": "2026-08-08T05:27:44.009Z",
-      "target_price": 88.92800000000001,
-      "stoploss_price": 73.84200000000001,
+      "target_price": 88.92798572332339,
+      "stoploss_price": 73.8419881452596,
       "is_strong": false,
       "status": "active",
-      "user_added": true
+      "user_added": true,
+      "updated_at": "2026-08-08T05:43:01.131Z"
     }
   ]
 }
