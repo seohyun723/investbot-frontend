@@ -4,14 +4,14 @@
       "id": "1786012409867",
       "symbol": "006340",
       "name": "006340",
-      "buy_price": 14933,
-      "quantity": 6,
+      "buy_price": 14932.751137481044,
+      "quantity": 6.0001,
       "buy_date": "2026-08-06T10:33:29.605Z",
-      "target_price": 16724.960000000003,
-      "stoploss_price": 13887.69,
+      "target_price": 16724.68127397877,
+      "stoploss_price": 13887.458557857371,
       "status": "active",
       "user_added": true,
-      "updated_at": "2026-08-07T11:25:31.467Z"
+      "updated_at": "2026-08-08T05:42:59.692Z"
     },
     {
       "id": "1786166751588",
