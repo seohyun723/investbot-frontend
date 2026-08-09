@@ -12,19 +12,6 @@
       "status": "active",
       "user_added": true,
       "updated_at": "2026-08-08T05:42:59.692Z"
-    },
-    {
-      "id": "1786242947035",
-      "symbol": "KRW-CARV",
-      "name": "KRW-CARV",
-      "buy_price": 48.7,
-      "quantity": 3056.02,
-      "buy_date": "2026-08-09T02:35:46.735Z",
-      "target_price": 54.54400000000001,
-      "stoploss_price": 45.291000000000004,
-      "is_strong": false,
-      "status": "active",
-      "user_added": true
     }
   ]
 }
