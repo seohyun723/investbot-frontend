@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 732230.2477033762,
+  "cash": 682230.2477033762,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -381,6 +381,23 @@
       "currency": "KRW",
       "sell_price": 0.878,
       "sell_date": "2026-08-09T06:25:43.408813"
+    },
+    {
+      "symbol": "KRW-SOMI",
+      "market": "crypto",
+      "buy_price": 135.0,
+      "buy_price_original": 135.0,
+      "quantity": 370.3703703703704,
+      "buy_amount": 50000,
+      "target_price": 155.25,
+      "stoploss_price": 125.55,
+      "buy_date": "2026-08-09T08:11:09.972995",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -633,6 +650,16 @@
       "pnl": -3691.983122362867,
       "date": "2026-08-09T06:25:43.408820",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-SOMI",
+      "price": 135.0,
+      "amount": 50000,
+      "quantity": 370.3703703703704,
+      "date": "2026-08-09T08:11:09.973002",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
