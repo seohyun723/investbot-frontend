@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 935922.2308257391,
+  "cash": 785922.2308257391,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -294,6 +294,57 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-PLUME",
+      "market": "crypto",
+      "buy_price": 17.0,
+      "buy_price_original": 17.0,
+      "quantity": 2941.176470588235,
+      "buy_amount": 50000,
+      "target_price": 19.55,
+      "stoploss_price": 15.81,
+      "buy_date": "2026-08-09T02:27:03.679390",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-PUMP",
+      "market": "crypto",
+      "buy_price": 3.49,
+      "buy_price_original": 3.49,
+      "quantity": 14326.647564469913,
+      "buy_amount": 50000,
+      "target_price": 4.01,
+      "stoploss_price": 3.25,
+      "buy_date": "2026-08-09T02:27:03.680526",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-YGG",
+      "market": "crypto",
+      "buy_price": 27.7,
+      "buy_price_original": 27.7,
+      "quantity": 1805.0541516245487,
+      "buy_amount": 50000,
+      "target_price": 31.85,
+      "stoploss_price": 25.76,
+      "buy_date": "2026-08-09T02:27:03.682190",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -486,6 +537,36 @@
       "pnl": -3527.60736196319,
       "date": "2026-08-08T14:47:26.851583",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PLUME",
+      "price": 17.0,
+      "amount": 50000,
+      "quantity": 2941.176470588235,
+      "date": "2026-08-09T02:27:03.679396",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PUMP",
+      "price": 3.49,
+      "amount": 50000,
+      "quantity": 14326.647564469913,
+      "date": "2026-08-09T02:27:03.680532",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-YGG",
+      "price": 27.7,
+      "amount": 50000,
+      "quantity": 1805.0541516245487,
+      "date": "2026-08-09T02:27:03.682196",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
