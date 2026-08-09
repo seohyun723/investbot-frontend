@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 735922.2308257391,
+  "cash": 685922.2308257391,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -362,6 +362,23 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-IOST",
+      "market": "crypto",
+      "buy_price": 0.948,
+      "buy_price_original": 0.948,
+      "quantity": 52742.61603375528,
+      "buy_amount": 50000,
+      "target_price": 1.09,
+      "stoploss_price": 0.88,
+      "buy_date": "2026-08-09T04:13:31.660634",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -592,6 +609,16 @@
       "amount": 50000,
       "quantity": 164.47368421052633,
       "date": "2026-08-09T03:28:23.476440",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-IOST",
+      "price": 0.948,
+      "amount": 50000,
+      "quantity": 52742.61603375528,
+      "date": "2026-08-09T04:13:31.660641",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
