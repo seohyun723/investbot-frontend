@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 529669.9697028416,
+  "cash": 571928.9989183926,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -396,10 +396,12 @@
       "buy_date": "2026-08-09T08:11:09.972995",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 125.0,
+      "sell_date": "2026-08-11T09:36:45.865494"
     },
     {
       "symbol": "KRW-BIO",
@@ -464,10 +466,12 @@
       "buy_date": "2026-08-11T04:52:32.419365",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 296.0,
+      "sell_date": "2026-08-11T09:36:45.865510"
     },
     {
       "symbol": "KRW-LA",
@@ -496,6 +500,23 @@
       "target_price": 21.5,
       "stoploss_price": 17.39,
       "buy_date": "2026-08-11T08:33:33.761340",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-BSV",
+      "market": "crypto",
+      "buy_price": 20820.0,
+      "buy_price_original": 20820.0,
+      "quantity": 2.4015369836695486,
+      "buy_amount": 50000,
+      "target_price": 23943.0,
+      "stoploss_price": 19362.6,
+      "buy_date": "2026-08-11T09:36:46.871705",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -842,6 +863,36 @@
       "amount": 50000,
       "quantity": 2673.7967914438505,
       "date": "2026-08-11T08:33:33.761350",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-SOMI",
+      "price": 125.0,
+      "quantity": 370.3703703703704,
+      "amount": 46296.2962962963,
+      "pnl": -3703.703703703704,
+      "date": "2026-08-11T09:36:45.865501",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-GEOD",
+      "price": 296.0,
+      "quantity": 155.27950310559007,
+      "amount": 45962.73291925466,
+      "pnl": -4037.267080745342,
+      "date": "2026-08-11T09:36:45.865511",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-BSV",
+      "price": 20820.0,
+      "amount": 50000,
+      "quantity": 2.4015369836695486,
+      "date": "2026-08-11T09:36:46.871716",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
