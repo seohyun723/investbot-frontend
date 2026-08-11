@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 622152.7283235312,
+  "cash": 522152.7283235312,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -451,6 +451,40 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-GEOD",
+      "market": "crypto",
+      "buy_price": 322.0,
+      "buy_price_original": 322.0,
+      "quantity": 155.27950310559007,
+      "buy_amount": 50000,
+      "target_price": 370.3,
+      "stoploss_price": 299.46,
+      "buy_date": "2026-08-11T04:52:32.419365",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-LA",
+      "market": "crypto",
+      "buy_price": 79.3,
+      "buy_price_original": 79.3,
+      "quantity": 630.517023959647,
+      "buy_amount": 50000,
+      "target_price": 91.19,
+      "stoploss_price": 73.75,
+      "buy_date": "2026-08-11T04:52:32.421379",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -751,6 +785,26 @@
       "amount": 50000,
       "quantity": 526.3157894736842,
       "date": "2026-08-10T14:38:29.323464",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-GEOD",
+      "price": 322.0,
+      "amount": 50000,
+      "quantity": 155.27950310559007,
+      "date": "2026-08-11T04:52:32.419373",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-LA",
+      "price": 79.3,
+      "amount": 50000,
+      "quantity": 630.517023959647,
+      "date": "2026-08-11T04:52:32.421385",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
