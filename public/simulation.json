@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 522152.7283235312,
+  "cash": 529669.9697028416,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -130,15 +130,15 @@
       "market": "kr",
       "buy_price": 362500.0,
       "buy_price_original": 362500.0,
-      "quantity": 0.27586206896551724,
+      "quantity": 0.13793103448275862,
       "buy_amount": 100000,
-      "target_price": 416875.0,
-      "stoploss_price": 337125.0,
+      "target_price": 478500.0,
+      "stoploss_price": 380625.0,
       "buy_date": "2026-08-07T05:03:33.925637",
       "score": 70,
       "signal": "강력매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "",
       "currency": "KRW"
     },
@@ -485,6 +485,23 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-BABY",
+      "market": "crypto",
+      "buy_price": 18.7,
+      "buy_price_original": 18.7,
+      "quantity": 2673.7967914438505,
+      "buy_amount": 50000,
+      "target_price": 21.5,
+      "stoploss_price": 17.39,
+      "buy_date": "2026-08-11T08:33:33.761340",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -805,6 +822,26 @@
       "amount": 50000,
       "quantity": 630.517023959647,
       "date": "2026-08-11T04:52:32.421385",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "214450",
+      "price": 417000.0,
+      "quantity": 0.13793103448275862,
+      "amount": 57517.24137931034,
+      "pnl": 7517.241379310345,
+      "date": "2026-08-11T08:33:33.049173",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-BABY",
+      "price": 18.7,
+      "amount": 50000,
+      "quantity": 2673.7967914438505,
+      "date": "2026-08-11T08:33:33.761350",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
