@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 696355.1325510964,
+  "cash": 738479.038821811,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -175,10 +175,12 @@
       "buy_date": "2026-08-08T05:18:06.780515",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 72.9,
+      "sell_date": "2026-08-12T05:50:03.639965"
     },
     {
       "symbol": "KRW-ENSO",
@@ -364,10 +366,12 @@
       "buy_date": "2026-08-09T03:28:23.476434",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 281.0,
+      "sell_date": "2026-08-12T05:50:03.639990"
     },
     {
       "symbol": "KRW-IOST",
@@ -578,6 +582,23 @@
       "target_price": 136.85,
       "stoploss_price": 110.67,
       "buy_date": "2026-08-12T00:11:55.923571",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-MMT",
+      "market": "crypto",
+      "buy_price": 281.0,
+      "buy_price_original": 281.0,
+      "quantity": 177.93594306049823,
+      "buy_amount": 50000,
+      "target_price": 323.15,
+      "stoploss_price": 261.33,
+      "buy_date": "2026-08-12T05:50:03.644013",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -1034,6 +1055,36 @@
       "amount": 50000,
       "quantity": 420.16806722689074,
       "date": "2026-08-12T00:11:55.923578",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ELSA",
+      "price": 72.9,
+      "quantity": 629.7229219143576,
+      "amount": 45906.80100755667,
+      "pnl": -4093.198992443324,
+      "date": "2026-08-12T05:50:03.639972",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-MMT",
+      "price": 281.0,
+      "quantity": 164.47368421052633,
+      "amount": 46217.1052631579,
+      "pnl": -3782.8947368421054,
+      "date": "2026-08-12T05:50:03.639992",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-MMT",
+      "price": 281.0,
+      "amount": 50000,
+      "quantity": 177.93594306049823,
+      "date": "2026-08-12T05:50:03.644020",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
