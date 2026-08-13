@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 659797.2672481188,
+  "cash": 702114.1120037071,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -194,10 +194,12 @@
       "buy_date": "2026-08-08T05:18:06.781168",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 1310.0,
+      "sell_date": "2026-08-13T00:10:54.746652"
     },
     {
       "symbol": "KRW-RE",
@@ -425,10 +427,12 @@
       "buy_date": "2026-08-10T05:12:39.320416",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 33.9,
+      "sell_date": "2026-08-13T00:10:54.746670"
     },
     {
       "symbol": "KRW-PRL",
@@ -730,6 +734,23 @@
       "target_price": 103.61,
       "stoploss_price": 83.79,
       "buy_date": "2026-08-12T12:39:25.659116",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-SOL",
+      "market": "crypto",
+      "buy_price": 106900.0,
+      "buy_price_original": 106900.0,
+      "quantity": 0.4677268475210477,
+      "buy_amount": 50000,
+      "target_price": 122935.0,
+      "stoploss_price": 99417.0,
+      "buy_date": "2026-08-13T00:10:54.750098",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -1348,6 +1369,36 @@
       "pnl": -5769.23076923077,
       "date": "2026-08-12T16:16:19.588642",
       "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ENSO",
+      "price": 1310.0,
+      "quantity": 35.31073446327684,
+      "amount": 46257.062146892655,
+      "pnl": -3742.937853107345,
+      "date": "2026-08-13T00:10:54.746658",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-BIO",
+      "price": 33.9,
+      "quantity": 1358.6956521739132,
+      "amount": 46059.782608695656,
+      "pnl": -3940.2173913043466,
+      "date": "2026-08-13T00:10:54.746671",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-SOL",
+      "price": 106900.0,
+      "amount": 50000,
+      "quantity": 0.4677268475210477,
+      "date": "2026-08-13T00:10:54.750104",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
