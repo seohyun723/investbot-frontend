@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 589368.5268294642,
+  "cash": 613751.2668615171,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -329,15 +329,15 @@
       "market": "crypto",
       "buy_price": 3.49,
       "buy_price_original": 3.49,
-      "quantity": 14326.647564469913,
+      "quantity": 7163.3237822349565,
       "buy_amount": 50000,
-      "target_price": 4.01,
-      "stoploss_price": 3.25,
+      "target_price": 4.61,
+      "stoploss_price": 3.66,
       "buy_date": "2026-08-09T02:27:03.680526",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -706,10 +706,12 @@
       "buy_date": "2026-08-12T12:39:25.653837",
       "score": 70,
       "signal": "강력매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 266.0,
+      "sell_date": "2026-08-13T16:16:24.061536"
     },
     {
       "symbol": "KRW-LINK",
@@ -823,6 +825,23 @@
       "target_price": 119.6,
       "stoploss_price": 96.72,
       "buy_date": "2026-08-13T09:50:35.224204",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ID",
+      "market": "crypto",
+      "buy_price": 41.3,
+      "buy_price_original": 41.3,
+      "quantity": 1210.6537530266344,
+      "buy_amount": 50000,
+      "target_price": 47.49,
+      "stoploss_price": 38.41,
+      "buy_date": "2026-08-13T16:16:24.064038",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -1529,6 +1548,36 @@
       "amount": 50000,
       "quantity": 480.7692307692308,
       "date": "2026-08-13T09:50:35.224212",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PUMP",
+      "price": 4.09,
+      "quantity": 7163.3237822349565,
+      "amount": 29297.994269340972,
+      "pnl": 4297.994269340971,
+      "date": "2026-08-13T16:16:24.061515",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-OPEN",
+      "price": 266.0,
+      "quantity": 169.4915254237288,
+      "amount": 45084.745762711864,
+      "pnl": -4915.254237288135,
+      "date": "2026-08-13T16:16:24.061538",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ID",
+      "price": 41.3,
+      "amount": 50000,
+      "quantity": 1210.6537530266344,
+      "date": "2026-08-13T16:16:24.064043",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
