@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 647019.7723810656,
+  "cash": 589368.5268294642,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -613,10 +613,12 @@
       "buy_date": "2026-08-12T05:50:03.644013",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 238.0,
+      "sell_date": "2026-08-13T09:50:35.217816"
     },
     {
       "symbol": "KRW-HOLO",
@@ -787,6 +789,40 @@
       "target_price": 119.6,
       "stoploss_price": 96.72,
       "buy_date": "2026-08-13T05:54:29.964056",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-VVV",
+      "market": "crypto",
+      "buy_price": 17810.0,
+      "buy_price_original": 17810.0,
+      "quantity": 2.807411566535654,
+      "buy_amount": 50000,
+      "target_price": 20481.5,
+      "stoploss_price": 16563.3,
+      "buy_date": "2026-08-13T09:50:35.221191",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-HOLO",
+      "market": "crypto",
+      "buy_price": 104.0,
+      "buy_price_original": 104.0,
+      "quantity": 480.7692307692308,
+      "buy_amount": 50000,
+      "target_price": 119.6,
+      "stoploss_price": 96.72,
+      "buy_date": "2026-08-13T09:50:35.224204",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -1463,6 +1499,36 @@
       "amount": 50000,
       "quantity": 480.7692307692308,
       "date": "2026-08-13T05:54:29.964061",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-MMT",
+      "price": 238.0,
+      "quantity": 177.93594306049823,
+      "amount": 42348.75444839858,
+      "pnl": -7651.245551601424,
+      "date": "2026-08-13T09:50:35.217823",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-VVV",
+      "price": 17810.0,
+      "amount": 50000,
+      "quantity": 2.807411566535654,
+      "date": "2026-08-13T09:50:35.221197",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-HOLO",
+      "price": 104.0,
+      "amount": 50000,
+      "quantity": 480.7692307692308,
+      "date": "2026-08-13T09:50:35.224212",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
