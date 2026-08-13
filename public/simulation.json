@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 702114.1120037071,
+  "cash": 647019.7723810656,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -630,10 +630,12 @@
       "buy_date": "2026-08-12T09:50:31.007616",
       "score": 70,
       "signal": "강력매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 95.2,
+      "sell_date": "2026-08-13T05:54:29.960219"
     },
     {
       "symbol": "KRW-STORJ",
@@ -751,6 +753,40 @@
       "target_price": 122935.0,
       "stoploss_price": 99417.0,
       "buy_date": "2026-08-13T00:10:54.750098",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-TRUST",
+      "market": "crypto",
+      "buy_price": 72.7,
+      "buy_price_original": 72.7,
+      "quantity": 687.7579092159559,
+      "buy_amount": 50000,
+      "target_price": 83.6,
+      "stoploss_price": 67.61,
+      "buy_date": "2026-08-13T05:54:29.962177",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ESP",
+      "market": "crypto",
+      "buy_price": 104.0,
+      "buy_price_original": 104.0,
+      "quantity": 480.7692307692308,
+      "buy_amount": 50000,
+      "target_price": 119.6,
+      "stoploss_price": 96.72,
+      "buy_date": "2026-08-13T05:54:29.964056",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -1397,6 +1433,36 @@
       "amount": 50000,
       "quantity": 0.4677268475210477,
       "date": "2026-08-13T00:10:54.750104",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-HOLO",
+      "price": 95.2,
+      "quantity": 471.6981132075472,
+      "amount": 44905.660377358494,
+      "pnl": -5094.339622641508,
+      "date": "2026-08-13T05:54:29.960224",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-TRUST",
+      "price": 72.7,
+      "amount": 50000,
+      "quantity": 687.7579092159559,
+      "date": "2026-08-13T05:54:29.962182",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ESP",
+      "price": 104.0,
+      "amount": 50000,
+      "quantity": 480.7692307692308,
+      "date": "2026-08-13T05:54:29.964061",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
