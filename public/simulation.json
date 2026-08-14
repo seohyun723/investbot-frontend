@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 659440.9220339309,
+  "cash": 752348.5638969368,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -266,10 +266,12 @@
       "buy_date": "2026-08-08T08:08:31.105882",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 41.2,
+      "sell_date": "2026-08-14T09:45:46.545849"
     },
     {
       "symbol": "KRW-0G",
@@ -812,10 +814,12 @@
       "buy_date": "2026-08-13T09:50:35.221191",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 16530.0,
+      "sell_date": "2026-08-14T09:45:46.545882"
     },
     {
       "symbol": "KRW-HOLO",
@@ -1591,6 +1595,26 @@
       "amount": 45689.6551724138,
       "pnl": -4310.3448275862065,
       "date": "2026-08-14T05:50:52.438623",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-CARV",
+      "price": 41.2,
+      "quantity": 1128.6681715575621,
+      "amount": 46501.128668171565,
+      "pnl": -3498.8713318284363,
+      "date": "2026-08-14T09:45:46.545856",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-VVV",
+      "price": 16530.0,
+      "quantity": 2.807411566535654,
+      "amount": 46406.51319483436,
+      "pnl": -3593.486805165637,
+      "date": "2026-08-14T09:45:46.545883",
       "reason": "손절"
     }
   ]
