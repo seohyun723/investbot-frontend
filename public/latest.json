@@ -1,7 +1,7 @@
 {
   "date": "2026-08-14",
-  "generated_at": "2026-08-14T09:42:37.317542",
-  "usd_krw": 1412.050048828125,
+  "generated_at": "2026-08-14T09:42:54.272070",
+  "usd_krw": 1412.239990234375,
   "fear_greed": {
     "index": 75,
     "label": "탐욕",
@@ -18,22 +18,22 @@
       "ticker": "KRW=X",
       "name": "원달러",
       "type": "환율",
-      "price": 1412.08,
-      "change_pct": -0.31
+      "price": 1412.18,
+      "change_pct": -0.3
     },
     {
       "ticker": "CL=F",
       "name": "WTI 유가",
       "type": "원자재",
-      "price": 82.03,
-      "change_pct": 0.96
+      "price": 82.04,
+      "change_pct": 0.97
     },
     {
       "ticker": "GC=F",
       "name": "금",
       "type": "원자재",
-      "price": 4407.9,
-      "change_pct": 1.02
+      "price": 4408.6,
+      "change_pct": 1.03
     },
     {
       "ticker": "^VIX",
@@ -96,8 +96,8 @@
       "target_price": 22.6,
       "stoploss_price": 16.3,
       "grade": "A (매수)",
-      "weight": 0.1087118392,
-      "suggested_amount": 21742,
+      "weight": 0.108728031,
+      "suggested_amount": 21745,
       "name": "KRW-PLUME"
     },
     {
@@ -116,8 +116,8 @@
       "target_price": 29.1571,
       "stoploss_price": 21.1214,
       "grade": "A (매수)",
-      "weight": 0.1060312733,
-      "suggested_amount": 21206,
+      "weight": 0.1060470658,
+      "suggested_amount": 21209,
       "name": "KRW-IRYS"
     },
     {
@@ -136,8 +136,8 @@
       "target_price": 539.1429,
       "stoploss_price": 364.9286,
       "grade": "A (매수)",
-      "weight": 0.10454207,
-      "suggested_amount": 20908,
+      "weight": 0.1045576408,
+      "suggested_amount": 20911,
       "name": "KRW-PRL"
     }
   ],
@@ -160,8 +160,8 @@
       "target_price": 136.0807,
       "stoploss_price": 118.7396,
       "grade": "A (매수)",
-      "weight": 0.1092177864,
-      "suggested_amount": 21843
+      "weight": 0.1102194563,
+      "suggested_amount": 22043
     },
     {
       "total_score": 65.8,
@@ -181,8 +181,8 @@
       "target_price": 66.0929,
       "stoploss_price": 63.0886,
       "grade": "A (매수)",
-      "weight": 0.1067835118,
-      "suggested_amount": 21356
+      "weight": 0.1077628562,
+      "suggested_amount": 21552
     },
     {
       "total_score": 64.1,
@@ -202,8 +202,8 @@
       "target_price": 166.7886,
       "stoploss_price": 154.5207,
       "grade": "B+ (관심)",
-      "weight": 0.1040246673,
-      "suggested_amount": 20804
+      "weight": 0.1049787095,
+      "suggested_amount": 20995
     },
     {
       "total_score": 63.8,
@@ -223,8 +223,8 @@
       "target_price": 207.6529,
       "stoploss_price": 192.7236,
       "grade": "B+ (관심)",
-      "weight": 0.1035378124,
-      "suggested_amount": 20707
+      "weight": 0.1044873895,
+      "suggested_amount": 20897
     },
     {
       "total_score": 60.8,
@@ -244,8 +244,8 @@
       "target_price": 375.7529,
       "stoploss_price": 356.7886,
       "grade": "B+ (관심)",
-      "weight": 0.0986692632,
-      "suggested_amount": 19733
+      "weight": 0.0995741893,
+      "suggested_amount": 19914
     },
     {
       "total_score": 59.1,
@@ -265,8 +265,8 @@
       "target_price": 55.46,
       "stoploss_price": 50.36,
       "grade": "B+ (관심)",
-      "weight": 0.0959104187,
-      "suggested_amount": 19182
+      "weight": 0.0967900426,
+      "suggested_amount": 19358
     },
     {
       "total_score": 58.1,
@@ -286,29 +286,8 @@
       "target_price": 142.2086,
       "stoploss_price": 132.2207,
       "grade": "B+ (관심)",
-      "weight": 0.094287569,
-      "suggested_amount": 18857
-    },
-    {
-      "total_score": 61.7,
-      "tech_score": 55.0,
-      "fund_score": 60,
-      "analyst_score": 70,
-      "mom_score": 54.6,
-      "vol_score": 46.7,
-      "news_score": 77.0,
-      "signal": "중립",
-      "reasons": "[중기·추세] | 정배열 | RSI 과매수(76) 상투 주의 | MACD 강세 | 해외뉴스 긍정(13) | 52주 고가권(93%) | 합류 신호(2개 정렬)",
-      "strategy_tag": "중기·추세",
-      "ticker": "PFE",
-      "name": "Pfizer, Inc.",
-      "price": 26.8,
-      "atr": 0.5885716847,
-      "target_price": null,
-      "stoploss_price": null,
-      "grade": "B+ (관심)",
-      "weight": 0.100129828,
-      "suggested_amount": 20025
+      "weight": 0.0951523092,
+      "suggested_amount": 19030
     },
     {
       "total_score": 59.7,
@@ -328,8 +307,29 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.0968841285,
-      "suggested_amount": 19376
+      "weight": 0.0977726826,
+      "suggested_amount": 19554
+    },
+    {
+      "total_score": 59.3,
+      "tech_score": 55.0,
+      "fund_score": 60,
+      "analyst_score": 70,
+      "mom_score": 54.6,
+      "vol_score": 46.7,
+      "news_score": 61.0,
+      "signal": "중립",
+      "reasons": "[중기·추세] | 정배열 | RSI 과매수(76) 상투 주의 | MACD 강세 | 52주 고가권(93%)",
+      "strategy_tag": "중기·추세",
+      "ticker": "PFE",
+      "name": "Pfizer, Inc.",
+      "price": 26.8,
+      "atr": 0.5885716847,
+      "target_price": null,
+      "stoploss_price": null,
+      "grade": "B+ (관심)",
+      "weight": 0.0971175893,
+      "suggested_amount": 19423
     },
     {
       "total_score": 49.7,
@@ -353,15 +353,15 @@
       "suggested_amount": 200000
     },
     {
-      "total_score": 55.8,
+      "total_score": 52.6,
       "tech_score": 40.0,
       "fund_score": 50,
       "analyst_score": 80,
       "mom_score": 47.6,
       "vol_score": 46.8,
-      "news_score": 81.0,
+      "news_score": 60.0,
       "signal": "매도",
-      "reasons": "[중기·추세] | 단기<중기 | RSI 저점(35) | MACD 약세 | 스토캐스틱 과매도(4/13) | 해외뉴스 긍정(8) | 합류 신호(2개 정렬) | 💬심리 둔화(63.6%)",
+      "reasons": "[중기·추세] | 단기<중기 | RSI 저점(35) | MACD 약세 | 스토캐스틱 과매도(4/13) | 시장 열위(RS -9%p) | 💬심리 둔화(63.6%)",
       "strategy_tag": "중기·추세",
       "ticker": "UNH",
       "name": "UnitedHealth Group Incorporated",
@@ -369,9 +369,9 @@
       "atr": 10.8057141985,
       "target_price": 377.4486,
       "stoploss_price": 409.8657,
-      "grade": "B+ (관심)",
-      "weight": 0.0905550146,
-      "suggested_amount": 18111
+      "grade": "B (중립)",
+      "weight": 0.0861447756,
+      "suggested_amount": 17228
     }
   ],
   "crypto_signals": [
@@ -391,8 +391,8 @@
       "target_price": 22.6,
       "stoploss_price": 16.3,
       "grade": "A (매수)",
-      "weight": 0.1087118392,
-      "suggested_amount": 21742,
+      "weight": 0.108728031,
+      "suggested_amount": 21745,
       "name": "KRW-PLUME"
     },
     {
@@ -411,8 +411,8 @@
       "target_price": 29.1571,
       "stoploss_price": 21.1214,
       "grade": "A (매수)",
-      "weight": 0.1060312733,
-      "suggested_amount": 21206,
+      "weight": 0.1060470658,
+      "suggested_amount": 21209,
       "name": "KRW-IRYS"
     },
     {
@@ -431,8 +431,8 @@
       "target_price": 539.1429,
       "stoploss_price": 364.9286,
       "grade": "A (매수)",
-      "weight": 0.10454207,
-      "suggested_amount": 20908,
+      "weight": 0.1045576408,
+      "suggested_amount": 20911,
       "name": "KRW-PRL"
     },
     {
@@ -451,8 +451,8 @@
       "target_price": 49.6714,
       "stoploss_price": 40.1143,
       "grade": "A (매수)",
-      "weight": 0.0990320179,
-      "suggested_amount": 19806,
+      "weight": 0.0990467679,
+      "suggested_amount": 19809,
       "name": "KRW-ID"
     },
     {
@@ -471,8 +471,8 @@
       "target_price": 13102.8571,
       "stoploss_price": 12033.5714,
       "grade": "A (매수)",
-      "weight": 0.0975428146,
-      "suggested_amount": 19508,
+      "weight": 0.0975573429,
+      "suggested_amount": 19511,
       "name": "KRW-LINK"
     },
     {
@@ -491,8 +491,8 @@
       "target_price": 253.2857,
       "stoploss_price": 210.8571,
       "grade": "A (매수)",
-      "weight": 0.0973938943,
-      "suggested_amount": 19478,
+      "weight": 0.0974084004,
+      "suggested_amount": 19481,
       "name": "KRW-0G"
     },
     {
@@ -511,28 +511,28 @@
       "target_price": 4.6557,
       "stoploss_price": 3.6571,
       "grade": "B+ (관심)",
-      "weight": 0.0957557707,
-      "suggested_amount": 19151,
+      "weight": 0.0957700328,
+      "suggested_amount": 19154,
       "name": "KRW-PUMP"
     },
     {
-      "total_score": 64.1,
+      "total_score": 64.0,
       "tech_score": 60.0,
-      "mom_score": 63.9,
+      "mom_score": 63.4,
       "vol_score": 39.6,
       "signal": "매수",
-      "reasons": "[단기·고변동] | MACD 반등 | 5일 강세(9.3%) | 코인 공포(29) | 스토캐스틱 상승 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 시장 대비 약세(RS -20%p) | 52주 신저가 근접(8%) | 합류 신호(2개 정렬) | 📰+코인 우호",
+      "reasons": "[단기·고변동] | MACD 반등 | 5일 강세(8.9%) | 코인 공포(29) | 스토캐스틱 상승 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 시장 대비 약세(RS -20%p) | 52주 신저가 근접(8%) | 합류 신호(2개 정렬) | 📰+코인 우호",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-RE",
-      "price": 624.0,
-      "change_24h": 0.48309179,
+      "price": 622.0,
+      "change_24h": 0.1610306,
       "kimchi_premium": 0.0,
       "atr": 54.5714285714,
-      "target_price": 733.1429,
-      "stoploss_price": 569.4286,
+      "target_price": 731.1429,
+      "stoploss_price": 567.4286,
       "grade": "B+ (관심)",
-      "weight": 0.09545793,
-      "suggested_amount": 19091,
+      "weight": 0.0953232052,
+      "suggested_amount": 19064,
       "name": "KRW-RE"
     },
     {
@@ -551,8 +551,8 @@
       "target_price": 119.0571,
       "stoploss_price": 86.5714,
       "grade": "B+ (관심)",
-      "weight": 0.0938198064,
-      "suggested_amount": 18763,
+      "weight": 0.0938337802,
+      "suggested_amount": 18766,
       "name": "KRW-HOLO"
     },
     {
@@ -571,69 +571,49 @@
       "target_price": 127.6857,
       "stoploss_price": 93.6571,
       "grade": "B+ (관심)",
-      "weight": 0.1079646018,
-      "suggested_amount": 21592,
+      "weight": 0.1345687183,
+      "suggested_amount": 26913,
       "name": "KRW-ESP"
     },
     {
       "total_score": 60.3,
       "tech_score": 60.0,
-      "mom_score": 52.1,
-      "vol_score": 38.1,
+      "mom_score": 51.9,
+      "vol_score": 38.2,
       "signal": "매수",
       "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 코인 공포(29) | 스토캐스틱 하락 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 📰+코인 우호",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-ME",
-      "price": 88.8,
-      "change_24h": -2.41758242,
+      "price": 88.7,
+      "change_24h": -2.52747253,
       "kimchi_premium": 0.0,
-      "atr": 4.7857142857,
-      "target_price": 98.3714,
-      "stoploss_price": 84.0143,
+      "atr": 4.7928571429,
+      "target_price": 98.2857,
+      "stoploss_price": 83.9071,
       "grade": "B+ (관심)",
-      "weight": 0.1067256637,
-      "suggested_amount": 21345,
+      "weight": 0.1330244871,
+      "suggested_amount": 26604,
       "name": "KRW-ME"
     },
     {
       "total_score": 59.7,
       "tech_score": 60.0,
-      "mom_score": 49.3,
+      "mom_score": 49.4,
       "vol_score": 39.2,
       "signal": "매수",
       "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 코인 공포(29) | 스토캐스틱 하락 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 📰+코인 우호",
       "strategy_tag": "단기·고변동",
       "symbol": "KRW-SOL",
-      "price": 106600.0,
-      "change_24h": -0.92936803,
-      "kimchi_premium": -0.01,
+      "price": 106700.0,
+      "change_24h": -0.83643123,
+      "kimchi_premium": 0.08,
       "atr": 2507.1428571429,
-      "target_price": 111614.2857,
-      "stoploss_price": 104092.8571,
+      "target_price": 111714.2857,
+      "stoploss_price": 104192.8571,
       "grade": "B+ (관심)",
-      "weight": 0.1056637168,
-      "suggested_amount": 21132,
+      "weight": 0.1317008604,
+      "suggested_amount": 26340,
       "name": "KRW-SOL"
-    },
-    {
-      "total_score": 55.2,
-      "tech_score": 60.0,
-      "mom_score": 38.3,
-      "vol_score": 31.5,
-      "signal": "매수",
-      "reasons": "[단기·고변동] | 단기>중기 | MACD 반등 | 코인 공포(29) | 스토캐스틱 하락 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 📰+코인 우호",
-      "strategy_tag": "단기·고변동",
-      "symbol": "KRW-CARV",
-      "price": 41.2,
-      "change_24h": -1.19904077,
-      "kimchi_premium": 0.0,
-      "atr": 2.7214285714,
-      "target_price": 46.6429,
-      "stoploss_price": 38.4786,
-      "grade": "B+ (관심)",
-      "weight": 0.097699115,
-      "suggested_amount": 19539,
-      "name": "KRW-CARV"
     },
     {
       "total_score": 68.3,
@@ -651,8 +631,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "A (매수)",
-      "weight": 0.1017125838,
-      "suggested_amount": 20342,
+      "weight": 0.1017277331,
+      "suggested_amount": 20345,
       "name": "KRW-BONK"
     },
     {
@@ -671,29 +651,9 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1008849558,
-      "suggested_amount": 20176,
+      "weight": 0.12574454,
+      "suggested_amount": 25148,
       "name": "KRW-BSV"
-    },
-    {
-      "total_score": 56.5,
-      "tech_score": 50.0,
-      "mom_score": 52.3,
-      "vol_score": 38.7,
-      "signal": "중립",
-      "reasons": "[단기·고변동] | 단기<중기 | MACD 반등 | 코인 공포(29) | 스토캐스틱 하락 전환 | BTC 도미넌스 56.08% | 공포탐욕 29 | 시장 열위(RS -12%p) | 📰+코인 우호",
-      "strategy_tag": "단기·고변동",
-      "symbol": "KRW-VVV",
-      "price": 16530.0,
-      "change_24h": -3.44626168,
-      "kimchi_premium": 0.0,
-      "atr": 1009.2857142857,
-      "target_price": null,
-      "stoploss_price": null,
-      "grade": "B+ (관심)",
-      "weight": 0.1,
-      "suggested_amount": 20000,
-      "name": "KRW-VVV"
     },
     {
       "total_score": 53.1,
@@ -711,8 +671,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0939823009,
-      "suggested_amount": 18796,
+      "weight": 0.1171409662,
+      "suggested_amount": 23428,
       "name": "KRW-YGG"
     },
     {
@@ -731,8 +691,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.0930973451,
-      "suggested_amount": 18619,
+      "weight": 0.116037944,
+      "suggested_amount": 23207,
       "name": "KRW-ADA"
     },
     {
@@ -751,8 +711,8 @@
       "target_price": 2020.8571,
       "stoploss_price": 2274.5714,
       "grade": "B+ (관심)",
-      "weight": 0.1079646018,
-      "suggested_amount": 21592,
+      "weight": 0.1345687183,
+      "suggested_amount": 26913,
       "name": "KRW-ATOM"
     },
     {
@@ -771,21 +731,21 @@
       "target_price": 60.6,
       "stoploss_price": 73.95,
       "grade": "B (중립)",
-      "weight": 0.0860176991,
-      "suggested_amount": 17203,
+      "weight": 0.1072137657,
+      "suggested_amount": 21442,
       "name": "KRW-TRUST"
     }
   ],
   "kr_signals": [],
   "alt_signals": [
     {
-      "total_score": 59.9,
+      "total_score": 57.9,
       "tech_score": 62.5,
       "mom_score": 58.3,
       "vol_score": 44.4,
-      "news_score": 55.0,
+      "news_score": 45.0,
       "signal": "매수",
-      "reasons": "[장기·안전자산] | 단기>중기 | RSI 고점(70) | MACD 강세 | 스토캐스틱 하락 전환 | 해외뉴스 긍정(6)",
+      "reasons": "[장기·안전자산] | 단기>중기 | RSI 고점(70) | MACD 강세 | 스토캐스틱 하락 전환",
       "strategy_tag": "장기·안전자산",
       "ticker": "SLV",
       "name": "iShares Silver Trust",
@@ -794,8 +754,8 @@
       "target_price": 61.6014,
       "stoploss_price": 56.4393,
       "grade": "B+ (관심)",
-      "weight": 0.1747374562,
-      "suggested_amount": 34947
+      "weight": 0.171963172,
+      "suggested_amount": 34392
     },
     {
       "total_score": 64.9,
@@ -813,8 +773,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.1893232205,
-      "suggested_amount": 37864
+      "weight": 0.1927531928,
+      "suggested_amount": 38550
     },
     {
       "total_score": 56.3,
@@ -832,36 +792,36 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B+ (관심)",
-      "weight": 0.164235706,
-      "suggested_amount": 32847
+      "weight": 0.1672111672,
+      "suggested_amount": 33442
     },
     {
-      "total_score": 55.2,
-      "tech_score": 49.5,
+      "total_score": 53.1,
+      "tech_score": 51.5,
       "mom_score": 50.4,
-      "vol_score": 47.0,
-      "news_score": 77.0,
+      "vol_score": 47.3,
+      "news_score": 61.0,
       "signal": "중립",
-      "reasons": "[장기·평균회귀] | 역배열 | MACD 반등 | 스토캐스틱 상승 전환 | 해외뉴스 긍정(3) | 합류 신호(2개 정렬)",
+      "reasons": "[장기·평균회귀] | MACD 반등 | 스토캐스틱 상승 전환",
       "strategy_tag": "장기·평균회귀",
       "ticker": "LQD",
       "name": "iShares iBoxx $ Investment Grad",
       "price": 106.55,
-      "atr": 0.4735712324,
+      "atr": 0.473452323,
       "target_price": null,
       "stoploss_price": null,
-      "grade": "B+ (관심)",
-      "weight": 0.1610268378,
-      "suggested_amount": 32205
+      "grade": "B (중립)",
+      "weight": 0.1577071577,
+      "suggested_amount": 31541
     },
     {
-      "total_score": 54.9,
+      "total_score": 52.9,
       "tech_score": 55.0,
       "mom_score": 54.8,
       "vol_score": 52.5,
-      "news_score": 55.0,
+      "news_score": 45.0,
       "signal": "중립",
-      "reasons": "[장기·안전자산] | 단기>중기 | RSI 과매수(71) | MACD 강세 | 스토캐스틱 하락 전환 | 해외뉴스 긍정(8)",
+      "reasons": "[장기·안전자산] | 단기>중기 | RSI 과매수(71) | MACD 강세 | 스토캐스틱 하락 전환",
       "strategy_tag": "장기·안전자산",
       "ticker": "GLD",
       "name": "SPDR Gold Shares",
@@ -870,14 +830,14 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.1601516919,
-      "suggested_amount": 32030
+      "weight": 0.1571131571,
+      "suggested_amount": 31422
     },
     {
       "total_score": 51.6,
       "tech_score": 51.5,
       "mom_score": 50.8,
-      "vol_score": 49.3,
+      "vol_score": 49.5,
       "news_score": 53.0,
       "signal": "중립",
       "reasons": "[장기·평균회귀] | MACD 반등",
@@ -889,8 +849,8 @@
       "target_price": null,
       "stoploss_price": null,
       "grade": "B (중립)",
-      "weight": 0.1505250875,
-      "suggested_amount": 30105
+      "weight": 0.1532521533,
+      "suggested_amount": 30650
     }
   ],
   "sim_report": {
@@ -1177,7 +1137,7 @@
         "note": "같은 시장 편중 (금액 절반)",
         "currency": "KRW",
         "sell_price": 41.2,
-        "sell_date": "2026-08-14T09:45:46.545849"
+        "sell_date": "2026-08-14T09:45:59.968765"
       },
       {
         "symbol": "KRW-0G",
@@ -1725,7 +1685,7 @@
         "note": "같은 시장 편중 (금액 절반)",
         "currency": "KRW",
         "sell_price": 16530.0,
-        "sell_date": "2026-08-14T09:45:46.545882"
+        "sell_date": "2026-08-14T09:45:59.968812"
       },
       {
         "symbol": "KRW-HOLO",
@@ -2510,7 +2470,7 @@
         "quantity": 1128.6681715575621,
         "amount": 46501.128668171565,
         "pnl": -3498.8713318284363,
-        "date": "2026-08-14T09:45:46.545856",
+        "date": "2026-08-14T09:45:59.968772",
         "reason": "손절"
       },
       {
@@ -2520,7 +2480,7 @@
         "quantity": 2.807411566535654,
         "amount": 46406.51319483436,
         "pnl": -3593.486805165637,
-        "date": "2026-08-14T09:45:46.545883",
+        "date": "2026-08-14T09:45:59.968815",
         "reason": "손절"
       }
     ]
