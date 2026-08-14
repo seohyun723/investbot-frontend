@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 613751.2668615171,
+  "cash": 659440.9220339309,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -689,10 +689,12 @@
       "buy_date": "2026-08-12T12:39:25.652069",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 106.0,
+      "sell_date": "2026-08-14T05:50:52.438617"
     },
     {
       "symbol": "KRW-OPEN",
@@ -1580,6 +1582,16 @@
       "date": "2026-08-13T16:16:24.064043",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-LSK",
+      "price": 106.0,
+      "quantity": 431.0344827586207,
+      "amount": 45689.6551724138,
+      "pnl": -4310.3448275862065,
+      "date": "2026-08-14T05:50:52.438623",
+      "reason": "손절"
     }
   ]
 }
