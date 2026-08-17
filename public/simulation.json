@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 549504.1729863981,
+  "cash": 499504.1729863981,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1015,6 +1015,23 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ARX",
+      "market": "crypto",
+      "buy_price": 161.0,
+      "buy_price_original": 161.0,
+      "quantity": 310.55900621118013,
+      "buy_amount": 50000,
+      "target_price": 185.15,
+      "stoploss_price": 149.73,
+      "buy_date": "2026-08-17T15:58:50.699367",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -1915,6 +1932,16 @@
       "amount": 50000,
       "quantity": 28.785261945883708,
       "date": "2026-08-17T15:01:51.225090",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ARX",
+      "price": 161.0,
+      "amount": 50000,
+      "quantity": 310.55900621118013,
+      "date": "2026-08-17T15:58:50.699373",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
