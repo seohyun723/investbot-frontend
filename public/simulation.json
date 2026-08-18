@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 595337.6481793835,
+  "cash": 641646.3730115982,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -215,10 +215,12 @@
       "buy_date": "2026-08-08T05:18:06.782171",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 552.0,
+      "sell_date": "2026-08-18T09:10:22.017440"
     },
     {
       "symbol": "KRW-IRYS",
@@ -2173,6 +2175,16 @@
       "date": "2026-08-18T08:02:07.352784",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-RE",
+      "price": 552.0,
+      "quantity": 83.89261744966443,
+      "amount": 46308.724832214764,
+      "pnl": -3691.2751677852348,
+      "date": "2026-08-18T09:10:22.017446",
+      "reason": "손절"
     }
   ]
 }
