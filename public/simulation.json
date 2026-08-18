@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 632138.4820453539,
+  "cash": 699206.2613180696,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -232,10 +232,12 @@
       "buy_date": "2026-08-08T05:48:21.495117",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 19.1,
+      "sell_date": "2026-08-18T03:15:16.798326"
     },
     {
       "symbol": "KRW-MMT",
@@ -860,10 +862,12 @@
       "buy_date": "2026-08-13T16:16:24.064038",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 37.9,
+      "sell_date": "2026-08-18T03:15:16.798359"
     },
     {
       "symbol": "KRW-HOLO",
@@ -906,15 +910,15 @@
       "market": "crypto",
       "buy_price": 1184.0,
       "buy_price_original": 1184.0,
-      "quantity": 42.229729729729726,
+      "quantity": 21.114864864864863,
       "buy_amount": 50000,
-      "target_price": 1361.6,
-      "stoploss_price": 1101.12,
+      "target_price": 1562.88,
+      "stoploss_price": 1243.2,
       "buy_date": "2026-08-15T07:22:30.292054",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1051,6 +1055,23 @@
       "target_price": 44.62,
       "stoploss_price": 36.08,
       "buy_date": "2026-08-17T22:58:26.781241",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-GEOD",
+      "market": "crypto",
+      "buy_price": 303.0,
+      "buy_price_original": 303.0,
+      "quantity": 165.01650165016503,
+      "buy_amount": 50000,
+      "target_price": 348.45,
+      "stoploss_price": 281.79,
+      "buy_date": "2026-08-18T03:15:16.803269",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -2017,6 +2038,46 @@
       "amount": 50000,
       "quantity": 1288.659793814433,
       "date": "2026-08-17T22:58:26.781247",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-IRYS",
+      "price": 19.1,
+      "quantity": 2212.389380530973,
+      "amount": 42256.63716814159,
+      "pnl": -7743.362831858406,
+      "date": "2026-08-18T03:15:16.798333",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ID",
+      "price": 37.9,
+      "quantity": 1210.6537530266344,
+      "amount": 45883.77723970944,
+      "pnl": -4116.222760290555,
+      "date": "2026-08-18T03:15:16.798361",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PIEVERSE",
+      "price": 1370.0,
+      "quantity": 21.114864864864863,
+      "amount": 28927.364864864863,
+      "pnl": 3927.3648648648646,
+      "date": "2026-08-18T03:15:16.798367",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-GEOD",
+      "price": 303.0,
+      "amount": 50000,
+      "quantity": 165.01650165016503,
+      "date": "2026-08-18T03:15:16.803277",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
