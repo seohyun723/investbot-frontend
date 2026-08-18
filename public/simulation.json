@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 695337.6481793835,
+  "cash": 595337.6481793835,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1097,6 +1097,40 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-RED",
+      "market": "crypto",
+      "buy_price": 137.0,
+      "buy_price_original": 137.0,
+      "quantity": 364.963503649635,
+      "buy_amount": 50000,
+      "target_price": 157.55,
+      "stoploss_price": 127.41,
+      "buy_date": "2026-08-18T08:02:07.349218",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ARDR",
+      "market": "crypto",
+      "buy_price": 25.2,
+      "buy_price_original": 25.2,
+      "quantity": 1984.126984126984,
+      "buy_amount": 50000,
+      "target_price": 28.98,
+      "stoploss_price": 23.44,
+      "buy_date": "2026-08-18T08:02:07.352777",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -2119,6 +2153,26 @@
       "pnl": -3868.6131386861316,
       "date": "2026-08-18T07:29:38.834486",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-RED",
+      "price": 137.0,
+      "amount": 50000,
+      "quantity": 364.963503649635,
+      "date": "2026-08-18T08:02:07.349225",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ARDR",
+      "price": 25.2,
+      "amount": 50000,
+      "quantity": 1984.126984126984,
+      "date": "2026-08-18T08:02:07.352784",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
