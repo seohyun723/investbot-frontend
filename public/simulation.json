@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 641646.3730115982,
+  "cash": 617892.1500386252,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -919,10 +919,12 @@
       "buy_date": "2026-08-15T07:22:30.292054",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 1243.0,
+      "sell_date": "2026-08-18T10:59:22.010941"
     },
     {
       "symbol": "KRW-WLFI",
@@ -1129,6 +1131,23 @@
       "buy_date": "2026-08-18T08:02:07.352777",
       "score": 70,
       "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-PIEVERSE",
+      "market": "crypto",
+      "buy_price": 1243.0,
+      "buy_price_original": 1243.0,
+      "quantity": 40.22526146419952,
+      "buy_amount": 50000,
+      "target_price": 1429.45,
+      "stoploss_price": 1155.99,
+      "buy_date": "2026-08-18T10:59:22.014895",
+      "score": 70,
+      "signal": "강력매수",
       "status": "active",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
@@ -2185,6 +2204,26 @@
       "pnl": -3691.2751677852348,
       "date": "2026-08-18T09:10:22.017446",
       "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PIEVERSE",
+      "price": 1243.0,
+      "quantity": 21.114864864864863,
+      "amount": 26245.777027027027,
+      "pnl": 1245.7770270270269,
+      "date": "2026-08-18T10:59:22.010947",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PIEVERSE",
+      "price": 1243.0,
+      "amount": 50000,
+      "quantity": 40.22526146419952,
+      "date": "2026-08-18T10:59:22.014900",
+      "reason": "점수 70 · 시그널 강력매수",
+      "signal": "강력매수"
     }
   ]
 }
