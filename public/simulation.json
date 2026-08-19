@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 567892.1500386252,
+  "cash": 559646.6086133863,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1063,10 +1063,12 @@
       "buy_date": "2026-08-17T22:58:26.781241",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 35.8,
+      "sell_date": "2026-08-19T03:17:34.374165"
     },
     {
       "symbol": "KRW-GEOD",
@@ -1114,10 +1116,12 @@
       "buy_date": "2026-08-18T08:02:07.349218",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 125.0,
+      "sell_date": "2026-08-19T03:17:34.374179"
     },
     {
       "symbol": "KRW-ARDR",
@@ -1163,6 +1167,40 @@
       "target_price": 89.01,
       "stoploss_price": 71.98,
       "buy_date": "2026-08-18T12:00:23.353123",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-CHIP",
+      "market": "crypto",
+      "buy_price": 35.8,
+      "buy_price_original": 35.8,
+      "quantity": 1396.6480446927376,
+      "buy_amount": 50000,
+      "target_price": 41.17,
+      "stoploss_price": 33.29,
+      "buy_date": "2026-08-19T03:17:34.379544",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-SOMI",
+      "market": "crypto",
+      "buy_price": 132.0,
+      "buy_price_original": 132.0,
+      "quantity": 378.7878787878788,
+      "buy_amount": 50000,
+      "target_price": 151.8,
+      "stoploss_price": 122.76,
+      "buy_date": "2026-08-19T03:17:34.383256",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -2249,6 +2287,46 @@
       "amount": 50000,
       "quantity": 645.9948320413437,
       "date": "2026-08-18T12:00:23.353131",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-CHIP",
+      "price": 35.8,
+      "quantity": 1288.659793814433,
+      "amount": 46134.0206185567,
+      "pnl": -3865.9793814432987,
+      "date": "2026-08-19T03:17:34.374172",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-RED",
+      "price": 125.0,
+      "quantity": 364.963503649635,
+      "amount": 45620.437956204376,
+      "pnl": -4379.56204379562,
+      "date": "2026-08-19T03:17:34.374181",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-CHIP",
+      "price": 35.8,
+      "amount": 50000,
+      "quantity": 1396.6480446927376,
+      "date": "2026-08-19T03:17:34.379550",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-SOMI",
+      "price": 132.0,
+      "amount": 50000,
+      "quantity": 378.7878787878788,
+      "date": "2026-08-19T03:17:34.383262",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
