@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 500723.9951630328,
+  "cash": 525469.370442671,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -732,15 +732,15 @@
       "market": "crypto",
       "buy_price": 12520.0,
       "buy_price_original": 12520.0,
-      "quantity": 3.9936102236421727,
+      "quantity": 1.9968051118210863,
       "buy_amount": 50000,
-      "target_price": 14398.0,
-      "stoploss_price": 11643.6,
+      "target_price": 16526.4,
+      "stoploss_price": 13146.0,
       "buy_date": "2026-08-12T12:39:25.656480",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1258,6 +1258,25 @@
       "buy_date": "2026-08-19T16:02:43.977089",
       "score": 70,
       "signal": "강력매수",
+      "status": "sold",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW",
+      "sell_price": 429.0,
+      "sell_date": "2026-08-19T22:59:16.228066"
+    },
+    {
+      "symbol": "KRW-PRL",
+      "market": "crypto",
+      "buy_price": 429.0,
+      "buy_price_original": 429.0,
+      "quantity": 116.55011655011656,
+      "buy_amount": 50000,
+      "target_price": 493.35,
+      "stoploss_price": 398.97,
+      "buy_date": "2026-08-19T22:59:16.232690",
+      "score": 70,
+      "signal": "매수",
       "status": "active",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
@@ -2434,6 +2453,36 @@
       "date": "2026-08-19T16:02:43.977094",
       "reason": "점수 70 · 시그널 강력매수",
       "signal": "강력매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-LINK",
+      "price": 14430.0,
+      "quantity": 1.9968051118210863,
+      "amount": 28813.897763578276,
+      "pnl": 3813.897763578275,
+      "date": "2026-08-19T22:59:16.228037",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PRL",
+      "price": 429.0,
+      "quantity": 107.06638115631692,
+      "amount": 45931.47751605996,
+      "pnl": -4068.522483940043,
+      "date": "2026-08-19T22:59:16.228068",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PRL",
+      "price": 429.0,
+      "amount": 50000,
+      "quantity": 116.55011655011656,
+      "date": "2026-08-19T22:59:16.232718",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
