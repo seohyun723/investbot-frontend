@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 470341.1653144659,
+  "cash": 420341.1653144659,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1317,6 +1317,23 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-PEPE",
+      "market": "crypto",
+      "buy_price": 0.00427,
+      "buy_price_original": 0.00427,
+      "quantity": 11709601.873536298,
+      "buy_amount": 50000,
+      "target_price": 0.0,
+      "stoploss_price": 0.0,
+      "buy_date": "2026-08-20T09:57:48.062347",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -2549,6 +2566,16 @@
       "pnl": -5128.205128205129,
       "date": "2026-08-20T08:01:26.461025",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PEPE",
+      "price": 0.00427,
+      "amount": 50000,
+      "quantity": 11709601.873536298,
+      "date": "2026-08-20T09:57:48.062353",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
