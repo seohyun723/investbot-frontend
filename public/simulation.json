@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 457983.75107433053,
+  "cash": 404276.5267397298,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1298,10 +1298,12 @@
       "buy_date": "2026-08-20T05:11:03.598366",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 48.7,
+      "sell_date": "2026-08-20T14:07:14.024940"
     },
     {
       "symbol": "KRW-ZRO",
@@ -1347,6 +1349,40 @@
       "target_price": 5.3,
       "stoploss_price": 4.29,
       "buy_date": "2026-08-20T11:07:05.344509",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ENA",
+      "market": "crypto",
+      "buy_price": 135.0,
+      "buy_price_original": 135.0,
+      "quantity": 370.3703703703704,
+      "buy_amount": 50000,
+      "target_price": 155.25,
+      "stoploss_price": 125.55,
+      "buy_date": "2026-08-20T14:07:14.032861",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-VIRTUAL",
+      "market": "crypto",
+      "buy_price": 867.0,
+      "buy_price_original": 867.0,
+      "quantity": 57.67012687427912,
+      "buy_amount": 50000,
+      "target_price": 997.05,
+      "stoploss_price": 806.31,
+      "buy_date": "2026-08-20T14:07:14.036240",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -2633,6 +2669,36 @@
       "amount": 50000,
       "quantity": 10845.986984815618,
       "date": "2026-08-20T11:07:05.344515",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-TREE",
+      "price": 48.7,
+      "quantity": 950.5703422053232,
+      "amount": 46292.77566539924,
+      "pnl": -3707.224334600759,
+      "date": "2026-08-20T14:07:14.024948",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ENA",
+      "price": 135.0,
+      "amount": 50000,
+      "quantity": 370.3703703703704,
+      "date": "2026-08-20T14:07:14.032868",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-VIRTUAL",
+      "price": 867.0,
+      "amount": 50000,
+      "quantity": 57.67012687427912,
+      "date": "2026-08-20T14:07:14.036246",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
