@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 525469.370442671,
+  "cash": 425469.370442671,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1281,6 +1281,40 @@
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-TREE",
+      "market": "crypto",
+      "buy_price": 52.6,
+      "buy_price_original": 52.6,
+      "quantity": 950.5703422053232,
+      "buy_amount": 50000,
+      "target_price": 60.49,
+      "stoploss_price": 48.92,
+      "buy_date": "2026-08-20T05:11:03.598366",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ZRO",
+      "market": "crypto",
+      "buy_price": 1205.0,
+      "buy_price_original": 1205.0,
+      "quantity": 41.49377593360996,
+      "buy_amount": 50000,
+      "target_price": 1385.75,
+      "stoploss_price": 1120.65,
+      "buy_date": "2026-08-20T05:11:03.601632",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
     }
   ],
   "history": [
@@ -2481,6 +2515,26 @@
       "amount": 50000,
       "quantity": 116.55011655011656,
       "date": "2026-08-19T22:59:16.232718",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-TREE",
+      "price": 52.6,
+      "amount": 50000,
+      "quantity": 950.5703422053232,
+      "date": "2026-08-20T05:11:03.598372",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ZRO",
+      "price": 1205.0,
+      "amount": 50000,
+      "quantity": 41.49377593360996,
+      "date": "2026-08-20T05:11:03.601637",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
