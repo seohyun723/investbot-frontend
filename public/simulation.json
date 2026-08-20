@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 433675.9680805119,
+  "cash": 494208.9966367962,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -971,15 +971,15 @@
       "market": "crypto",
       "buy_price": 55.9,
       "buy_price_original": 55.9,
-      "quantity": 894.4543828264759,
+      "quantity": 447.22719141323796,
       "buy_amount": 50000,
-      "target_price": 64.28,
-      "stoploss_price": 51.99,
+      "target_price": 73.79,
+      "stoploss_price": 58.7,
       "buy_date": "2026-08-17T05:26:23.040633",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1361,15 +1361,15 @@
       "market": "crypto",
       "buy_price": 135.0,
       "buy_price_original": 135.0,
-      "quantity": 370.3703703703704,
+      "quantity": 185.1851851851852,
       "buy_amount": 50000,
-      "target_price": 155.25,
-      "stoploss_price": 125.55,
+      "target_price": 178.2,
+      "stoploss_price": 141.75,
       "buy_date": "2026-08-20T14:07:14.032861",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -2710,6 +2710,26 @@
       "amount": 29399.441340782127,
       "pnl": 4399.441340782127,
       "date": "2026-08-20T16:05:48.635222",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ONT",
+      "price": 69.1,
+      "quantity": 447.22719141323796,
+      "amount": 30903.39892665474,
+      "pnl": 5903.39892665474,
+      "date": "2026-08-20T23:04:19.841957",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ENA",
+      "price": 160.0,
+      "quantity": 185.1851851851852,
+      "amount": 29629.62962962963,
+      "pnl": 4629.62962962963,
+      "date": "2026-08-20T23:04:19.841985",
       "reason": "1차 목표 (절반)"
     }
   ]
