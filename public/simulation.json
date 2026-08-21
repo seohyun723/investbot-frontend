@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 467769.0538329236,
+  "cash": 530298.1391141702,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -546,15 +546,15 @@
       "market": "crypto",
       "buy_price": 20820.0,
       "buy_price_original": 20820.0,
-      "quantity": 2.4015369836695486,
+      "quantity": 1.2007684918347743,
       "buy_amount": 50000,
-      "target_price": 23943.0,
-      "stoploss_price": 19362.6,
+      "target_price": 27482.4,
+      "stoploss_price": 21861.0,
       "buy_date": "2026-08-11T09:36:46.871705",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1370,10 +1370,12 @@
       "buy_date": "2026-08-20T14:07:14.032861",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 181.0,
+      "sell_date": "2026-08-21T08:07:57.758650"
     },
     {
       "symbol": "KRW-VIRTUAL",
@@ -2854,6 +2856,26 @@
       "date": "2026-08-21T05:54:07.983459",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-BSV",
+      "price": 24160.0,
+      "quantity": 1.2007684918347743,
+      "amount": 29010.566762728147,
+      "pnl": 4010.566762728146,
+      "date": "2026-08-21T08:07:57.758617",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ENA",
+      "price": 181.0,
+      "quantity": 185.1851851851852,
+      "amount": 33518.51851851852,
+      "pnl": 8518.518518518518,
+      "date": "2026-08-21T08:07:57.758652",
+      "reason": "2차 목표"
     }
   ]
 }
