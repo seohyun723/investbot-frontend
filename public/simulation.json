@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 633455.1078531474,
+  "cash": 696784.4100971206,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -741,10 +741,12 @@
       "buy_date": "2026-08-12T12:39:25.656480",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 16680.0,
+      "sell_date": "2026-08-21T22:59:11.852869"
     },
     {
       "symbol": "KRW-ME",
@@ -1240,15 +1242,15 @@
       "market": "crypto",
       "buy_price": 2877000.0,
       "buy_price_original": 2877000.0,
-      "quantity": 0.01737921445950643,
+      "quantity": 0.008689607229753215,
       "buy_amount": 50000,
-      "target_price": 3308550.0,
-      "stoploss_price": 2675610.0,
+      "target_price": 3797640.0,
+      "stoploss_price": 3020850.0,
       "buy_date": "2026-08-19T16:02:43.972588",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -2954,6 +2956,26 @@
       "amount": 28838.174273858924,
       "pnl": 3838.1742738589214,
       "date": "2026-08-21T14:10:00.145822",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-LINK",
+      "price": 16680.0,
+      "quantity": 1.9968051118210863,
+      "amount": 33306.70926517572,
+      "pnl": 8306.70926517572,
+      "date": "2026-08-21T22:59:11.852877",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ETH",
+      "price": 3455000.0,
+      "quantity": 0.008689607229753215,
+      "amount": 30022.59297879736,
+      "pnl": 5022.592978797358,
+      "date": "2026-08-21T22:59:11.852899",
       "reason": "1차 목표 (절반)"
     }
   ]
