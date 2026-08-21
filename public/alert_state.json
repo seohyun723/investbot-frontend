@@ -1,18 +1,6 @@
 {
-  "KRW-PLUME": {
+  "KRW-YGG": {
     "type": "target",
-    "time": "2026-08-21T09:54:58.626793"
-  },
-  "KRW-GEOD": {
-    "type": "target",
-    "time": "2026-08-21T09:55:03.458853"
-  },
-  "KRW-PIEVERSE": {
-    "type": "target",
-    "time": "2026-08-21T09:55:04.996725"
-  },
-  "KRW-ETH": {
-    "type": "target",
-    "time": "2026-08-21T09:55:06.732326"
+    "time": "2026-08-21T11:01:32.349868"
   }
 }
