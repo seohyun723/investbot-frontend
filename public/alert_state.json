@@ -1,1 +1,34 @@
-{}
+{
+  "KRW-ATOM": {
+    "type": "target",
+    "time": "2026-08-22T03:07:49.994504"
+  },
+  "KRW-API3": {
+    "type": "target",
+    "time": "2026-08-22T03:07:56.661218"
+  },
+  "KRW-ARDR": {
+    "type": "target",
+    "time": "2026-08-22T03:07:57.175010"
+  },
+  "KRW-LA": {
+    "type": "target",
+    "time": "2026-08-22T03:07:58.285422"
+  },
+  "KRW-SOMI": {
+    "type": "target",
+    "time": "2026-08-22T03:07:59.632117"
+  },
+  "KRW-VIRTUAL": {
+    "type": "target",
+    "time": "2026-08-22T03:08:02.483148"
+  },
+  "KRW-ADA": {
+    "type": "target",
+    "time": "2026-08-22T03:08:03.505388"
+  },
+  "KRW-TRUMP": {
+    "type": "target",
+    "time": "2026-08-22T03:08:04.017522"
+  }
+}
