@@ -2,5 +2,13 @@
   "KRW-PIEVERSE": {
     "type": "stop",
     "time": "2026-08-22T14:50:30.838879"
+  },
+  "KRW-PLUME": {
+    "type": "stop",
+    "time": "2026-08-23T05:05:40.346830"
+  },
+  "KRW-TRUMP": {
+    "type": "target",
+    "time": "2026-08-23T05:05:52.027925"
   }
 }
