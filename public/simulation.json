@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 710840.009875316,
+  "cash": 707488.2282138685,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -329,10 +329,12 @@
       "buy_date": "2026-08-09T02:27:03.679390",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 17.6,
+      "sell_date": "2026-08-23T07:51:35.008537"
     },
     {
       "symbol": "KRW-PUMP",
@@ -1323,10 +1325,12 @@
       "buy_date": "2026-08-20T05:11:03.601632",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 1690.0,
+      "sell_date": "2026-08-23T07:51:35.008607"
     },
     {
       "symbol": "KRW-PEPE",
@@ -1446,10 +1450,12 @@
       "buy_date": "2026-08-21T05:54:07.983453",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 3349.0,
+      "sell_date": "2026-08-23T07:51:35.008618"
     },
     {
       "symbol": "KRW-APT",
@@ -1514,6 +1520,40 @@
       "buy_date": "2026-08-22T07:49:09.425078",
       "score": 70,
       "signal": "강력매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-WAVES",
+      "market": "crypto",
+      "buy_price": 309.0,
+      "buy_price_original": 309.0,
+      "quantity": 161.81229773462783,
+      "buy_amount": 50000,
+      "target_price": 355.35,
+      "stoploss_price": 287.37,
+      "buy_date": "2026-08-23T07:51:35.013734",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-RE",
+      "market": "crypto",
+      "buy_price": 726.0,
+      "buy_price_original": 726.0,
+      "quantity": 68.87052341597796,
+      "buy_amount": 50000,
+      "target_price": 834.9,
+      "stoploss_price": 675.18,
+      "buy_date": "2026-08-23T07:51:35.018916",
+      "score": 70,
+      "signal": "매수",
       "status": "active",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
@@ -3110,6 +3150,56 @@
       "date": "2026-08-22T07:49:09.425085",
       "reason": "점수 70 · 시그널 강력매수",
       "signal": "강력매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PLUME",
+      "price": 17.6,
+      "quantity": 1470.5882352941176,
+      "amount": 25882.352941176472,
+      "pnl": 882.3529411764727,
+      "date": "2026-08-23T07:51:35.008545",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ZRO",
+      "price": 1690.0,
+      "quantity": 20.74688796680498,
+      "amount": 35062.24066390042,
+      "pnl": 10062.240663900415,
+      "date": "2026-08-23T07:51:35.008609",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-TRUMP",
+      "price": 3349.0,
+      "quantity": 10.660980810234541,
+      "amount": 35703.62473347548,
+      "pnl": 10703.624733475479,
+      "date": "2026-08-23T07:51:35.008619",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-WAVES",
+      "price": 309.0,
+      "amount": 50000,
+      "quantity": 161.81229773462783,
+      "date": "2026-08-23T07:51:35.013741",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-RE",
+      "price": 726.0,
+      "amount": 50000,
+      "quantity": 68.87052341597796,
+      "date": "2026-08-23T07:51:35.018923",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
