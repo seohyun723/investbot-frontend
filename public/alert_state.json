@@ -1,18 +1,6 @@
 {
-  "KRW-TRUMP": {
-    "type": "target",
-    "time": "2026-08-22T03:08:04.017522"
-  },
   "KRW-PIEVERSE": {
     "type": "stop",
     "time": "2026-08-22T14:50:30.838879"
-  },
-  "KRW-SC": {
-    "type": "target",
-    "time": "2026-08-22T21:44:03.702538"
-  },
-  "KRW-ZRO": {
-    "type": "target",
-    "time": "2026-08-23T00:01:51.569947"
   }
 }
