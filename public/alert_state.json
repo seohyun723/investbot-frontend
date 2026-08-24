@@ -3,12 +3,12 @@
     "type": "target",
     "time": "2026-08-23T10:53:48.965919"
   },
-  "KRW-VIRTUAL": {
-    "type": "target",
-    "time": "2026-08-23T20:52:08.088005"
-  },
   "KRW-ARX": {
     "type": "target",
     "time": "2026-08-23T22:55:42.976839"
+  },
+  "KRW-PIEVERSE": {
+    "type": "stop",
+    "time": "2026-08-24T03:38:35.775969"
   }
 }
