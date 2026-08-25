@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 234233.68164594338,
+  "cash": 230712.55488537997,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1694,10 +1694,12 @@
       "buy_date": "2026-08-24T23:01:36.454010",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 66.0,
+      "sell_date": "2026-08-25T14:32:13.543849"
     },
     {
       "symbol": "KRW-TRUMP",
@@ -1779,6 +1781,23 @@
       "buy_date": "2026-08-25T10:06:52.724780",
       "score": 70,
       "signal": "강력매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ZRO",
+      "market": "crypto",
+      "buy_price": 1653.0,
+      "buy_price_original": 1653.0,
+      "quantity": 30.248033877797944,
+      "buy_amount": 50000,
+      "target_price": 1900.95,
+      "stoploss_price": 1537.29,
+      "buy_date": "2026-08-25T14:32:13.548951",
+      "score": 70,
+      "signal": "매수",
       "status": "active",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
@@ -3615,6 +3634,26 @@
       "date": "2026-08-25T10:06:52.724789",
       "reason": "점수 70 · 시그널 강력매수",
       "signal": "강력매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-STORJ",
+      "price": 66.0,
+      "quantity": 704.2253521126761,
+      "amount": 46478.87323943662,
+      "pnl": -3521.1267605633802,
+      "date": "2026-08-25T14:32:13.543856",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ZRO",
+      "price": 1653.0,
+      "amount": 50000,
+      "quantity": 30.248033877797944,
+      "date": "2026-08-25T14:32:13.548957",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
