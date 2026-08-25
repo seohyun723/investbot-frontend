@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 230712.55488537997,
+  "cash": 226606.34478671488,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1713,10 +1713,12 @@
       "buy_date": "2026-08-25T03:19:35.303292",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 3163.0,
+      "sell_date": "2026-08-25T16:23:10.880604"
     },
     {
       "symbol": "KRW-PUMP",
@@ -1796,6 +1798,23 @@
       "target_price": 1900.95,
       "stoploss_price": 1537.29,
       "buy_date": "2026-08-25T14:32:13.548951",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-TRUMP",
+      "market": "crypto",
+      "buy_price": 3163.0,
+      "buy_price_original": 3163.0,
+      "quantity": 15.807777426493836,
+      "buy_amount": 50000,
+      "target_price": 3637.45,
+      "stoploss_price": 2941.59,
+      "buy_date": "2026-08-25T16:23:10.886492",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -3652,6 +3671,26 @@
       "amount": 50000,
       "quantity": 30.248033877797944,
       "date": "2026-08-25T14:32:13.548957",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-TRUMP",
+      "price": 3163.0,
+      "quantity": 14.509576320371446,
+      "amount": 45893.78990133488,
+      "pnl": -4106.210098665119,
+      "date": "2026-08-25T16:23:10.880611",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-TRUMP",
+      "price": 3163.0,
+      "amount": 50000,
+      "quantity": 15.807777426493836,
+      "date": "2026-08-25T16:23:10.886499",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
