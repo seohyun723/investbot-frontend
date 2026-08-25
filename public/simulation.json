@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 250981.25446147734,
+  "cash": 284233.6816459434,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1658,10 +1658,12 @@
       "buy_date": "2026-08-24T10:27:11.245544",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 137.0,
+      "sell_date": "2026-08-25T08:14:06.840326"
     },
     {
       "symbol": "KRW-ONT",
@@ -3576,6 +3578,16 @@
       "date": "2026-08-25T08:05:33.385979",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ONG",
+      "price": 137.0,
+      "quantity": 242.71844660194174,
+      "amount": 33252.42718446602,
+      "pnl": 8252.42718446602,
+      "date": "2026-08-25T08:14:06.840332",
+      "reason": "2차 목표"
     }
   ]
 }
