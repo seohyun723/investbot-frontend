@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 291607.6309852287,
+  "cash": 241607.6309852287,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1874,6 +1874,23 @@
       "target_price": 2421.9,
       "stoploss_price": 1958.58,
       "buy_date": "2026-08-26T05:57:27.727548",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-PYTH",
+      "market": "crypto",
+      "buy_price": 73.0,
+      "buy_price_original": 73.0,
+      "quantity": 684.931506849315,
+      "buy_amount": 50000,
+      "target_price": 83.95,
+      "stoploss_price": 67.89,
+      "buy_date": "2026-08-26T12:00:46.206825",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -3832,6 +3849,16 @@
       "pnl": -3784.860557768928,
       "date": "2026-08-26T10:22:08.030726",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-PYTH",
+      "price": 73.0,
+      "amount": 50000,
+      "quantity": 684.931506849315,
+      "date": "2026-08-26T12:00:46.206831",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
