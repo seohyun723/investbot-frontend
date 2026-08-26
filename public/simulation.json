@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 295392.49154299765,
+  "cash": 245392.49154299765,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1855,6 +1855,23 @@
       "target_price": 0.67,
       "stoploss_price": 0.54,
       "buy_date": "2026-08-25T23:04:10.715917",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-FLUID",
+      "market": "crypto",
+      "buy_price": 2106.0,
+      "buy_price_original": 2106.0,
+      "quantity": 23.741690408357076,
+      "buy_amount": 50000,
+      "target_price": 2421.9,
+      "stoploss_price": 1958.58,
+      "buy_date": "2026-08-26T05:57:27.727548",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -3793,6 +3810,16 @@
       "pnl": -3679.245283018865,
       "date": "2026-08-26T00:04:23.096277",
       "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-FLUID",
+      "price": 2106.0,
+      "amount": 50000,
+      "quantity": 23.741690408357076,
+      "date": "2026-08-26T05:57:27.727556",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
