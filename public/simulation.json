@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 219726.4987307784,
+  "cash": 295392.49154299765,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1411,15 +1411,15 @@
       "market": "crypto",
       "buy_price": 8.4,
       "buy_price_original": 8.4,
-      "quantity": 5952.380952380952,
+      "quantity": 2976.190476190476,
       "buy_amount": 50000,
-      "target_price": 9.66,
-      "stoploss_price": 7.81,
+      "target_price": 11.09,
+      "stoploss_price": 8.82,
       "buy_date": "2026-08-21T00:06:55.778437",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1787,10 +1787,12 @@
       "buy_date": "2026-08-25T10:06:52.724780",
       "score": 70,
       "signal": "강력매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 9.82,
+      "sell_date": "2026-08-26T00:04:23.096274"
     },
     {
       "symbol": "KRW-ZRO",
@@ -3771,6 +3773,26 @@
       "date": "2026-08-25T23:04:10.715923",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-SNT",
+      "price": 9.86,
+      "quantity": 2976.190476190476,
+      "amount": 29345.23809523809,
+      "pnl": 4345.238095238093,
+      "date": "2026-08-26T00:04:23.096245",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-GMT",
+      "price": 9.82,
+      "quantity": 4716.981132075472,
+      "amount": 46320.75471698113,
+      "pnl": -3679.245283018865,
+      "date": "2026-08-26T00:04:23.096277",
+      "reason": "손절"
     }
   ]
 }
