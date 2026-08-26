@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 241607.6309852287,
+  "cash": 267834.77559750015,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1611,10 +1611,12 @@
       "buy_date": "2026-08-24T03:37:02.801593",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 93.6,
+      "sell_date": "2026-08-26T14:32:26.318369"
     },
     {
       "symbol": "KRW-B3",
@@ -1674,15 +1676,15 @@
       "market": "crypto",
       "buy_price": 68.5,
       "buy_price_original": 68.5,
-      "quantity": 729.92700729927,
+      "quantity": 364.963503649635,
       "buy_amount": 50000,
-      "target_price": 78.77,
-      "stoploss_price": 63.71,
+      "target_price": 90.42,
+      "stoploss_price": 71.92,
       "buy_date": "2026-08-24T11:53:11.587798",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -1891,6 +1893,23 @@
       "target_price": 83.95,
       "stoploss_price": 67.89,
       "buy_date": "2026-08-26T12:00:46.206825",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-KITE",
+      "market": "crypto",
+      "buy_price": 152.0,
+      "buy_price_original": 152.0,
+      "quantity": 328.94736842105266,
+      "buy_amount": 50000,
+      "target_price": 174.8,
+      "stoploss_price": 141.36,
+      "buy_date": "2026-08-26T14:32:26.327574",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -3857,6 +3876,36 @@
       "amount": 50000,
       "quantity": 684.931506849315,
       "date": "2026-08-26T12:00:46.206831",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-QUID",
+      "price": 93.6,
+      "quantity": 495.0495049504951,
+      "amount": 46336.63366336634,
+      "pnl": -3663.3663366336664,
+      "date": "2026-08-26T14:32:26.318375",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ONT",
+      "price": 81.9,
+      "quantity": 364.963503649635,
+      "amount": 29890.51094890511,
+      "pnl": 4890.510948905111,
+      "date": "2026-08-26T14:32:26.318384",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-KITE",
+      "price": 152.0,
+      "amount": 50000,
+      "quantity": 328.94736842105266,
+      "date": "2026-08-26T14:32:26.327580",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
