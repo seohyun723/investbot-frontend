@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 316150.1878258543,
+  "cash": 308058.7402138587,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1901,10 +1901,12 @@
       "buy_date": "2026-08-26T12:00:46.206825",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 67.5,
+      "sell_date": "2026-08-28T04:35:56.888866"
     },
     {
       "symbol": "KRW-KITE",
@@ -1935,10 +1937,12 @@
       "buy_date": "2026-08-28T01:01:31.289120",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 169.0,
+      "sell_date": "2026-08-28T04:35:56.888880"
     },
     {
       "symbol": "KRW-SOPH",
@@ -1950,6 +1954,40 @@
       "target_price": 6.45,
       "stoploss_price": 5.22,
       "buy_date": "2026-08-28T01:01:31.292161",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-DOS",
+      "market": "crypto",
+      "buy_price": 342.0,
+      "buy_price_original": 342.0,
+      "quantity": 146.19883040935673,
+      "buy_amount": 50000,
+      "target_price": 393.3,
+      "stoploss_price": 318.06,
+      "buy_date": "2026-08-28T04:35:56.894653",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ONG",
+      "market": "crypto",
+      "buy_price": 169.0,
+      "buy_price_original": 169.0,
+      "quantity": 295.85798816568047,
+      "buy_amount": 50000,
+      "target_price": 194.35,
+      "stoploss_price": 157.17,
+      "buy_date": "2026-08-28T04:35:56.900235",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -4006,6 +4044,46 @@
       "amount": 50000,
       "quantity": 8912.6559714795,
       "date": "2026-08-28T01:01:31.292164",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-PYTH",
+      "price": 67.5,
+      "quantity": 684.931506849315,
+      "amount": 46232.87671232877,
+      "pnl": -3767.123287671233,
+      "date": "2026-08-28T04:35:56.888874",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ONG",
+      "price": 169.0,
+      "quantity": 270.27027027027026,
+      "amount": 45675.67567567567,
+      "pnl": -4324.324324324324,
+      "date": "2026-08-28T04:35:56.888881",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-DOS",
+      "price": 342.0,
+      "amount": 50000,
+      "quantity": 146.19883040935673,
+      "date": "2026-08-28T04:35:56.894660",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ONG",
+      "price": 169.0,
+      "amount": 50000,
+      "quantity": 295.85798816568047,
+      "date": "2026-08-28T04:35:56.900241",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
