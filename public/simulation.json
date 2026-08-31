@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 343128.9661863669,
+  "cash": 339388.50817109976,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -2315,6 +2315,25 @@
       "target_price": 7.53,
       "stoploss_price": 6.09,
       "buy_date": "2026-08-31T09:40:57.731908",
+      "score": 70,
+      "signal": "매수",
+      "status": "sold",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW",
+      "sell_price": 6.06,
+      "sell_date": "2026-08-31T11:10:55.841547"
+    },
+    {
+      "symbol": "KRW-BONK",
+      "market": "crypto",
+      "buy_price": 0.0048,
+      "buy_price_original": 0.0048,
+      "quantity": 10416666.666666668,
+      "buy_amount": 50000,
+      "target_price": 0.01,
+      "stoploss_price": 0.0,
+      "buy_date": "2026-08-31T11:10:55.850213",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -4811,6 +4830,26 @@
       "amount": 50000,
       "quantity": 7633.587786259543,
       "date": "2026-08-31T09:40:57.731914",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-MANTRA",
+      "price": 6.06,
+      "quantity": 7633.587786259543,
+      "amount": 46259.54198473282,
+      "pnl": -3740.4580152671774,
+      "date": "2026-08-31T11:10:55.841555",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-BONK",
+      "price": 0.0048,
+      "amount": 50000,
+      "quantity": 10416666.666666668,
+      "date": "2026-08-31T11:10:55.850220",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
