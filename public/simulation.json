@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 438083.9324459174,
+  "cash": 438169.40253138746,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -2213,8 +2213,8 @@
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW",
-      "sell_price": 60.2,
-      "sell_date": "2026-08-31T06:11:04.245413"
+      "sell_price": 60.4,
+      "sell_date": "2026-08-31T06:12:50.020660"
     },
     {
       "symbol": "KRW-STORJ",
@@ -2255,13 +2255,13 @@
     {
       "symbol": "KRW-AXL",
       "market": "crypto",
-      "buy_price": 60.2,
-      "buy_price_original": 60.2,
-      "quantity": 830.5647840531561,
+      "buy_price": 60.4,
+      "buy_price_original": 60.4,
+      "quantity": 827.8145695364238,
       "buy_amount": 50000,
-      "target_price": 69.23,
-      "stoploss_price": 55.99,
-      "buy_date": "2026-08-31T06:11:04.254382",
+      "target_price": 69.46,
+      "stoploss_price": 56.17,
+      "buy_date": "2026-08-31T06:12:50.029326",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -4694,20 +4694,20 @@
     {
       "type": "sell",
       "symbol": "KRW-AXL",
-      "price": 60.2,
+      "price": 60.4,
       "quantity": 427.35042735042737,
-      "amount": 25726.49572649573,
-      "pnl": 726.4957264957277,
-      "date": "2026-08-31T06:11:04.245419",
+      "amount": 25811.965811965812,
+      "pnl": 811.9658119658114,
+      "date": "2026-08-31T06:12:50.020666",
       "reason": "손절"
     },
     {
       "type": "buy",
       "symbol": "KRW-AXL",
-      "price": 60.2,
+      "price": 60.4,
       "amount": 50000,
-      "quantity": 830.5647840531561,
-      "date": "2026-08-31T06:11:04.254391",
+      "quantity": 827.8145695364238,
+      "date": "2026-08-31T06:12:50.029332",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
