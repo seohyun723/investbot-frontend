@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 423338.2223318663,
+  "cash": 468310.6741224999,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1568,10 +1568,12 @@
       "buy_date": "2026-08-23T07:51:35.018916",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 653.0,
+      "sell_date": "2026-08-31T00:41:01.525174"
     },
     {
       "symbol": "KRW-MOC",
@@ -4532,6 +4534,16 @@
       "date": "2026-08-31T00:12:58.005284",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-RE",
+      "price": 653.0,
+      "quantity": 68.87052341597796,
+      "amount": 44972.451790633604,
+      "pnl": -5027.54820936639,
+      "date": "2026-08-31T00:41:01.525181",
+      "reason": "손절"
     }
   ]
 }
