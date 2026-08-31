@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 334866.6769230928,
+  "cash": 280668.20364065,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -2253,10 +2253,12 @@
       "buy_date": "2026-08-31T03:41:00.663520",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 12.0,
+      "sell_date": "2026-08-31T22:41:00.021191"
     },
     {
       "symbol": "KRW-AXL",
@@ -2391,6 +2393,40 @@
       "target_price": 71.3,
       "stoploss_price": 57.66,
       "buy_date": "2026-08-31T13:11:12.413499",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ARB",
+      "market": "crypto",
+      "buy_price": 147.0,
+      "buy_price_original": 147.0,
+      "quantity": 340.13605442176873,
+      "buy_amount": 50000,
+      "target_price": 169.05,
+      "stoploss_price": 136.71,
+      "buy_date": "2026-08-31T22:41:00.031398",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ZK",
+      "market": "crypto",
+      "buy_price": 12.0,
+      "buy_price_original": 12.0,
+      "quantity": 4166.666666666667,
+      "buy_amount": 50000,
+      "target_price": 13.8,
+      "stoploss_price": 11.16,
+      "buy_date": "2026-08-31T22:41:00.038668",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -4987,6 +5023,36 @@
       "amount": 50000,
       "quantity": 806.4516129032259,
       "date": "2026-08-31T13:11:12.413506",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-ZK",
+      "price": 12.0,
+      "quantity": 3816.7938931297713,
+      "amount": 45801.52671755725,
+      "pnl": -4198.473282442747,
+      "date": "2026-08-31T22:41:00.021198",
+      "reason": "손절"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ARB",
+      "price": 147.0,
+      "amount": 50000,
+      "quantity": 340.13605442176873,
+      "date": "2026-08-31T22:41:00.031405",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ZK",
+      "price": 12.0,
+      "amount": 50000,
+      "quantity": 4166.666666666667,
+      "date": "2026-08-31T22:41:00.038674",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
