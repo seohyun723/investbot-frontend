@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 339388.50817109976,
+  "cash": 352235.2060468674,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1229,10 +1229,12 @@
       "buy_date": "2026-08-19T03:17:34.383256",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 179.0,
+      "sell_date": "2026-08-31T11:40:43.022104"
     },
     {
       "symbol": "KRW-PRL",
@@ -2259,15 +2261,15 @@
       "market": "crypto",
       "buy_price": 60.2,
       "buy_price_original": 60.2,
-      "quantity": 830.5647840531561,
+      "quantity": 415.28239202657807,
       "buy_amount": 50000,
-      "target_price": 69.23,
-      "stoploss_price": 55.99,
+      "target_price": 79.46,
+      "stoploss_price": 63.21,
       "buy_date": "2026-08-31T06:11:04.254382",
       "score": 70,
       "signal": "매수",
       "status": "active",
-      "partial_sold": false,
+      "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
       "currency": "KRW"
     },
@@ -2334,6 +2336,23 @@
       "target_price": 0.01,
       "stoploss_price": 0.0,
       "buy_date": "2026-08-31T11:10:55.850213",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-SOMI",
+      "market": "crypto",
+      "buy_price": 179.0,
+      "buy_price_original": 179.0,
+      "quantity": 279.3296089385475,
+      "buy_amount": 50000,
+      "target_price": 205.85,
+      "stoploss_price": 166.47,
+      "buy_date": "2026-08-31T11:40:43.030012",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -4850,6 +4869,36 @@
       "amount": 50000,
       "quantity": 10416666.666666668,
       "date": "2026-08-31T11:10:55.850220",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-SOMI",
+      "price": 179.0,
+      "quantity": 189.3939393939394,
+      "amount": 33901.51515151515,
+      "pnl": 8901.515151515152,
+      "date": "2026-08-31T11:40:43.022111",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-AXL",
+      "price": 69.7,
+      "quantity": 415.28239202657807,
+      "amount": 28945.182724252492,
+      "pnl": 3945.1827242524914,
+      "date": "2026-08-31T11:40:43.022143",
+      "reason": "1차 목표 (절반)"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-SOMI",
+      "price": 179.0,
+      "amount": 50000,
+      "quantity": 279.3296089385475,
+      "date": "2026-08-31T11:40:43.030019",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
     }
