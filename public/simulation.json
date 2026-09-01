@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 222830.95140476245,
+  "cash": 206417.9079265016,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1506,10 +1506,12 @@
       "buy_date": "2026-08-22T07:49:09.226267",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 7725.0,
+      "sell_date": "2026-09-01T06:18:29.983103"
     },
     {
       "symbol": "KRW-SC",
@@ -2503,6 +2505,23 @@
       "target_price": 1437.5,
       "stoploss_price": 1162.5,
       "buy_date": "2026-09-01T03:18:10.204401",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-BLAST",
+      "market": "crypto",
+      "buy_price": 0.421,
+      "buy_price_original": 0.421,
+      "quantity": 118764.84560570071,
+      "buy_amount": 50000,
+      "target_price": 0.48,
+      "stoploss_price": 0.39,
+      "buy_date": "2026-09-01T06:18:29.993849",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -5211,6 +5230,26 @@
       "pnl": 10668.7898089172,
       "date": "2026-09-01T03:45:58.512242",
       "reason": "2차 목표"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-UNI",
+      "price": 7725.0,
+      "quantity": 4.3478260869565215,
+      "amount": 33586.95652173913,
+      "pnl": 8586.95652173913,
+      "date": "2026-09-01T06:18:29.983110",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-BLAST",
+      "price": 0.421,
+      "amount": 50000,
+      "quantity": 118764.84560570071,
+      "date": "2026-09-01T06:18:29.993855",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
