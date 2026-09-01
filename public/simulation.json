@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 187162.16159584525,
+  "cash": 222830.95140476245,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -1523,10 +1523,12 @@
       "buy_date": "2026-08-22T07:49:09.421925",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 1.12,
+      "sell_date": "2026-09-01T03:45:58.512235"
     },
     {
       "symbol": "KRW-ALGO",
@@ -5199,6 +5201,16 @@
       "date": "2026-09-01T03:18:10.204409",
       "reason": "점수 70 · 시그널 매수",
       "signal": "매수"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-SC",
+      "price": 1.12,
+      "quantity": 31847.133757961783,
+      "amount": 35668.7898089172,
+      "pnl": 10668.7898089172,
+      "date": "2026-09-01T03:45:58.512242",
+      "reason": "2차 목표"
     }
   ]
 }
