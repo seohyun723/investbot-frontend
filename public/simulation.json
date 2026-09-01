@@ -1,6 +1,6 @@
 {
   "initial_capital": 2000000,
-  "cash": 306872.58320269384,
+  "cash": 287162.16159584525,
   "holdings": [
     {
       "symbol": "KRW-ADA",
@@ -2363,10 +2363,12 @@
       "buy_date": "2026-08-31T11:40:43.030012",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": false,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 166.0,
+      "sell_date": "2026-09-01T00:25:00.045983"
     },
     {
       "symbol": "KRW-STORJ",
@@ -2380,10 +2382,12 @@
       "buy_date": "2026-08-31T12:11:46.031189",
       "score": 70,
       "signal": "매수",
-      "status": "active",
+      "status": "sold",
       "partial_sold": true,
       "note": "같은 시장 편중 (금액 절반)",
-      "currency": "KRW"
+      "currency": "KRW",
+      "sell_price": 94.3,
+      "sell_date": "2026-09-01T00:25:00.045996"
     },
     {
       "symbol": "KRW-AXL",
@@ -2429,6 +2433,40 @@
       "target_price": 13.8,
       "stoploss_price": 11.16,
       "buy_date": "2026-08-31T22:41:00.038668",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-ZKC",
+      "market": "crypto",
+      "buy_price": 74.8,
+      "buy_price_original": 74.8,
+      "quantity": 668.4491978609626,
+      "buy_amount": 50000,
+      "target_price": 86.02,
+      "stoploss_price": 69.56,
+      "buy_date": "2026-09-01T00:25:00.052724",
+      "score": 70,
+      "signal": "매수",
+      "status": "active",
+      "partial_sold": false,
+      "note": "같은 시장 편중 (금액 절반)",
+      "currency": "KRW"
+    },
+    {
+      "symbol": "KRW-SOMI",
+      "market": "crypto",
+      "buy_price": 166.0,
+      "buy_price_original": 166.0,
+      "quantity": 301.2048192771084,
+      "buy_amount": 50000,
+      "target_price": 190.9,
+      "stoploss_price": 154.38,
+      "buy_date": "2026-09-01T00:25:00.063054",
       "score": 70,
       "signal": "매수",
       "status": "active",
@@ -5067,6 +5105,46 @@
       "pnl": 1204.3795620437945,
       "date": "2026-08-31T23:09:49.785676",
       "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-SOMI",
+      "price": 166.0,
+      "quantity": 279.3296089385475,
+      "amount": 46368.71508379888,
+      "pnl": -3631.2849162011175,
+      "date": "2026-09-01T00:25:00.045990",
+      "reason": "손절"
+    },
+    {
+      "type": "sell",
+      "symbol": "KRW-STORJ",
+      "price": 94.3,
+      "quantity": 359.71223021582733,
+      "amount": 33920.86330935251,
+      "pnl": 8920.863309352517,
+      "date": "2026-09-01T00:25:00.045998",
+      "reason": "2차 목표"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-ZKC",
+      "price": 74.8,
+      "amount": 50000,
+      "quantity": 668.4491978609626,
+      "date": "2026-09-01T00:25:00.052730",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
+    },
+    {
+      "type": "buy",
+      "symbol": "KRW-SOMI",
+      "price": 166.0,
+      "amount": 50000,
+      "quantity": 301.2048192771084,
+      "date": "2026-09-01T00:25:00.063059",
+      "reason": "점수 70 · 시그널 매수",
+      "signal": "매수"
     }
   ]
 }
